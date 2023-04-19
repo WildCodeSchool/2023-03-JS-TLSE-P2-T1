@@ -109,6 +109,7 @@ function App() {
     }
   }, [stadiumsNbr]);
 
+  // Defining number of cinemas
   useEffect(() => {
     axios
       .get(
@@ -118,6 +119,7 @@ function App() {
       .catch((err) => console.error(err));
   }, []);
 
+  // Fetching the API with rows equal to number of cinemas, putting result into a result object
   useEffect(() => {
     if (cinemasNbr > 0) {
       axios
