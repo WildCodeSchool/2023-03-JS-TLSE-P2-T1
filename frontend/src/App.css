@@ -3,3 +3,33 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.header_section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.primaryCheckboxButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10vw;
+}
+
+.primaryButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  width: 125px;
+  height: 125px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 75px;
+}
+
+.mainButtonClicked {
+  background-color: blue;
+}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -161,6 +162,13 @@ function App() {
 
   return (
     <div className="App">
+      {/* the beneath div corresponds to the header section */}
+      <div className="header_section">
+        <PrimaryCheckboxButton
+          setFinalResult={setFinalResult}
+          fetchedResult={fetchedResult}
+        />
+      </div>
       {isLoaded ? finalResult.map((el) => <p key={el.id}>{el.name}</p>) : null}
     </div>
   );
