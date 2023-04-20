@@ -6,6 +6,14 @@ function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
   const [sportButtonClicked, setSportButtonClicked] = useState(false);
   const [cultureButtonClicked, setCultureButtonClicked] = useState(false);
 
+  // defining four consts for the buttons icons url depending whether the button is clicked or not
+  const cultureIcon = "..\\..\\..\\src\\assets\\header_icons\\culture.png";
+  const cultureClickedIcon =
+    "..\\..\\..\\src\\assets\\header_icons\\culture_clicked.png";
+  const sportIcon = "..\\..\\..\\src\\assets\\header_icons\\sport.png";
+  const sportClickedIcon =
+    "..\\..\\..\\src\\assets\\header_icons\\sport_clicked.png";
+
   // handleClickCulture and handleClickSport definition, changes the state of the button (clicked or not)
   const handleClickCulture = () => {
     setCultureButtonClicked(!cultureButtonClicked);
@@ -42,13 +50,14 @@ function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
     <div className="primaryCheckboxButtons">
       <button
         type="button"
-        className={`primaryButton sportButton ${
+        className={`primaryButton cultureButton ${
           cultureButtonClicked ? "mainButtonClicked" : ""
         }`}
         onClick={() => handleClickCulture()}
       >
+        {/* displaying one icon or the other depending on button status : clicked or not */}
         <img
-          src={`..\\..\\..\\src\\assets\\header_icons\\culture.png`}
+          src={cultureButtonClicked ? cultureClickedIcon : cultureIcon}
           alt="culture"
         />
         <p>Culture</p>
@@ -61,7 +70,7 @@ function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
         onClick={() => handleClickSport()}
       >
         <img
-          src={`..\\..\\..\\src\\assets\\header_icons\\sport.png`}
+          src={sportButtonClicked ? sportClickedIcon : sportIcon}
           alt="sport"
         />
         <p>Sport</p>
