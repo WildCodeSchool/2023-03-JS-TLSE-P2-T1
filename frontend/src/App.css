@@ -4,17 +4,21 @@
   box-sizing: border-box;
 }
 
+/* styling all buttons  */
 button {
   padding: 0;
   border: none;
   background: none;
 }
 
+/* header section styling  */
 .header_section {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
+
+/* Component PrimaryCheckboxButtons styling  */
 
 .primaryCheckboxButtons {
   display: flex;
@@ -45,6 +49,7 @@ button {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 75px;
 }
+
 .primaryButton:hover {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
@@ -62,13 +67,14 @@ button {
   color: white;
 }
 
+/* Mobile phone media queries */
 @media screen and (max-width: 770px) {
   .primaryButton {
-    height: 80px;
-    width: 80px;
+    height: 70px;
+    width: 70px;
   }
 
   .primaryButton p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 }
