@@ -12,7 +12,7 @@ button {
 }
 
 /* header section styling  */
-.header_section {
+header {
   display: flex;
   flex-direction: row;
   justify-content: center;

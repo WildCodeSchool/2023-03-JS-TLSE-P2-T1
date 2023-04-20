@@ -163,12 +163,12 @@ function App() {
   return (
     <div className="App">
       {/* the beneath div corresponds to the header section */}
-      <div className="header_section">
+      <header>
         <PrimaryCheckboxButton
           setFinalResult={setFinalResult}
           fetchedResult={fetchedResult}
         />
-      </div>
+      </header>
       {isLoaded ? finalResult.map((el) => <p key={el.id}>{el.name}</p>) : null}
     </div>
   );
