@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 
@@ -164,6 +165,7 @@ function App() {
   // list all unfiltered cards by map finalResul in a component Card
   return (
     <div className="App">
+      <FiltersMenu />
       {/* the beneath div corresponds to the header section */}
       <header>
         <PrimaryCheckboxButton
