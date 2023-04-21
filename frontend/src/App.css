@@ -20,8 +20,8 @@ nav ul {
   background-color: var(--main-color);
   color: white;
   margin: 0;
-  height: 10vh;
-  min-height: 100px;
+  height: 8vh;
+  min-height: 60px;
 }
 
 /*display logo and websitetitle in flex row*/
