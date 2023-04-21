@@ -1,5 +1,6 @@
 import React from "react";
-// eslint-disable-next-line react/prop-types
+import PropTypes from "prop-types";
+
 function Card({ name, shortDescription, tags, address, schedules, api }) {
   let itemContainer;
   let imgSrc;
@@ -27,5 +28,13 @@ function Card({ name, shortDescription, tags, address, schedules, api }) {
     </div>
   );
 }
+Card.propTypes = {
+  name: PropTypes.string.isRequired,
+  shortDescription: PropTypes.string.isRequired,
+  tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  address: PropTypes.string.isRequired,
+  schedules: PropTypes.string.isRequired,
+  api: PropTypes.string.isRequired,
+};
 
 export default Card;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
 function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
   // defining two states for the buttons to know if they are clicked or not
   const [sportButtonClicked, setSportButtonClicked] = useState(false);
@@ -33,13 +33,11 @@ function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
       setFinalResult(fetchedResult);
       // two other cases : only one button is clicked, returns result depending on the button chosen. Applies filters
     } else if (cultureButtonClicked && !sportButtonClicked) {
-      // eslint-disable-next-line react/prop-types
       const mainFilterResult = fetchedResult.filter(
         (result) => result.nature === "culture"
       );
       setFinalResult(mainFilterResult);
     } else if (!cultureButtonClicked && sportButtonClicked) {
-      // eslint-disable-next-line react/prop-types
       const mainFilterResult = fetchedResult.filter(
         (result) => result.nature === "sport"
       );
@@ -78,5 +76,12 @@ function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
     </div>
   );
 }
+
+PrimaryCheckboxButton.propTypes = {
+  setFinalResult: PropTypes.func.isRequired,
+  fetchedResult: PropTypes.arrayOf(
+    PropTypes.shape({ nature: PropTypes.string.isRequired }).isRequired
+  ).isRequired,
+};
 
 export default PrimaryCheckboxButton;
