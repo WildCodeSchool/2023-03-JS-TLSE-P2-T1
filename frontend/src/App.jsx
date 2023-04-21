@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import NavBar from "./components/NavBar";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -161,6 +162,7 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
       {isLoaded ? finalResult.map((el) => <p key={el.id}>{el.name}</p>) : null}
     </div>
   );

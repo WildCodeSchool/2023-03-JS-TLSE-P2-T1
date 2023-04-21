@@ -1,5 +1,23 @@
 :root {
+  /* declare a main-color variable for the blue color*/
+  --main-color: #151d48;
+}
+
+/*NavBar style definition*/
+
+/* define style for nav ul*/
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--main-color);
+  color: white;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+}
+
+/*define right margin for the second li*/
+nav ul li:nth-child(2) {
+  margin-right: 1rem;
 }
