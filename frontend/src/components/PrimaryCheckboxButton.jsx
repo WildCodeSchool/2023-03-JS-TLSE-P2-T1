@@ -14,21 +14,27 @@ function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
   const sportClickedIcon =
     "..\\..\\..\\src\\assets\\header_icons\\sport_clicked.png";
 
-  // handleClickCulture and handleClickSport definition, changes the state of the button (clicked or not)
+  // handleClickCulture and handleClickSport definition, changes the state of the button (clicked or not). if another button is clicked, it is unclicked
   const handleClickCulture = () => {
+    if (!cultureButtonClicked && sportButtonClicked) {
+      setSportButtonClicked(!sportButtonClicked);
+    }
     setCultureButtonClicked(!cultureButtonClicked);
   };
 
   const handleClickSport = () => {
+    if (!sportButtonClicked && cultureButtonClicked) {
+      setCultureButtonClicked(!cultureButtonClicked);
+    }
     setSportButtonClicked(!sportButtonClicked);
   };
 
   // useEffect monitors any change on clicked state of the two buttons and filters fetched_result according to the buttons clicked
   useEffect(() => {
     if (
-      // both buttons clicked or both buttons unclicked, returns all results
-      (cultureButtonClicked && sportButtonClicked) ||
-      (!cultureButtonClicked && !sportButtonClicked)
+      // both buttons unclicked, returns all results
+      !cultureButtonClicked &&
+      !sportButtonClicked
     ) {
       setFinalResult(fetchedResult);
       // two other cases : only one button is clicked, returns result depending on the button chosen. Applies filters

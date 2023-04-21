@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 
-
 .itemContainer {
   display: flex;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -47,7 +46,7 @@
 img {
   width: 20vh;
   height: 100px;
-  }
+}
 
 /* styling all buttons  */
 button {
@@ -122,5 +121,4 @@ header {
   .primaryButton p {
     font-size: 0.8rem;
   }
-
 }
