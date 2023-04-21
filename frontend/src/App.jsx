@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import FiltersMenu from "./components/FiltersMenu";
+import Card from "./components/Card";
+import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -159,9 +162,34 @@ function App() {
     }
   }, [fetchedResult]);
 
+  // list all unfiltered cards by map finalResul in a component Card
   return (
     <div className="App">
-      {isLoaded ? finalResult.map((el) => <p key={el.id}>{el.name}</p>) : null}
+      <FiltersMenu />
+      {/* the beneath div corresponds to the header section */}
+      <header>
+        <PrimaryCheckboxButton
+          setFinalResult={setFinalResult}
+          fetchedResult={fetchedResult}
+        />
+      </header>
+      <main>
+        <div className="listContainer">
+          {isLoaded
+            ? finalResult.map((el) => (
+                <Card
+                  key={el.id}
+                  api={el.api}
+                  name={el.name}
+                  shortDescription={el.shortDescription}
+                  tags={el.tags}
+                  address={el.address}
+                  schedules={el.schedules}
+                />
+              ))
+            : null}
+        </div>
+      </main>
     </div>
   );
 }
