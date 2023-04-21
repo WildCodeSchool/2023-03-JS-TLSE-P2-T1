@@ -4,6 +4,7 @@ import "./App.css";
 import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
+import Footer from "./components/Footer";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -190,6 +191,7 @@ function App() {
             : null}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }
