@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+// eslint-disable-next-line import/no-unresolved
+import Card from "./components/Card";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -159,9 +161,26 @@ function App() {
     }
   }, [fetchedResult]);
 
+  // list all unfiltered cards by map finalResul in a component Card
   return (
     <div className="App">
-      {isLoaded ? finalResult.map((el) => <p key={el.id}>{el.name}</p>) : null}
+      <main>
+        <div className="listContainer">
+          {isLoaded
+            ? finalResult.map((el) => (
+                <Card
+                  key={el.id}
+                  api={el.api}
+                  name={el.name}
+                  shortDescription={el.shortDescription}
+                  tags={el.tags}
+                  address={el.address}
+                  schedules={el.schedules}
+                />
+              ))
+            : null}
+        </div>
+      </main>
     </div>
   );
 }
