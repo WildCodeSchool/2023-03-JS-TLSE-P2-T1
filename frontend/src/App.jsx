@@ -3,6 +3,8 @@ import axios from "axios";
 import "./App.css";
 // eslint-disable-next-line import/no-unresolved
 import Card from "./components/Card";
+import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
+
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -164,6 +166,14 @@ function App() {
   // list all unfiltered cards by map finalResul in a component Card
   return (
     <div className="App">
+     {/* the beneath div corresponds to the header section */}
+      <header>
+        <PrimaryCheckboxButton
+          setFinalResult={setFinalResult}
+          fetchedResult={fetchedResult}
+        />
+      </header>
+      {isLoaded ? finalResult.map((el) => <p key={el.id}>{el.name}</p>) : null}
       <main>
         <div className="listContainer">
           {isLoaded
