@@ -21,6 +21,7 @@ nav ul {
   color: white;
   margin: 0;
   height: 10vh;
+  min-height: 100px;
 }
 
 /*display logo and websitetitle in flex row*/
@@ -39,6 +40,11 @@ nav ul li:nth-child(2) {
 /*define the size of the logo img*/
 nav ul li img {
   width: 4rem;
+}
+
+/* minimum height of nav ul li first child set to 35px*/
+nav ul li:first-child {
+  min-height: 35px;
 }
 
 /*define the style for the website title*/
@@ -61,6 +67,7 @@ nav ul li button {
   /* main appearance */
   width: fit-content;
   height: 6vh;
+  min-height: 35px;
   background: rgba(249, 249, 249, 0.9);
   border-radius: 50px;
 
@@ -74,6 +81,11 @@ nav ul li button {
 nav ul li button:hover {
   background-color: rgba(249, 249, 249, 0.8);
   cursor: pointer;
+}
+
+/*no wrap for filter text*/
+nav ul li button p {
+  white-space: nowrap;
 }
 
 /*set nav ul li button main categorie style*/
@@ -96,11 +108,14 @@ nav ul li button p:not(:first-child) {
 /*responsive style for nav ul, ul adapt their sizes to remain on the same row*/
 
 @media (max-width: 768px) {
+  nav {
+    height: fit-content;
+  }
   nav ul {
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    height: 20vh;
+    height: 100%;
   }
 
   nav ul li:nth-child(2) {
@@ -111,6 +126,8 @@ nav ul li button p:not(:first-child) {
     margin-top: 1rem;
     width: fit-content;
     height: fit-content;
+    /* no padding except horizontal*/
+    margin-top: 0;
   }
   /*responsive reduces the size of the logo*/
   nav ul li img {
@@ -126,6 +143,7 @@ nav ul li button p:not(:first-child) {
   nav ul li button * {
     margin: 0;
     padding: 0;
+    margin-bottom: 10px;
   }
   /*reduce the fonts of the nav button*/
   nav ul li button p:first-child {
@@ -133,5 +151,9 @@ nav ul li button p:not(:first-child) {
   }
   nav ul li button p:not(:first-child) {
     font-size: 1rem;
+  }
+
+  nav ul li button p {
+    margin: 0;
   }
 }

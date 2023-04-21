@@ -1,16 +1,14 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 
 function NavBar() {
   const [filterMainName, setFilterMainName] = useState("Culture et Sport");
   const [filterDateName, setFilterDateName] = useState("Flexible");
-  const [filterTagName, setFilterTagName] = useState(["Tag 1"]);
-
-  // use setFilterMainName to change the name of the main filter into "Culture et Sport"
-  // use setFilterDateName to change the name of the date filter into "Flexible"
-  // use setFilterTagName to change the name of the tag filter into "Tag 1"
-  setFilterDateName("Flexible");
-  setFilterTagName(["Tag 1", "Tag 2", "Tag 3"]);
-  setFilterMainName("Culture et Sport");
+  const [filterTagName, setFilterTagName] = useState([
+    "Tag 1",
+    "Tag 2",
+    "Tag 3",
+  ]);
 
   return (
     <nav>
@@ -22,11 +20,10 @@ function NavBar() {
         </li>
         <li>
           <button type="button">
-            <p>{filterMainName}</p>
-            <p>{filterDateName}</p>
+            <p>{filterMainName}</p>|<p>{filterDateName}</p>
             {/* map the filterTagName element to display p */}
             {filterTagName.map((el) => (
-              <p>{el}</p>
+              <p key={el}>| {el}</p>
             ))}
           </button>
         </li>
