@@ -172,7 +172,6 @@ function App() {
           fetchedResult={fetchedResult}
         />
       </header>
-      {isLoaded ? finalResult.map((el) => <p key={el.id}>{el.name}</p>) : null}
       <main>
         <div className="listContainer">
           {isLoaded
