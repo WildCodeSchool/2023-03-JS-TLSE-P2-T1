@@ -1,5 +1,8 @@
 /*NavBar style definition*/
 
+/*import Google and apple system font family*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
 /*don't display website tile in mobile version*/
 nav ul li h1 {
   display: none;
@@ -11,7 +14,7 @@ nav ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 1rem;
+  padding: 0;
   background-color: var(--main-color);
   color: white;
   margin: 0;
@@ -67,6 +70,8 @@ nav ul li img {
   flex-wrap: nowrap;
   gap: 10px;
   /*decoration*/
+  /*define helvetica neue as font family*/
+
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 450;
   font-size: 1.2rem;
