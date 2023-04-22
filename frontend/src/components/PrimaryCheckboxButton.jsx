@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import "./PrimaryCheckboxButton.css";
 
 function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
   // defining two states for the buttons to know if they are clicked or not
