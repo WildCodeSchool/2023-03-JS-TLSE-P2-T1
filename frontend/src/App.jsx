@@ -165,7 +165,7 @@ function App() {
   // list all unfiltered cards by map finalResul in a component Card
   return (
     <div className="App">
-      <FiltersMenu fetchedResult={fetchedResult} />
+      <FiltersMenu fetchedResult={fetchedResult} isLoaded={isLoaded} />
       {/* the beneath div corresponds to the header section */}
       <header>
         <PrimaryCheckboxButton

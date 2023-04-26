@@ -4,17 +4,17 @@ import SportCultureMenu from "./SportCultureMenu";
 import PlaceEventsMenu from "./PlaceEventsMenu";
 import DateFilter from "./DateFilter";
 
-function FiltersMenu({ fetchedResult }) {
+function FiltersMenu({ fetchedResult, isLoaded }) {
   const [isSportChecked, setIsSportChecked] = useState(false);
   const [isCultureChecked, setIsCultureChecked] = useState(false);
   const [isPlaceChecked, setIsPlaceChecked] = useState(false);
   const [isEventChecked, setIsEventChecked] = useState(false);
-  const [setDateFilter] = useState();
+  const [dateFilter, setDateFilter] = useState();
 
   const [firstLineResult, setFirstLineResult] = useState(fetchedResult);
   const [secondLineResult, setSecondLineResult] = useState(fetchedResult);
 
-  const [setMainFilterResult] = useState(fetchedResult);
+  const [mainFilterResult, setMainFilterResult] = useState(fetchedResult);
 
   // Define the first line
   const handleFirstLineResult = () => {
@@ -69,16 +69,20 @@ function FiltersMenu({ fetchedResult }) {
   };
 
   useEffect(() => {
-    handleFirstLineResult();
-    handleSecondLineResult();
-    handleMainResFirstLineClick();
-  }, [isSportChecked, isCultureChecked]);
+    if (isLoaded) {
+      handleFirstLineResult();
+      handleSecondLineResult();
+      handleMainResFirstLineClick();
+    }
+  }, [isSportChecked, isCultureChecked, fetchedResult]);
 
   useEffect(() => {
-    handleFirstLineResult();
-    handleSecondLineResult();
-    handleMainResSecondLineClick();
-  }, [isPlaceChecked, isEventChecked]);
+    if (isLoaded) {
+      handleFirstLineResult();
+      handleSecondLineResult();
+      handleMainResSecondLineClick();
+    }
+  }, [isPlaceChecked, isEventChecked, fetchedResult]);
 
   return (
     <div>
@@ -95,6 +99,8 @@ function FiltersMenu({ fetchedResult }) {
         setIsEventChecked={setIsEventChecked}
       />
       <DateFilter setDateFilter={setDateFilter} />
+      <p>{dateFilter}</p>
+      <p>{mainFilterResult.length ? mainFilterResult[0].name : null}</p>
     </div>
   );
 }
@@ -103,9 +109,10 @@ FiltersMenu.propTypes = {
   fetchedResult: PropTypes.arrayOf(
     PropTypes.shape({
       nature: PropTypes.string.isRequired,
-      isPlace: PropTypes.bool,
+      isPlace: PropTypes.bool.isRequired,
     })
   ).isRequired,
+  isLoaded: PropTypes.bool.isRequired,
 };
 
 export default FiltersMenu;
