@@ -1,7 +1,11 @@
+/*import google font families*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
 :root {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  /* declare a main-color variable for the blue color*/
+  --main-color: #151d48;
+  /* declare a secondary-color variable for the filter grey color*/
+  --secondary-color: #8d8c8c;
 }
 
 .itemContainer {

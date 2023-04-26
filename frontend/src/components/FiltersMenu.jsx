@@ -1,13 +1,128 @@
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import SportCultureMenu from "./SportCultureMenu";
+import PlaceEventsMenu from "./PlaceEventsMenu";
 import DateFilter from "./DateFilter";
 import TagsFilter from "./TagsFilter";
 
-function FiltersMenu() {
+function FiltersMenu({ fetchedResult, isLoaded, setFinalResult }) {
+  const [isSportChecked, setIsSportChecked] = useState(false);
+  const [isCultureChecked, setIsCultureChecked] = useState(false);
+  const [isPlaceChecked, setIsPlaceChecked] = useState(false);
+  const [isEventChecked, setIsEventChecked] = useState(false);
+  const [dateFilter, setDateFilter] = useState();
+
+  // We define a state that filters the fetched data for each type of filter. Then, when we click on another filter, we apply the new filter to the previous
+
+  // firstLineResult is about the sport/culture filter
+  const [firstLineResult, setFirstLineResult] = useState(fetchedResult);
+  // secondLineResult is about the place/event filter
+  const [secondLineResult, setSecondLineResult] = useState(fetchedResult);
+
+  const [mainFilterResult, setMainFilterResult] = useState(fetchedResult);
+
+  // Define the first line result
+  const handleFirstLineResult = () => {
+    if (isSportChecked) {
+      setFirstLineResult(fetchedResult.filter((el) => el.nature === "sport"));
+    } else if (isCultureChecked) {
+      setFirstLineResult(fetchedResult.filter((el) => el.nature === "culture"));
+    } else {
+      setFirstLineResult(fetchedResult);
+    }
+  };
+
+  // Define the second line result
+  const handleSecondLineResult = () => {
+    if (isPlaceChecked) {
+      setSecondLineResult(fetchedResult.filter((el) => el.isPlace === true));
+    } else if (isEventChecked) {
+      setSecondLineResult(fetchedResult.filter((el) => el.isPlace === false));
+    } else {
+      setSecondLineResult(fetchedResult);
+    }
+  };
+
+  // Define the main result when clicking on the first row
+  const handleMainResFirstLineClick = () => {
+    let newResult = [];
+
+    if (isCultureChecked) {
+      newResult = secondLineResult.filter((el) => el.nature === "culture");
+    } else if (isSportChecked) {
+      newResult = secondLineResult.filter((el) => el.nature === "sport");
+    } else {
+      newResult = secondLineResult;
+    }
+
+    setMainFilterResult(newResult);
+  };
+
+  // Define the main result when clicking on the second row
+  const handleMainResSecondLineClick = () => {
+    let newResult = [];
+
+    if (isPlaceChecked) {
+      newResult = firstLineResult.filter((el) => el.isPlace === true);
+    } else if (isEventChecked) {
+      newResult = firstLineResult.filter((el) => el.isPlace === false);
+    } else {
+      newResult = firstLineResult;
+    }
+
+    setMainFilterResult(newResult);
+  };
+
+  useEffect(() => {
+    if (isLoaded) {
+      handleFirstLineResult();
+      handleSecondLineResult();
+      handleMainResFirstLineClick();
+    }
+  }, [isSportChecked, isCultureChecked, fetchedResult]);
+
+  useEffect(() => {
+    if (isLoaded) {
+      handleFirstLineResult();
+      handleSecondLineResult();
+      handleMainResSecondLineClick();
+    }
+  }, [isPlaceChecked, isEventChecked, fetchedResult]);
+
   return (
     <div>
-      <DateFilter />
-      <TagsFilter />
+      <SportCultureMenu
+        isSportChecked={isSportChecked}
+        setIsSportChecked={setIsSportChecked}
+        isCultureChecked={isCultureChecked}
+        setIsCultureChecked={setIsCultureChecked}
+      />
+      <PlaceEventsMenu
+        isPlaceChecked={isPlaceChecked}
+        setIsPlaceChecked={setIsPlaceChecked}
+        isEventChecked={isEventChecked}
+        setIsEventChecked={setIsEventChecked}
+      />
+      <DateFilter setDateFilter={setDateFilter} />
+      <p>{dateFilter}</p>
+      <p>{mainFilterResult.length ? mainFilterResult[0].name : null}</p>
+      <TagsFilter
+        mainFilterResult={mainFilterResult}
+        setFinalResult={setFinalResult}
+      />
     </div>
   );
 }
+
+FiltersMenu.propTypes = {
+  fetchedResult: PropTypes.arrayOf(
+    PropTypes.shape({
+      nature: PropTypes.string.isRequired,
+      isPlace: PropTypes.bool.isRequired,
+    })
+  ).isRequired,
+  isLoaded: PropTypes.bool.isRequired,
+  setFinalResult: PropTypes.func.isRequired,
+};
 
 export default FiltersMenu;
