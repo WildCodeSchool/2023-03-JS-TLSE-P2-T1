@@ -45,6 +45,7 @@ nav ul li button:hover {
 /*define the size of the logo img*/
 nav ul li img {
   width: 4rem;
+  height: 4rem;
 }
 
 /*defining behaviour of elements inside button*/
