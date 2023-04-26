@@ -11,6 +11,8 @@ function TagsFilter({ mainFilterResult, setFinalResult }) {
   const [selectedFilterTags, setSelectedFilterTags] = useState([]);
 
   useEffect(() => {
+    // if mainFilterResult changes, selectedFilterTags are unselected
+    setSelectedFilterTags([]);
     // create an array from all tags in mainFilterResult.tags array, no duplicates
     const allTags = [];
     mainFilterResult.forEach((el) => {
