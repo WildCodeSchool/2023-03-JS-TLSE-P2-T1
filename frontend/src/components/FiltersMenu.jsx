@@ -11,12 +11,16 @@ function FiltersMenu({ fetchedResult, isLoaded }) {
   const [isEventChecked, setIsEventChecked] = useState(false);
   const [dateFilter, setDateFilter] = useState();
 
+  // We define a state that filters the fetched data for each type of filter. Then, when we click on another filter, we apply the new filter to the previous
+
+  // firstLineResult is about the sport/culture filter
   const [firstLineResult, setFirstLineResult] = useState(fetchedResult);
+  // secondLineResult is about the place/event filter
   const [secondLineResult, setSecondLineResult] = useState(fetchedResult);
 
   const [mainFilterResult, setMainFilterResult] = useState(fetchedResult);
 
-  // Define the first line
+  // Define the first line result
   const handleFirstLineResult = () => {
     if (isSportChecked) {
       setFirstLineResult(fetchedResult.filter((el) => el.nature === "sport"));
@@ -27,7 +31,7 @@ function FiltersMenu({ fetchedResult, isLoaded }) {
     }
   };
 
-  // Define the second line
+  // Define the second line result
   const handleSecondLineResult = () => {
     if (isPlaceChecked) {
       setSecondLineResult(fetchedResult.filter((el) => el.isPlace === true));
