@@ -1,7 +1,8 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
-function DateFilter() {
-  const [isChosen, setIsChosen] = useState(false);
+function DateFilter({ setDateFilter }) {
+  const [isCustomDateChosen, setIsCustomDateChosen] = useState(false);
 
   return (
     <div>
@@ -9,19 +10,25 @@ function DateFilter() {
         type="radio"
         name="date"
         id="choseDate"
-        onChange={() => setIsChosen(true)}
+        onChange={() => setIsCustomDateChosen(true)}
       />
       <label htmlFor="choseDate">Choisir une date</label>
       <input
         type="radio"
         name="date"
         id="flexible"
-        onChange={() => setIsChosen(false)}
+        onChange={() => setIsCustomDateChosen(false)}
       />
       <label htmlFor="flexible">Je suis flexible</label>
-      {isChosen ? <input type="date" /> : null}
+      {isCustomDateChosen ? (
+        <input type="date" onChange={(e) => setDateFilter(e.target.value)} />
+      ) : null}
     </div>
   );
 }
+
+DateFilter.propTypes = {
+  setDateFilter: PropTypes.func.isRequired,
+};
 
 export default DateFilter;

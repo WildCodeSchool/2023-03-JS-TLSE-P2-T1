@@ -167,8 +167,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      {isLoaded ? finalResult.map((el) => <p key={el.id}>{el.name}</p>) : null}
-      <FiltersMenu />
+      <FiltersMenu fetchedResult={fetchedResult} isLoaded={isLoaded} />
       {/* the beneath div corresponds to the header section */}
       <header>
         <PrimaryCheckboxButton
