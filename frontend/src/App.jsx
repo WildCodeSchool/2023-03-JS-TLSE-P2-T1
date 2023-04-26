@@ -58,9 +58,7 @@ function App() {
             adress: `${
               el.fields.lieu_adresse_2
             }, ${el.fields.code_postal.toString()} ${el.fields.commune}`,
-            tags: [
-              el.fields.type_de_manifestation,
-            ],
+            tags: [el.fields.type_de_manifestation],
             schedules: el.fields.dates_affichage_horaires,
             phone: el.fields.reservation_telephone,
             email: el.fields.reservation_email,
