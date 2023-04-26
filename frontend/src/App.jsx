@@ -58,10 +58,7 @@ function App() {
             adress: `${
               el.fields.lieu_adresse_2
             }, ${el.fields.code_postal.toString()} ${el.fields.commune}`,
-            tags: [
-              el.fields.categorie_de_la_manifestation,
-              el.fields.type_de_manifestation,
-            ],
+            tags: [el.fields.type_de_manifestation],
             schedules: el.fields.dates_affichage_horaires,
             phone: el.fields.reservation_telephone,
             email: el.fields.reservation_email,
@@ -167,7 +164,11 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <FiltersMenu fetchedResult={fetchedResult} isLoaded={isLoaded} />
+      <FiltersMenu
+        fetchedResult={fetchedResult}
+        isLoaded={isLoaded}
+        setFinalResult={setFinalResult}
+      />
       {/* the beneath div corresponds to the header section */}
       <header>
         <PrimaryCheckboxButton
