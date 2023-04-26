@@ -59,7 +59,6 @@ function App() {
               el.fields.lieu_adresse_2
             }, ${el.fields.code_postal.toString()} ${el.fields.commune}`,
             tags: [
-              // el.fields.categorie_de_la_manifestation,
               el.fields.type_de_manifestation,
             ],
             schedules: el.fields.dates_affichage_horaires,
