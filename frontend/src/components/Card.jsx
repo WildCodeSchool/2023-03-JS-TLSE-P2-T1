@@ -20,6 +20,9 @@ function Card({ name, shortDescription, tags, address, schedules, api }) {
     <div className={itemContainer}>
       <div className="imageContainer">
         <img src={imgSrc} alt={name} className="imgCard" />
+        <button type="button" className="knowMore">
+          En savoir plus{" "}
+        </button>
       </div>
       <div className="descriptionContainer">
         <h3>{name}</h3>
