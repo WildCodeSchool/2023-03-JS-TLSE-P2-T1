@@ -8,6 +8,7 @@
   flex-direction: column;
   background-color: #fff;
   margin-top: 0.5rem;
+  z-index: 5;
 }
 
 .filtersMenu h3 {

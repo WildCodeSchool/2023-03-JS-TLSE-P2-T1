@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Card.css";
 
 function Card({ name, shortDescription, tags, address, schedules, api }) {
   let itemContainer;
@@ -17,13 +18,17 @@ function Card({ name, shortDescription, tags, address, schedules, api }) {
 
   return (
     <div className={itemContainer}>
-      <img src={imgSrc} alt={name} />
-      <div>
+      <div className="imageContainer">
+        <img src={imgSrc} alt={name} className="imgCard" />
+      </div>
+      <div className="descriptionContainer">
         <h3>{name}</h3>
-        {api !== "events" && <p>{shortDescription}</p>}
-        {api === "events" && <p>{schedules}</p>}
+        {api !== "events" && <p>{schedules}</p>}
+        {api === "events" && (
+          <p className="shortDescriptionCard">{shortDescription}</p>
+        )}
         <p>{address}</p>
-        <p>{tags}</p>
+        <p className="tagCard">{tags}</p>
       </div>
     </div>
   );

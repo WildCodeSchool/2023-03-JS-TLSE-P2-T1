@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
+import Footer from "./components/Footer";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -60,7 +61,10 @@ function App() {
             adress: `${
               el.fields.lieu_adresse_2
             }, ${el.fields.code_postal.toString()} ${el.fields.commune}`,
-            tags: [el.fields.type_de_manifestation],
+            // defining the tags result as an array of tags, split by comma, from el.fields.theme_de_la_manifestation, only if it exists
+            tags:
+              el.fields.theme_de_la_manifestation &&
+              el.fields.theme_de_la_manifestation.split(", "),
             schedules: el.fields.dates_affichage_horaires,
             phone: el.fields.reservation_telephone,
             email: el.fields.reservation_email,
@@ -201,6 +205,7 @@ function App() {
             : null}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

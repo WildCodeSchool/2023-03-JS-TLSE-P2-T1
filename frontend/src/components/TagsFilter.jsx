@@ -11,15 +11,19 @@ function TagsFilter({ mainFilterResult, setFinalResult }) {
   const [selectedFilterTags, setSelectedFilterTags] = useState([]);
 
   useEffect(() => {
+    // if mainFilterResult changes, selectedFilterTags are unselected
+    setSelectedFilterTags([]);
     // create an array from all tags in mainFilterResult.tags array, no duplicates
     const allTags = [];
     mainFilterResult.forEach((el) => {
-      el.tags.forEach((tag) => {
-        // exclude the undefined tag
-        if (!allTags.includes(tag) && tag) {
-          allTags.push(tag);
-        }
-      });
+      if (el.tags) {
+        el.tags.forEach((tag) => {
+          // exclude the undefined tag
+          if (!allTags.includes(tag) && tag) {
+            allTags.push(tag);
+          }
+        });
+      }
     });
     setAllMainFilterTags(allTags);
   }, [mainFilterResult]);
@@ -47,7 +51,12 @@ function TagsFilter({ mainFilterResult, setFinalResult }) {
     if (selectedFilterTags.length !== 0) {
       filteredByTags = mainFilterResult.filter((item) => {
         return selectedFilterTags.some((tag) => {
-          return item.tags.includes(tag);
+          // checks the existence of the tag in the item.tags array
+          if (item.tags) {
+            return item.tags.includes(tag);
+          }
+          // prevent ESlint from returning an error in case of no return
+          return false;
         });
       });
     } else {
