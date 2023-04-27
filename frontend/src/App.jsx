@@ -23,6 +23,8 @@ function App() {
 
   const [finalResult, setFinalResult] = useState([]);
 
+  const [isFiltersMenuVisible, setIsFiltersMenuVisible] = useState(false);
+
   // Defining number of events
   useEffect(() => {
     axios
@@ -167,12 +169,18 @@ function App() {
   // list all unfiltered cards by map finalResul in a component Card
   return (
     <div className="App">
-      <NavBar />
-      <FiltersMenu
-        fetchedResult={fetchedResult}
-        isLoaded={isLoaded}
-        setFinalResult={setFinalResult}
+      <NavBar
+        isFiltersMenuVisible={isFiltersMenuVisible}
+        setIsFiltersMenuVisible={setIsFiltersMenuVisible}
       />
+      {isFiltersMenuVisible ? (
+        <FiltersMenu
+          fetchedResult={fetchedResult}
+          isLoaded={isLoaded}
+          setFinalResult={setFinalResult}
+          setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+        />
+      ) : null}
       {/* the beneath div corresponds to the header section */}
       <header>
         <PrimaryCheckboxButton
