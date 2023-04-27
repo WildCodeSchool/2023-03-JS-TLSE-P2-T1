@@ -4,6 +4,7 @@ import SportCultureMenu from "./SportCultureMenu";
 import PlaceEventsMenu from "./PlaceEventsMenu";
 import DateFilter from "./DateFilter";
 import TagsFilter from "./TagsFilter";
+import ApplyButton from "./ApplyButton";
 
 function FiltersMenu({ fetchedResult, isLoaded, setFinalResult }) {
   const [isSportChecked, setIsSportChecked] = useState(false);
@@ -11,6 +12,12 @@ function FiltersMenu({ fetchedResult, isLoaded, setFinalResult }) {
   const [isPlaceChecked, setIsPlaceChecked] = useState(false);
   const [isEventChecked, setIsEventChecked] = useState(false);
   const [dateFilter, setDateFilter] = useState();
+
+  // FilterTags related components
+  // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
+  const [selectedFilterTags, setSelectedFilterTags] = useState([]);
+  // filteredResult : array of objects that have been filtered according to different filters
+  const [filteredResult, setFilteredResult] = useState([]);
 
   // We define a state that filters the fetched data for each type of filter. Then, when we click on another filter, we apply the new filter to the previous
 
@@ -108,6 +115,12 @@ function FiltersMenu({ fetchedResult, isLoaded, setFinalResult }) {
       <p>{mainFilterResult.length ? mainFilterResult[0].name : null}</p>
       <TagsFilter
         mainFilterResult={mainFilterResult}
+        setFilteredResult={setFilteredResult}
+        selectedFilterTags={selectedFilterTags}
+        setSelectedFilterTags={setSelectedFilterTags}
+      />
+      <ApplyButton
+        filteredResult={filteredResult}
         setFinalResult={setFinalResult}
       />
     </div>
