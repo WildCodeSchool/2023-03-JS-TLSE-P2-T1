@@ -142,6 +142,7 @@ function FiltersMenu({
       <ApplyButton
         filteredResult={filteredResult}
         setFinalResult={setFinalResult}
+        setIsFiltersMenuVisible={setIsFiltersMenuVisible}
       />
     </div>
   );
