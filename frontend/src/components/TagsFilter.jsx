@@ -2,13 +2,15 @@ import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
 import "./TagsFilter.css";
 
-function TagsFilter({ mainFilterResult, setFinalResult }) {
+function TagsFilter({
+  mainFilterResult,
+  selectedFilterTags,
+  setSelectedFilterTags,
+  setFilterTagsResult,
+}) {
   // useState definitions
   // allMainFilters : tags obtained from mainFilterResult
   const [allMainFilterTags, setAllMainFilterTags] = useState([]);
-
-  // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
-  const [selectedFilterTags, setSelectedFilterTags] = useState([]);
 
   useEffect(() => {
     // if mainFilterResult changes, selectedFilterTags are unselected
@@ -63,7 +65,7 @@ function TagsFilter({ mainFilterResult, setFinalResult }) {
       filteredByTags = mainFilterResult;
     }
 
-    setFinalResult(filteredByTags);
+    setFilterTagsResult(filteredByTags);
   }, [selectedFilterTags]);
 
   // return a list of tags from allMainFilterTags, with a button for each tag
@@ -89,7 +91,9 @@ TagsFilter.propTypes = {
       tags: PropTypes.arrayOf(PropTypes.string),
     })
   ).isRequired,
-  setFinalResult: PropTypes.func.isRequired,
+  setFilterTagsResult: PropTypes.func.isRequired,
+  selectedFilterTags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setSelectedFilterTags: PropTypes.func.isRequired,
 };
 
 export default TagsFilter;
