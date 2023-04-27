@@ -4,8 +4,9 @@ import SportCultureMenu from "./SportCultureMenu";
 import PlaceEventsMenu from "./PlaceEventsMenu";
 import DateFilter from "./DateFilter";
 import "./FiltersMenu.css";
+import TagsFilter from "./TagsFilter";
 
-function FiltersMenu({ fetchedResult, isLoaded }) {
+function FiltersMenu({ fetchedResult, isLoaded, setFinalResult }) {
   const [isSportChecked, setIsSportChecked] = useState(false);
   const [isCultureChecked, setIsCultureChecked] = useState(false);
   const [isPlaceChecked, setIsPlaceChecked] = useState(false);
@@ -106,6 +107,10 @@ function FiltersMenu({ fetchedResult, isLoaded }) {
       <DateFilter setDateFilter={setDateFilter} />
       <p>{dateFilter}</p>
       <p>{mainFilterResult.length ? mainFilterResult[0].name : null}</p>
+      <TagsFilter
+        mainFilterResult={mainFilterResult}
+        setFinalResult={setFinalResult}
+      />
     </div>
   );
 }
@@ -118,6 +123,7 @@ FiltersMenu.propTypes = {
     })
   ).isRequired,
   isLoaded: PropTypes.bool.isRequired,
+  setFinalResult: PropTypes.func.isRequired,
 };
 
 export default FiltersMenu;
