@@ -28,6 +28,7 @@ function Card({ name, shortDescription, tags, address, schedules, api }) {
     </div>
   );
 }
+
 Card.propTypes = {
   name: PropTypes.string.isRequired,
   shortDescription: PropTypes.string.isRequired,
