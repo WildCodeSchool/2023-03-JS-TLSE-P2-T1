@@ -2,22 +2,22 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./ApplyButton.css";
 
-function ApplyButton({ setFinalResult, filterTagsResult }) {
+function ApplyButton({ setFinalResult, filteredResult }) {
   return (
     <button
       className="apply-button"
       type="button"
       // sets the results filtered into FinalResult - the ones displayed on the main page
-      onClick={() => setFinalResult(filterTagsResult)}
+      onClick={() => setFinalResult(filteredResult)}
     >
-      Appliquer ({filterTagsResult.length})
+      Appliquer ({filteredResult.length})
     </button>
   );
 }
 
 ApplyButton.propTypes = {
   setFinalResult: PropTypes.func.isRequired,
-  filterTagsResult: PropTypes.arrayOf(
+  filteredResult: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
     })

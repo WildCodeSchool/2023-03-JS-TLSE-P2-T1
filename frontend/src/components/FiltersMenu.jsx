@@ -16,8 +16,8 @@ function FiltersMenu({ fetchedResult, isLoaded, setFinalResult }) {
   // FilterTags related components
   // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
   const [selectedFilterTags, setSelectedFilterTags] = useState([]);
-  // filterTagsResult : array of objects that have been filtered according to selectedFilterTags
-  const [filterTagsResult, setFilterTagsResult] = useState([]);
+  // filteredResult : array of objects that have been filtered according to different filters
+  const [filteredResult, setFilteredResult] = useState([]);
 
   // We define a state that filters the fetched data for each type of filter. Then, when we click on another filter, we apply the new filter to the previous
 
@@ -115,12 +115,12 @@ function FiltersMenu({ fetchedResult, isLoaded, setFinalResult }) {
       <p>{mainFilterResult.length ? mainFilterResult[0].name : null}</p>
       <TagsFilter
         mainFilterResult={mainFilterResult}
-        setFilterTagsResult={setFilterTagsResult}
+        setFilteredResult={setFilteredResult}
         selectedFilterTags={selectedFilterTags}
         setSelectedFilterTags={setSelectedFilterTags}
       />
       <ApplyButton
-        filterTagsResult={filterTagsResult}
+        filteredResult={filteredResult}
         setFinalResult={setFinalResult}
       />
     </div>

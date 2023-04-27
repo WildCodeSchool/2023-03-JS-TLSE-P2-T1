@@ -6,7 +6,7 @@ function TagsFilter({
   mainFilterResult,
   selectedFilterTags,
   setSelectedFilterTags,
-  setFilterTagsResult,
+  setFilteredResult,
 }) {
   // useState definitions
   // allMainFilters : tags obtained from mainFilterResult
@@ -65,7 +65,7 @@ function TagsFilter({
       filteredByTags = mainFilterResult;
     }
 
-    setFilterTagsResult(filteredByTags);
+    setFilteredResult(filteredByTags);
   }, [selectedFilterTags]);
 
   // return a list of tags from allMainFilterTags, with a button for each tag
@@ -91,7 +91,7 @@ TagsFilter.propTypes = {
       tags: PropTypes.arrayOf(PropTypes.string),
     })
   ).isRequired,
-  setFilterTagsResult: PropTypes.func.isRequired,
+  setFilteredResult: PropTypes.func.isRequired,
   selectedFilterTags: PropTypes.arrayOf(PropTypes.string).isRequired,
   setSelectedFilterTags: PropTypes.func.isRequired,
 };
