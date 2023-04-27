@@ -1,0 +1,9 @@
+.filtersMenu {
+  border: 1px solid black;
+  width: 90vw;
+  border-radius: 1rem;
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  background-color: #fff;
+}

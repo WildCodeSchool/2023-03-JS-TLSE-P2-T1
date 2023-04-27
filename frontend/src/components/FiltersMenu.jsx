@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import SportCultureMenu from "./SportCultureMenu";
 import PlaceEventsMenu from "./PlaceEventsMenu";
 import DateFilter from "./DateFilter";
+import "./FiltersMenu.css";
 
 function FiltersMenu({ fetchedResult, isLoaded }) {
   const [isSportChecked, setIsSportChecked] = useState(false);
@@ -89,7 +90,7 @@ function FiltersMenu({ fetchedResult, isLoaded }) {
   }, [isPlaceChecked, isEventChecked, fetchedResult]);
 
   return (
-    <div>
+    <div className="filtersMenu">
       <SportCultureMenu
         isSportChecked={isSportChecked}
         setIsSportChecked={setIsSportChecked}
