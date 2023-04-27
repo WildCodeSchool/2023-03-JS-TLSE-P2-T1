@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import "./ApplyButton.css";
 
 function ApplyButton({ setFinalResult, filterTagsResult }) {
-  //   return Button with "Apply filter (filterTagResult.length)" text which setFinalResult(filterTagsResult) on click
   return (
     <button
       className="apply-button"
       type="button"
+      // sets the results filtered into FinalResult - the ones displayed on the main page
       onClick={() => setFinalResult(filterTagsResult)}
     >
-      Apply filter ({filterTagsResult.length})
+      Appliquer ({filterTagsResult.length})
     </button>
   );
 }
