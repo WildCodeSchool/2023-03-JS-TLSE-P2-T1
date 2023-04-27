@@ -6,7 +6,12 @@ import DateFilter from "./DateFilter";
 import "./FiltersMenu.css";
 import TagsFilter from "./TagsFilter";
 
-function FiltersMenu({ fetchedResult, isLoaded, setFinalResult }) {
+function FiltersMenu({
+  fetchedResult,
+  isLoaded,
+  setFinalResult,
+  setIsFiltersMenuVisible,
+}) {
   const [isSportChecked, setIsSportChecked] = useState(false);
   const [isCultureChecked, setIsCultureChecked] = useState(false);
   const [isPlaceChecked, setIsPlaceChecked] = useState(false);
@@ -92,21 +97,35 @@ function FiltersMenu({ fetchedResult, isLoaded, setFinalResult }) {
 
   return (
     <div className="filtersMenu">
+      <div className="crossContainer">
+        <button type="button" onClick={() => setIsFiltersMenuVisible(false)}>
+          <img
+            src="../src/assets/close_icon.svg"
+            alt="Croix de fermeture"
+            className="closingCross"
+          />
+        </button>
+      </div>
+      <h3>Je suis amateur de :</h3>
       <SportCultureMenu
         isSportChecked={isSportChecked}
         setIsSportChecked={setIsSportChecked}
         isCultureChecked={isCultureChecked}
         setIsCultureChecked={setIsCultureChecked}
       />
+      <hr />
+      <h3>Je cherche :</h3>
       <PlaceEventsMenu
         isPlaceChecked={isPlaceChecked}
         setIsPlaceChecked={setIsPlaceChecked}
         isEventChecked={isEventChecked}
         setIsEventChecked={setIsEventChecked}
       />
+      <hr />
       <DateFilter setDateFilter={setDateFilter} />
       <p>{dateFilter}</p>
       <p>{mainFilterResult.length ? mainFilterResult[0].name : null}</p>
+      <hr />
       <TagsFilter
         mainFilterResult={mainFilterResult}
         setFinalResult={setFinalResult}
@@ -124,6 +143,7 @@ FiltersMenu.propTypes = {
   ).isRequired,
   isLoaded: PropTypes.bool.isRequired,
   setFinalResult: PropTypes.func.isRequired,
+  setIsFiltersMenuVisible: PropTypes.func.isRequired,
 };
 
 export default FiltersMenu;
