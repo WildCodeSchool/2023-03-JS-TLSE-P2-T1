@@ -7,8 +7,8 @@ nav {
   /*width is 100% of the screen*/
   width: 100%;
   background-color: var(--main-color);
-  /*navbar is fixed on top of the screen*/
-  position: fixed;
+  /*navbar is sticky on top of the screen*/
+  position: sticky;
   top: 0;
   left: 0;
   z-index: 100;
