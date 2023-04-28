@@ -8,7 +8,11 @@ function ApplyButton({ setFinalResult, filteredResult }) {
       className="apply-button"
       type="button"
       // sets the results filtered into FinalResult - the ones displayed on the main page
-      onClick={() => setFinalResult(filteredResult)}
+      onClick={() => {
+        setFinalResult(filteredResult);
+        // scrolling to the top of the page when clicking
+        window.scrollTo(0, 0);
+      }}
     >
       Appliquer ({filteredResult.length})
     </button>
