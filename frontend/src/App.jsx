@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
+import NavBar from "./components/NavBar";
 import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
+import Footer from "./components/Footer";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -20,6 +22,8 @@ function App() {
   const [cinemasResult, setCinemasResult] = useState();
 
   const [finalResult, setFinalResult] = useState([]);
+
+  const [isFiltersMenuVisible, setIsFiltersMenuVisible] = useState(false);
 
   // Defining number of events
   useEffect(() => {
@@ -57,10 +61,10 @@ function App() {
             adress: `${
               el.fields.lieu_adresse_2
             }, ${el.fields.code_postal.toString()} ${el.fields.commune}`,
-            tags: [
-              el.fields.categorie_de_la_manifestation,
-              el.fields.type_de_manifestation,
-            ],
+            // defining the tags result as an array of tags, split by comma, from el.fields.theme_de_la_manifestation, only if it exists
+            tags:
+              el.fields.theme_de_la_manifestation &&
+              el.fields.theme_de_la_manifestation.split(", "),
             schedules: el.fields.dates_affichage_horaires,
             phone: el.fields.reservation_telephone,
             email: el.fields.reservation_email,
@@ -165,7 +169,18 @@ function App() {
   // list all unfiltered cards by map finalResul in a component Card
   return (
     <div className="App">
-      <FiltersMenu />
+      <NavBar
+        isFiltersMenuVisible={isFiltersMenuVisible}
+        setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+      />
+      {isFiltersMenuVisible ? (
+        <FiltersMenu
+          fetchedResult={fetchedResult}
+          isLoaded={isLoaded}
+          setFinalResult={setFinalResult}
+          setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+        />
+      ) : null}
       {/* the beneath div corresponds to the header section */}
       <header>
         <PrimaryCheckboxButton
@@ -190,6 +205,7 @@ function App() {
             : null}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

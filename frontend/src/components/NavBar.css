@@ -1,0 +1,152 @@
+/*NavBar style definition*/
+
+/*import Google and apple system font family*/
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+nav {
+  /*width is 100% of the screen*/
+  width: 100%;
+  background-color: var(--main-color);
+  /*navbar is fixed on top of the screen*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+/*don't display website tile in mobile version*/
+nav ul li h1 {
+  display: none;
+}
+
+/* define style for nav ul*/
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  color: white;
+  margin: 0;
+}
+
+/*define the style for the nav button*/
+nav ul li button {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: left;
+  align-items: center;
+  gap: 8px;
+  /* main appearance */
+  margin: 10px 10px;
+  min-height: 35px;
+  background: rgba(249, 249, 249, 0.9);
+  border-radius: 50px;
+}
+
+/*define the style for the nav button when hover*/
+nav ul li button:hover {
+  background-color: rgba(249, 249, 249, 0.8);
+  cursor: pointer;
+}
+
+/*define the size of the logo img*/
+nav ul li img {
+  width: 4rem;
+  height: 4rem;
+  margin-left: 8px;
+}
+
+/*defining behaviour of elements inside button*/
+#filter_icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 8px;
+}
+
+/*defining filters behaviour and decoration*/
+.header_filters {
+  /*behaviour*/
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin-right: 8px;
+}
+
+.header_main_filters {
+  /*behaviour*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 4px;
+  /*decoration*/
+  /*define helvetica neue as font family*/
+
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 450;
+  font-size: 0.8rem;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.header_tags_filters {
+  /*behaviour*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 4px;
+  /*decoration*/
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 450;
+  font-size: 0.6rem;
+  /*color is secondary color variable*/
+  color: var(--secondary-color);
+  margin-bottom: 8px;
+}
+
+/*no wrap for filter text*/
+nav ul li button p {
+  white-space: nowrap;
+  margin: 0;
+}
+
+/*media queries for screen over 768px*/
+@media (min-width: 768px) {
+  /*nav ul displays flex with space between*/
+  nav ul {
+    justify-content: space-between;
+  }
+
+  /*display website title*/
+  nav ul li h1 {
+    display: block;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 2.4rem;
+    color: white;
+  }
+
+  /*display logo and websitetitle in flex row*/
+  nav ul li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  nav ul li button {
+    width: fit-content;
+  }
+
+  header flters in line .header_filters {
+    flex-direction: row;
+  }
+
+  /*header icon smaller*/
+  #filter_icon {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+}

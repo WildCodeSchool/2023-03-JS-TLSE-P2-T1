@@ -1,33 +1,42 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./Card.css";
 
 function Card({ name, shortDescription, tags, address, schedules, api }) {
   let itemContainer;
   let imgSrc;
   if (api === "events") {
     itemContainer = "itemContainer";
-    imgSrc = "src/assets/events.png";
+    imgSrc = "/assets/events.png";
   } else if (api === "stadiums") {
     itemContainer = "itemContainer2";
-    imgSrc = "src/assets/stadium.png";
+    imgSrc = "/assets/stadium.png";
   } else {
     itemContainer = "itemContainer3";
-    imgSrc = "src/assets/cinema.png";
+    imgSrc = "/assets/cinema.png";
   }
 
   return (
     <div className={itemContainer}>
-      <img src={imgSrc} alt={name} />
-      <div>
+      <div className="imageContainer">
+        <img src={imgSrc} alt={name} className="imgCard" />
+        <button type="button" className="knowMore">
+          En savoir plus{" "}
+        </button>
+      </div>
+      <div className="descriptionContainer">
         <h3>{name}</h3>
-        {api !== "events" && <p>{shortDescription}</p>}
-        {api === "events" && <p>{schedules}</p>}
+        {api !== "events" && <p>{schedules}</p>}
+        {api === "events" && (
+          <p className="shortDescriptionCard">{shortDescription}</p>
+        )}
         <p>{address}</p>
-        <p>{tags}</p>
+        <p className="tagCard">{tags}</p>
       </div>
     </div>
   );
 }
+
 Card.propTypes = {
   name: PropTypes.string.isRequired,
   shortDescription: PropTypes.string.isRequired,

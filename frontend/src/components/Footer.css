@@ -1,0 +1,61 @@
+/*Footer styling*/
+
+footer {
+  height: 50px;
+  background: #151d48;
+  color: white;
+
+  /*footer is sticky to the bottom of the page*/
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer p {
+  margin-left: 20px;
+}
+footer button {
+  margin-right: 20px;
+}
+
+/*footer p and a have a font size of 1.2rem*/
+footer p {
+  font-size: 1.2rem;
+}
+
+/*footer link animation*/
+
+.about-us {
+  color: white;
+  position: relative;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.about-us:hover {
+  cursor: pointer;
+}
+
+.about-us::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.about-us:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
+}

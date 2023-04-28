@@ -1,0 +1,24 @@
+.placeEventsButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5rem;
+  padding: 0.3rem;
+}
+
+.placeEventsButton:hover {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transform: translateY(2px);
+}
+
+.placeEventsButtonClicked {
+  background: #151d48;
+  box-shadow: none;
+  transition: all 0.3s ease-in-out;
+  color: white;
+}
