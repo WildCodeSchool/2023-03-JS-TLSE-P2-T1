@@ -3,8 +3,8 @@
 .primaryCheckboxButtons {
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
   gap: 10vw;
+  margin: 24px auto;
 }
 
 .primaryCheckboxButtons img {
@@ -49,6 +49,10 @@
 
 /* Mobile phone media queries */
 @media screen and (max-width: 770px) {
+  .primaryCheckboxButtons {
+    margin-top: 16px auto;
+  }
+
   .primaryButton {
     height: 70px;
     width: 70px;
