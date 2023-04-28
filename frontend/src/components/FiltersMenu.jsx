@@ -131,7 +131,6 @@ function FiltersMenu({
       <hr />
       <DateFilter setDateFilter={setDateFilter} />
       <p>{dateFilter}</p>
-      <p>{mainFilterResult.length ? mainFilterResult[0].name : null}</p>
       <hr />
       <TagsFilter
         mainFilterResult={mainFilterResult}

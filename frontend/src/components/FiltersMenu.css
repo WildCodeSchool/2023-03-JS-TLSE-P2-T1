@@ -1,14 +1,16 @@
 .filtersMenu {
   border: 1px solid black;
   width: 95vw;
+  height: 85vh;
   border-radius: 1rem;
   position: fixed;
   display: flex;
   align-items: center;
   flex-direction: column;
   background-color: #fff;
-  margin-top: 0.5rem;
   z-index: 5;
+  overflow: auto;
+  margin-top: 5rem;
 }
 
 .filtersMenu h3 {
@@ -24,10 +26,19 @@ hr {
   display: flex;
   justify-content: flex-end;
   width: 100%;
+  position: fixed;
+  margin-top: 2%;
+  margin-right: 12%;
 }
 
 .closingCross {
   width: 1.8rem;
   height: 1.8rem;
-  margin: 0.8rem;
+}
+
+/*media queries for screen over 768px*/
+@media (min-width: 768px) {
+  .crossContainer {
+    display: none;
+  }
 }
