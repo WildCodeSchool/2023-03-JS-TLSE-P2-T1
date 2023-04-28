@@ -9,8 +9,6 @@
   background-color: #fff;
   margin-top: 0.5rem;
   z-index: 5;
-  /*is scrollable*/
-  overflow-y: scroll;
 }
 
 .filtersMenu h3 {
