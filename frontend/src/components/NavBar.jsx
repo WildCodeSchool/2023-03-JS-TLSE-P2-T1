@@ -17,7 +17,7 @@ function NavBar({ isFiltersMenuVisible, setIsFiltersMenuVisible }) {
       <ul>
         {/* define a li containing logo and website name */}
         <li>
-          <img src="../src/assets/myLogo.png" alt="Logo MyTouloulist" />
+          <img src="/assets/myLogo.png" alt="Logo MyTouloulist" />
           <h1>myTouloulist</h1>
         </li>
         <li>
@@ -26,7 +26,7 @@ function NavBar({ isFiltersMenuVisible, setIsFiltersMenuVisible }) {
             onClick={() => setIsFiltersMenuVisible(!isFiltersMenuVisible)}
           >
             <img
-              src="../src/assets/filter_icon.png"
+              src="/assets/filter_icon.png"
               alt="filter button icon"
               id="filter_icon"
             />
