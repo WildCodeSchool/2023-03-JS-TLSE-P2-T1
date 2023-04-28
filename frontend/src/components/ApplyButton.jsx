@@ -2,7 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./ApplyButton.css";
 
-function ApplyButton({ setFinalResult, filteredResult }) {
+function ApplyButton({
+  setFinalResult,
+  filteredResult,
+  setIsFiltersMenuVisible,
+}) {
   return (
     <button
       className="apply-button"
@@ -10,6 +14,7 @@ function ApplyButton({ setFinalResult, filteredResult }) {
       // sets the results filtered into FinalResult - the ones displayed on the main page
       onClick={() => {
         setFinalResult(filteredResult);
+        setIsFiltersMenuVisible(false);
         // scrolling to the top of the page when clicking
         window.scrollTo(0, 0);
       }}
@@ -26,5 +31,6 @@ ApplyButton.propTypes = {
       id: PropTypes.string.isRequired,
     })
   ).isRequired,
+  setIsFiltersMenuVisible: PropTypes.func.isRequired,
 };
 export default ApplyButton;

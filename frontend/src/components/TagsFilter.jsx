@@ -76,7 +76,11 @@ function TagsFilter({
           key={tag}
           type="button"
           onClick={() => handleTagClick(tag)}
-          className={selectedFilterTags.includes(tag) ? "selected" : ""}
+          className={
+            selectedFilterTags.includes(tag)
+              ? "tagButton selectedTag"
+              : "tagButton unselectedTag"
+          }
         >
           {tag}
         </button>

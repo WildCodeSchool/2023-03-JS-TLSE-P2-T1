@@ -7,12 +7,10 @@ function SportCultureMenu({
   setIsCultureChecked,
 }) {
   // defining four consts for the buttons icons url depending whether the button is clicked or not
-  const cultureIcon = "..\\..\\..\\src\\assets\\header_icons\\culture.png";
-  const cultureClickedIcon =
-    "..\\..\\..\\src\\assets\\header_icons\\culture_clicked.png";
-  const sportIcon = "..\\..\\..\\src\\assets\\header_icons\\sport.png";
-  const sportClickedIcon =
-    "..\\..\\..\\src\\assets\\header_icons\\sport_clicked.png";
+  const cultureIcon = "\\assets\\header_icons\\culture.png";
+  const cultureClickedIcon = "\\assets\\header_icons\\culture_clicked.png";
+  const sportIcon = "\\assets\\header_icons\\sport.png";
+  const sportClickedIcon = "\\assets\\header_icons\\sport_clicked.png";
 
   const handleClickCulture = () => {
     if (!isCultureChecked && isSportChecked) {

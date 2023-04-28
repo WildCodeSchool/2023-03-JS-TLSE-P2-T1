@@ -8,12 +8,10 @@ function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
   const [cultureButtonClicked, setCultureButtonClicked] = useState(false);
 
   // defining four consts for the buttons icons url depending whether the button is clicked or not
-  const cultureIcon = "..\\..\\..\\src\\assets\\header_icons\\culture.png";
-  const cultureClickedIcon =
-    "..\\..\\..\\src\\assets\\header_icons\\culture_clicked.png";
-  const sportIcon = "..\\..\\..\\src\\assets\\header_icons\\sport.png";
-  const sportClickedIcon =
-    "..\\..\\..\\src\\assets\\header_icons\\sport_clicked.png";
+  const cultureIcon = "\\assets\\header_icons\\culture.png";
+  const cultureClickedIcon = "\\assets\\header_icons\\culture_clicked.png";
+  const sportIcon = "\\assets\\header_icons\\sport.png";
+  const sportClickedIcon = "\\assets\\header_icons\\sport_clicked.png";
 
   // handleClickCulture and handleClickSport definition, changes the state of the button (clicked or not). if another button is clicked, it is unclicked
   const handleClickCulture = () => {

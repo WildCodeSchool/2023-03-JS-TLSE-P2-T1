@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
+import Footer from "./components/Footer";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -21,6 +22,8 @@ function App() {
   const [cinemasResult, setCinemasResult] = useState();
 
   const [finalResult, setFinalResult] = useState([]);
+
+  const [isFiltersMenuVisible, setIsFiltersMenuVisible] = useState(false);
 
   // Defining number of events
   useEffect(() => {
@@ -166,12 +169,18 @@ function App() {
   // list all unfiltered cards by map finalResul in a component Card
   return (
     <div className="App">
-      <NavBar />
-      <FiltersMenu
-        fetchedResult={fetchedResult}
-        isLoaded={isLoaded}
-        setFinalResult={setFinalResult}
+      <NavBar
+        isFiltersMenuVisible={isFiltersMenuVisible}
+        setIsFiltersMenuVisible={setIsFiltersMenuVisible}
       />
+      {isFiltersMenuVisible ? (
+        <FiltersMenu
+          fetchedResult={fetchedResult}
+          isLoaded={isLoaded}
+          setFinalResult={setFinalResult}
+          setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+        />
+      ) : null}
       {/* the beneath div corresponds to the header section */}
       <header>
         <PrimaryCheckboxButton
@@ -196,6 +205,7 @@ function App() {
             : null}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

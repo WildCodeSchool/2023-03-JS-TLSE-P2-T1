@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import "./PlaceEventsMenu.css";
 
 function PlaceEventsMenu({
   isPlaceChecked,
@@ -24,17 +25,21 @@ function PlaceEventsMenu({
     <div className="primaryCheckboxButtons">
       <button
         type="button"
-        className={`primaryButton ${isPlaceChecked ? "mainButtonClicked" : ""}`}
+        className={`placeEventsButton ${
+          isPlaceChecked ? "placeEventsButtonClicked" : ""
+        }`}
         onClick={() => handleClickPlace()}
       >
-        <p>Lieu</p>
+        Lieu
       </button>
       <button
         type="button"
-        className={`primaryButton ${isEventChecked ? "mainButtonClicked" : ""}`}
+        className={`placeEventsButton ${
+          isEventChecked ? "placeEventsButtonClicked" : ""
+        }`}
         onClick={() => handleClickEvent()}
       >
-        <p>Évènements</p>
+        Évènements
       </button>
     </div>
   );

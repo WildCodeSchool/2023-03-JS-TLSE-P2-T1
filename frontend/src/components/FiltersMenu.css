@@ -1,0 +1,33 @@
+.filtersMenu {
+  border: 1px solid black;
+  width: 95vw;
+  border-radius: 1rem;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  margin-top: 0.5rem;
+  z-index: 5;
+}
+
+.filtersMenu h3 {
+  margin-top: 0;
+}
+
+hr {
+  width: 85%;
+  margin-top: 2rem;
+}
+
+.crossContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.closingCross {
+  width: 1.8rem;
+  height: 1.8rem;
+  margin: 0.8rem;
+}

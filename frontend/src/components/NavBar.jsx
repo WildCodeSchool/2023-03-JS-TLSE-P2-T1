@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "./NavBar.css";
 
-function NavBar() {
+function NavBar({ isFiltersMenuVisible, setIsFiltersMenuVisible }) {
   const [filterMainName, setFilterMainName] = useState("Culture et Sport");
   const [filterDateName, setFilterDateName] = useState("Flexible");
   const [filterTagName, setFilterTagName] = useState([
@@ -16,13 +17,16 @@ function NavBar() {
       <ul>
         {/* define a li containing logo and website name */}
         <li>
-          <img src="../src/assets/myLogo.png" alt="Logo MyTouloulist" />
+          <img src="/assets/myLogo.png" alt="Logo MyTouloulist" />
           <h1>myTouloulist</h1>
         </li>
         <li>
-          <button type="button">
+          <button
+            type="button"
+            onClick={() => setIsFiltersMenuVisible(!isFiltersMenuVisible)}
+          >
             <img
-              src="../src/assets/filter_icon.png"
+              src="/assets/filter_icon.png"
               alt="filter button icon"
               id="filter_icon"
             />
@@ -44,5 +48,10 @@ function NavBar() {
     </nav>
   );
 }
+
+NavBar.propTypes = {
+  isFiltersMenuVisible: PropTypes.bool.isRequired,
+  setIsFiltersMenuVisible: PropTypes.func.isRequired,
+};
 
 export default NavBar;
