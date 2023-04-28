@@ -1,0 +1,9 @@
+/* loading-page image styling */
+
+/* loading image is 30% vw width and height auto, it is centered with margin auto, it is animated and turns 360 degrees every 2 seconds */
+#loading-image {
+  width: 30vw;
+  height: auto;
+  margin: auto;
+  animation: spin 2s linear infinite;
+}

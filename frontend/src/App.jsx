@@ -6,6 +6,7 @@ import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 import Footer from "./components/Footer";
+import LoadingPage from "./components/LoadingPage";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -24,6 +25,10 @@ function App() {
   const [finalResult, setFinalResult] = useState([]);
 
   const [isFiltersMenuVisible, setIsFiltersMenuVisible] = useState(false);
+
+  // defining two states for the buttons in homePage to know if they are clicked or not
+  const [sportButtonClicked, setSportButtonClicked] = useState(false);
+  const [cultureButtonClicked, setCultureButtonClicked] = useState(false);
 
   // Defining number of events
   useEffect(() => {
@@ -186,23 +191,29 @@ function App() {
         <PrimaryCheckboxButton
           setFinalResult={setFinalResult}
           fetchedResult={fetchedResult}
+          sportButtonClicked={sportButtonClicked}
+          setSportButtonClicked={setSportButtonClicked}
+          cultureButtonClicked={cultureButtonClicked}
+          setCultureButtonClicked={setCultureButtonClicked}
         />
       </header>
       <main>
         <div className="listContainer">
-          {isLoaded
-            ? finalResult.map((el) => (
-                <Card
-                  key={el.id}
-                  api={el.api}
-                  name={el.name}
-                  shortDescription={el.shortDescription}
-                  tags={el.tags}
-                  address={el.address}
-                  schedules={el.schedules}
-                />
-              ))
-            : null}
+          {isLoaded ? (
+            finalResult.map((el) => (
+              <Card
+                key={el.id}
+                api={el.api}
+                name={el.name}
+                shortDescription={el.shortDescription}
+                tags={el.tags}
+                address={el.address}
+                schedules={el.schedules}
+              />
+            ))
+          ) : (
+            <LoadingPage />
+          )}
         </div>
       </main>
       <Footer />
