@@ -15,6 +15,7 @@ function ApplyButton({
       onClick={() => {
         setFinalResult(filteredResult);
         setIsFiltersMenuVisible(false);
+        window.scrollTo(0, 0);
       }}
     >
       Appliquer ({filteredResult.length})
