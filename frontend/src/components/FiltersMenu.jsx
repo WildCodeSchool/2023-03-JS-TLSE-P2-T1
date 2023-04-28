@@ -107,7 +107,7 @@ function FiltersMenu({
       <div className="crossContainer">
         <button type="button" onClick={() => setIsFiltersMenuVisible(false)}>
           <img
-            src="../src/assets/close_icon.svg"
+            src="/assets/close_icon.svg"
             alt="Croix de fermeture"
             className="closingCross"
           />

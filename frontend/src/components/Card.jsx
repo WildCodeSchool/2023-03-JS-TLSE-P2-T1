@@ -7,13 +7,13 @@ function Card({ name, shortDescription, tags, address, schedules, api }) {
   let imgSrc;
   if (api === "events") {
     itemContainer = "itemContainer";
-    imgSrc = "src/assets/events.png";
+    imgSrc = "/assets/events.png";
   } else if (api === "stadiums") {
     itemContainer = "itemContainer2";
-    imgSrc = "src/assets/stadium.png";
+    imgSrc = "/assets/stadium.png";
   } else {
     itemContainer = "itemContainer3";
-    imgSrc = "src/assets/cinema.png";
+    imgSrc = "/assets/cinema.png";
   }
 
   return (
