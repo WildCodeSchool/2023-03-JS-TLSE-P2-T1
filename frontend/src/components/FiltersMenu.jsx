@@ -12,6 +12,8 @@ function FiltersMenu({
   isLoaded,
   setFinalResult,
   setIsFiltersMenuVisible,
+  setSportButtonClicked,
+  setCultureButtonClicked,
 }) {
   const [isSportChecked, setIsSportChecked] = useState(false);
   const [isCultureChecked, setIsCultureChecked] = useState(false);
@@ -143,6 +145,8 @@ function FiltersMenu({
         filteredResult={filteredResult}
         setFinalResult={setFinalResult}
         setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+        setCultureButtonClicked={setCultureButtonClicked}
+        setSportButtonClicked={setSportButtonClicked}
       />
     </div>
   );
@@ -158,6 +162,8 @@ FiltersMenu.propTypes = {
   isLoaded: PropTypes.bool.isRequired,
   setFinalResult: PropTypes.func.isRequired,
   setIsFiltersMenuVisible: PropTypes.func.isRequired,
+  setSportButtonClicked: PropTypes.func.isRequired,
+  setCultureButtonClicked: PropTypes.func.isRequired,
 };
 
 export default FiltersMenu;

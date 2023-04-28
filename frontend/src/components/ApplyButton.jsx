@@ -6,6 +6,8 @@ function ApplyButton({
   setFinalResult,
   filteredResult,
   setIsFiltersMenuVisible,
+  setSportButtonClicked,
+  setCultureButtonClicked,
 }) {
   return (
     <button
@@ -17,6 +19,9 @@ function ApplyButton({
         setIsFiltersMenuVisible(false);
         // scrolling to the top of the page when clicking
         window.scrollTo(0, 0);
+        // reinitializes falsy values for main buttons sport and culture on homepage
+        setSportButtonClicked(false);
+        setCultureButtonClicked(false);
       }}
     >
       Appliquer ({filteredResult.length})
@@ -32,5 +37,7 @@ ApplyButton.propTypes = {
     })
   ).isRequired,
   setIsFiltersMenuVisible: PropTypes.func.isRequired,
+  setSportButtonClicked: PropTypes.func.isRequired,
+  setCultureButtonClicked: PropTypes.func.isRequired,
 };
 export default ApplyButton;

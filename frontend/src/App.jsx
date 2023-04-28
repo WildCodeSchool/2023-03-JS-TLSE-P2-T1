@@ -184,6 +184,8 @@ function App() {
           isLoaded={isLoaded}
           setFinalResult={setFinalResult}
           setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+          setSportButtonClicked={setSportButtonClicked}
+          setCultureButtonClicked={setCultureButtonClicked}
         />
       ) : null}
       {/* the beneath div corresponds to the header section */}
