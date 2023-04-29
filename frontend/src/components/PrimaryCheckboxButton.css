@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: row;
   gap: 10vw;
-  margin: 8px auto;
+  margin: 16px auto;
 }
 
 .primaryCheckboxButtons img {
@@ -53,9 +53,14 @@
     margin: 24 px auto;
   }
 
+  .primaryCheckboxButtons img {
+    height: 55%;
+    width: auto;
+    margin-top: 16px;
+  }
   .primaryButton {
-    height: 80px;
-    width: 80px;
+    height: 90px;
+    width: 90px;
   }
 
   .primaryButton p {

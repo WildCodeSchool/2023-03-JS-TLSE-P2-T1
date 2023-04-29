@@ -16,8 +16,8 @@
 .selectedTag {
   background: #151d48;
   box-shadow: none;
+  font-weight: semi-bold;
   transition: all 0.3s ease-in-out;
-  font-weight: bold;
   color: white;
 }
 
