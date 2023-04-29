@@ -6,6 +6,7 @@ import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 import Footer from "./components/Footer";
+import SortingMenu from "./components/SortingMenu";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -189,6 +190,14 @@ function App() {
         />
       </header>
       <main>
+        {/* create div with className sorting-map-buttons and className hidden if isFiltersMenuVisible is true */}
+        <div className="sorting-map-buttons">
+          <SortingMenu
+            finalResult={finalResult}
+            setFinalResult={setFinalResult}
+          />
+          <button type="button">Map to List Button</button>
+        </div>
         <div className="listContainer">
           {isLoaded
             ? finalResult.map((el) => (
