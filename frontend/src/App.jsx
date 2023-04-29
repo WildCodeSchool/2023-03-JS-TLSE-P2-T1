@@ -25,6 +25,13 @@ function App() {
 
   const [isFiltersMenuVisible, setIsFiltersMenuVisible] = useState(false);
 
+  // FilterTags related components
+  // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
+  const [selectedFilterTags, setSelectedFilterTags] = useState([]);
+
+  // Navbar filter tags
+  const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
+
   // Defining number of events
   useEffect(() => {
     axios
@@ -154,15 +161,12 @@ function App() {
   // Concatinating all results into fetchedResult
   useEffect(() => {
     if (eventsResult && cinemasResult && stadiumsResult) {
-      setFetchedResult([...eventsResult, ...cinemasResult, ...stadiumsResult]);
-    }
-  }, [eventsResult, cinemasResult, stadiumsResult]);
-
-  // Initial finalResult set from fetchedResult sorted by date
-  useEffect(() => {
-    if (fetchedResult) {
       // sort elements from minimum difference between (starting date or ending date) and today to maximum difference, then by nature
-      const sortedByDate = fetchedResult.sort((a, b) => {
+      const sortedByDate = [
+        ...eventsResult,
+        ...cinemasResult,
+        ...stadiumsResult,
+      ].sort((a, b) => {
         // declaring now as today's date
         const now = new Date().getTime();
 
@@ -201,7 +205,14 @@ function App() {
             (aDate === null ? 1 : -1) || a.nature.localeCompare(b.nature);
       });
 
-      setFinalResult(sortedByDate);
+      setFetchedResult(sortedByDate);
+    }
+  }, [eventsResult, cinemasResult, stadiumsResult]);
+
+  // Initial finalResult set from fetchedResult
+  useEffect(() => {
+    if (fetchedResult) {
+      setFinalResult(fetchedResult);
       setIsLoaded(true);
     }
   }, [fetchedResult]);
@@ -212,6 +223,7 @@ function App() {
       <NavBar
         isFiltersMenuVisible={isFiltersMenuVisible}
         setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+        navbarDisplayedTags={navbarDisplayedTags}
       />
       {isFiltersMenuVisible ? (
         <FiltersMenu
@@ -219,6 +231,9 @@ function App() {
           isLoaded={isLoaded}
           setFinalResult={setFinalResult}
           setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+          selectedFilterTags={selectedFilterTags}
+          setSelectedFilterTags={setSelectedFilterTags}
+          setNavbarDisplayedTags={setNavbarDisplayedTags}
         />
       ) : null}
       {/* the beneath div corresponds to the header section */}
@@ -226,6 +241,7 @@ function App() {
         <PrimaryCheckboxButton
           setFinalResult={setFinalResult}
           fetchedResult={fetchedResult}
+          setSelectedFilterTags={setSelectedFilterTags}
         />
       </header>
       <main>
