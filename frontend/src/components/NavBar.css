@@ -136,7 +136,16 @@ nav ul li button p {
   }
   /*header icon smaller*/
   #filter_icon {
-    width: 1.3rem;
-    height: 1.3rem;
+    width: 24px;
+    height: 24px;
+    margin-left: 16px;
+  }
+
+  .header_main_filters {
+    font-size: 1rem;
+  }
+
+  .header_tags_filters {
+    font-size: 0.8rem;
   }
 }

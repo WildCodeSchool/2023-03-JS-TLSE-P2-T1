@@ -194,7 +194,7 @@ function App() {
           {isLoaded
             ? finalResult.map((el) => (
                 <Card
-                  setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+                  isFiltersMenuVisible={isFiltersMenuVisible}
                   key={el.id}
                   api={el.api}
                   name={el.name}

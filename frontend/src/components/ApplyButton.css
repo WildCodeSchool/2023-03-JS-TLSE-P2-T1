@@ -8,6 +8,9 @@
   margin: 16px auto;
   font-size: 0.85rem;
   font-weight: bold;
+  /*position fixed 32 px above the bottom of the screen*/
+  position: fixed;
+  bottom: 32px;
 }
 
 .apply-button:hover {
@@ -19,5 +22,6 @@
 @media screen and (min-width: 768px) {
   .apply-button {
     font-size: 1rem;
+    position: initial;
   }
 }
