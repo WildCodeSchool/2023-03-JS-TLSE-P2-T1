@@ -25,6 +25,13 @@ function App() {
 
   const [isFiltersMenuVisible, setIsFiltersMenuVisible] = useState(false);
 
+  // Navbar Filters relzated states
+  const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
+
+  // FilterTags related states
+  // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
+  const [selectedFilterTags, setSelectedFilterTags] = useState([]);
+
   // Defining number of events
   useEffect(() => {
     axios
@@ -172,6 +179,7 @@ function App() {
       <NavBar
         isFiltersMenuVisible={isFiltersMenuVisible}
         setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+        navbarDisplayedTags={navbarDisplayedTags}
       />
       {isFiltersMenuVisible ? (
         <FiltersMenu
@@ -179,6 +187,9 @@ function App() {
           isLoaded={isLoaded}
           setFinalResult={setFinalResult}
           setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+          setNavbarDisplayedTags={setNavbarDisplayedTags}
+          selectedFilterTags={selectedFilterTags}
+          setSelectedFilterTags={setSelectedFilterTags}
         />
       ) : null}
       {/* the beneath div corresponds to the header section */}
@@ -186,6 +197,7 @@ function App() {
         <PrimaryCheckboxButton
           setFinalResult={setFinalResult}
           fetchedResult={fetchedResult}
+          setNavbarDisplayedTags={setNavbarDisplayedTags}
         />
       </header>
       <main>
