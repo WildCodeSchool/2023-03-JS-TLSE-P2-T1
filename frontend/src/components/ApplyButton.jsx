@@ -15,6 +15,7 @@ function ApplyButton({
       onClick={() => {
         setFinalResult(filteredResult);
         setIsFiltersMenuVisible(false);
+        // scrolling to the top of the page when clicking
         window.scrollTo(0, 0);
       }}
     >

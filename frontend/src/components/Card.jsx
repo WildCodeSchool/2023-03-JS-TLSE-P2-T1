@@ -20,9 +20,6 @@ function Card({ name, shortDescription, tags, address, schedules, api }) {
     <div className={itemContainer}>
       <div className="imageContainer">
         <img src={imgSrc} alt={name} className="imgCard" />
-        <button type="button" className="knowMore">
-          En savoir plus{" "}
-        </button>
       </div>
       <div className="descriptionContainer">
         <h3>{name}</h3>
@@ -30,8 +27,11 @@ function Card({ name, shortDescription, tags, address, schedules, api }) {
         {api === "events" && (
           <p className="shortDescriptionCard">{shortDescription}</p>
         )}
-        <p>{address}</p>
+        <p className="addressCard">{address}</p>
         <p className="tagCard">{tags}</p>
+        <button type="button" className="knowMore">
+          En savoir plus{" "}
+        </button>
       </div>
     </div>
   );
