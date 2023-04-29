@@ -1,7 +1,8 @@
 /*mobile first design*/
 
 .apply-button {
-  background: #fff;
+  background: #151d48;
+  color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   border-radius: 40px;
   padding: 8px 24px;
