@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./PrimaryCheckboxButton.css";
 
-function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
+function PrimaryCheckboxButton({
+  setFinalResult,
+  fetchedResult,
+  isFiltersMenuVisible,
+}) {
   // defining two states for the buttons to know if they are clicked or not
   const [sportButtonClicked, setSportButtonClicked] = useState(false);
   const [cultureButtonClicked, setCultureButtonClicked] = useState(false);
@@ -50,7 +54,12 @@ function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
     }
   }, [cultureButtonClicked, sportButtonClicked]);
   return (
-    <div className="primaryCheckboxButtons">
+    // if isFiltersMenuVisible is true, don't display the buttons
+    <div
+      className={`primaryCheckboxButtons ${
+        isFiltersMenuVisible ? "hidden" : ""
+      }`}
+    >
       <button
         type="button"
         className={`primaryButton cultureButton ${
@@ -87,6 +96,7 @@ PrimaryCheckboxButton.propTypes = {
   fetchedResult: PropTypes.arrayOf(
     PropTypes.shape({ nature: PropTypes.string.isRequired }).isRequired
   ).isRequired,
+  isFiltersMenuVisible: PropTypes.bool.isRequired,
 };
 
 export default PrimaryCheckboxButton;

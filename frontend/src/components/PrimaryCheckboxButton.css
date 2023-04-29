@@ -1,5 +1,9 @@
 /* Component PrimaryCheckboxButtons styling  */
 
+.hidden {
+  display: none;
+}
+
 .primaryCheckboxButtons {
   display: flex;
   flex-direction: row;

@@ -184,6 +184,7 @@ function App() {
       {/* the beneath div corresponds to the header section */}
       <header>
         <PrimaryCheckboxButton
+          isFiltersMenuVisible={isFiltersMenuVisible}
           setFinalResult={setFinalResult}
           fetchedResult={fetchedResult}
         />
@@ -193,6 +194,7 @@ function App() {
           {isLoaded
             ? finalResult.map((el) => (
                 <Card
+                  setIsFiltersMenuVisible={setIsFiltersMenuVisible}
                   key={el.id}
                   api={el.api}
                   name={el.name}
