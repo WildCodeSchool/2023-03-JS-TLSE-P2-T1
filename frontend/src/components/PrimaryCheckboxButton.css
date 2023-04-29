@@ -1,21 +1,25 @@
 /* Component PrimaryCheckboxButtons styling  */
 
+.primaryCheckboxButtons.hidden {
+  display: none;
+}
+
 .primaryCheckboxButtons {
   display: flex;
   flex-direction: row;
   gap: 10vw;
-  margin: 24px auto;
+  margin: 16px auto;
 }
 
 .primaryCheckboxButtons img {
-  height: 60%;
+  height: 45%;
   width: auto;
-  margin-top: 15px;
+  margin-top: 16px;
 }
 
 .primaryCheckboxButtons p {
   margin: 5px;
-  padding-bottom: 10px;
+  padding-bottom: 8px;
 }
 
 .primaryButton {
@@ -23,8 +27,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 120px;
-  height: 120px;
+  width: 70px;
+  height: 70px;
   background: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 75px;
@@ -33,11 +37,11 @@
 .primaryButton:hover {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  transform: translateY(2px);
+  transform: translateY(1px);
 }
 
 .primaryButton p {
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 
 .mainButtonClicked {
@@ -47,18 +51,27 @@
   color: white;
 }
 
-/* Mobile phone media queries */
-@media screen and (max-width: 770px) {
-  .primaryCheckboxButtons {
-    margin-top: 16px auto;
+/* Desktop media queries */
+@media screen and (min-width: 770px) {
+  .primaryCheckboxButtons.hidden {
+    display: initial;
   }
 
+  .primaryCheckboxButtons {
+    margin: 24 px auto;
+  }
+
+  .primaryCheckboxButtons img {
+    height: 55%;
+    width: auto;
+    margin-top: 16px;
+  }
   .primaryButton {
-    height: 70px;
-    width: 70px;
+    height: 90px;
+    width: 90px;
   }
 
   .primaryButton p {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 }
