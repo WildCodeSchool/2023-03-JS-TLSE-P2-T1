@@ -2,8 +2,8 @@
 
 .apply-button {
   background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  border-radius: 40px;
   padding: 8px 24px;
   margin: 16px auto;
   font-size: 0.85rem;
@@ -23,5 +23,6 @@
   .apply-button {
     font-size: 1rem;
     position: initial;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   }
 }
