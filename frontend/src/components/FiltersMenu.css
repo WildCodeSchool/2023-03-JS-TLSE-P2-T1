@@ -2,7 +2,7 @@
   border: 1px solid black;
   width: 95vw;
   border-radius: 1rem;
-  position: fixed;
+  position: sticky;
   display: flex;
   align-items: center;
   flex-direction: column;
