@@ -103,47 +103,67 @@ function FiltersMenu({
   }, [isPlaceChecked, isEventChecked, fetchedResult]);
 
   return (
-    <div className="filtersMenu">
-      <div className="crossContainer">
-        <button type="button" onClick={() => setIsFiltersMenuVisible(false)}>
-          <img
-            src="/assets/close_icon.svg"
-            alt="Croix de fermeture"
-            className="closingCross"
-          />
-        </button>
+    <>
+      <div className="filtersMenu">
+        <div className="crossContainer">
+          <button type="button" onClick={() => setIsFiltersMenuVisible(false)}>
+            <img
+              src="/assets/close_icon.svg"
+              alt="Croix de fermeture"
+              className="closingCross"
+            />
+          </button>
+        </div>
+        <h3>Je suis amateur de :</h3>
+        <SportCultureMenu
+          isSportChecked={isSportChecked}
+          setIsSportChecked={setIsSportChecked}
+          isCultureChecked={isCultureChecked}
+          setIsCultureChecked={setIsCultureChecked}
+        />
+        <hr />
+        <h3>Je cherche :</h3>
+        <PlaceEventsMenu
+          isPlaceChecked={isPlaceChecked}
+          setIsPlaceChecked={setIsPlaceChecked}
+          isEventChecked={isEventChecked}
+          setIsEventChecked={setIsEventChecked}
+        />
+        <hr />
+        <DateFilter setDateFilter={setDateFilter} />
+        <p>{dateFilter}</p>
+        <hr />
+        <TagsFilter
+          mainFilterResult={mainFilterResult}
+          setFilteredResult={setFilteredResult}
+          selectedFilterTags={selectedFilterTags}
+          setSelectedFilterTags={setSelectedFilterTags}
+        />
+        <ApplyButton
+          filteredResult={filteredResult}
+          setFinalResult={setFinalResult}
+          setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+        />
       </div>
-      <h3>Je suis amateur de :</h3>
-      <SportCultureMenu
-        isSportChecked={isSportChecked}
-        setIsSportChecked={setIsSportChecked}
-        isCultureChecked={isCultureChecked}
-        setIsCultureChecked={setIsCultureChecked}
-      />
-      <hr />
-      <h3>Je cherche :</h3>
-      <PlaceEventsMenu
-        isPlaceChecked={isPlaceChecked}
-        setIsPlaceChecked={setIsPlaceChecked}
-        isEventChecked={isEventChecked}
-        setIsEventChecked={setIsEventChecked}
-      />
-      <hr />
-      <DateFilter setDateFilter={setDateFilter} />
-      <p>{dateFilter}</p>
-      <hr />
-      <TagsFilter
-        mainFilterResult={mainFilterResult}
-        setFilteredResult={setFilteredResult}
-        selectedFilterTags={selectedFilterTags}
-        setSelectedFilterTags={setSelectedFilterTags}
-      />
-      <ApplyButton
-        filteredResult={filteredResult}
-        setFinalResult={setFinalResult}
-        setIsFiltersMenuVisible={setIsFiltersMenuVisible}
-      />
-    </div>
+      {/*  <div
+        className="filtersMenuBackground"
+        onClick={() => setIsFiltersMenuVisible(false)}
+        onKeyDown={(e) => {
+          if (e.key === "Escape") {
+            setIsFiltersMenuVisible(false);
+          }
+        }}
+        role="button"
+        tabIndex="0"
+      /> rewrite this code so that it is a button instead of a div* */}
+      <button
+        type="button"
+        className="filtersMenuBackground"
+        onClick={() => setIsFiltersMenuVisible(false)}
+      >
+        .
+      </button>
+    </>
   );
 }
 
