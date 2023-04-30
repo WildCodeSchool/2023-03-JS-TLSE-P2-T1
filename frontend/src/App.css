@@ -34,3 +34,7 @@ header {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.listContainer.hidden {
+  display: none;
+}

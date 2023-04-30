@@ -190,7 +190,9 @@ function App() {
         />
       </header>
       <main>
-        <div className="listContainer">
+        <div
+          className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""}`}
+        >
           {isLoaded
             ? finalResult.map((el) => (
                 <Card
