@@ -145,17 +145,6 @@ function FiltersMenu({
           setIsFiltersMenuVisible={setIsFiltersMenuVisible}
         />
       </div>
-      {/*  <div
-        className="filtersMenuBackground"
-        onClick={() => setIsFiltersMenuVisible(false)}
-        onKeyDown={(e) => {
-          if (e.key === "Escape") {
-            setIsFiltersMenuVisible(false);
-          }
-        }}
-        role="button"
-        tabIndex="0"
-      /> rewrite this code so that it is a button instead of a div* */}
       <button
         type="button"
         className="filtersMenuBackground"

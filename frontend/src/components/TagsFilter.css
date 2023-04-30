@@ -24,6 +24,6 @@
 /*media queries for screen over 768px*/
 @media screen and (min-width: 768px) {
   .tagButton {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 }

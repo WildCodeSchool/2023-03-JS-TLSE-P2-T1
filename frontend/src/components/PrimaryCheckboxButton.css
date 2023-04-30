@@ -54,7 +54,7 @@
 /* Desktop media queries */
 @media screen and (min-width: 770px) {
   .primaryCheckboxButtons {
-    margin: 24 px auto;
+    margin: 16px auto;
   }
 
   .primaryCheckboxButtons img {
