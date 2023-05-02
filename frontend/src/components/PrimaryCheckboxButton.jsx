@@ -9,7 +9,12 @@ function PrimaryCheckboxButton({
   setSportButtonClicked,
   cultureButtonClicked,
   sportButtonClicked,
+  isFiltersMenuVisible,
 }) {
+  // defining two states for the buttons to know if they are clicked or not
+  const [sportButtonClicked, setSportButtonClicked] = useState(false);
+  const [cultureButtonClicked, setCultureButtonClicked] = useState(false);
+
   // defining four consts for the buttons icons url depending whether the button is clicked or not
   const cultureIcon = "\\assets\\header_icons\\culture.png";
   const cultureClickedIcon = "\\assets\\header_icons\\culture_clicked.png";
@@ -53,7 +58,12 @@ function PrimaryCheckboxButton({
     }
   }, [cultureButtonClicked, sportButtonClicked]);
   return (
-    <div className="primaryCheckboxButtons">
+    // if isFiltersMenuVisible is true, don't display the buttons
+    <div
+      className={`primaryCheckboxButtons ${
+        isFiltersMenuVisible ? "hidden" : ""
+      }`}
+    >
       <button
         type="button"
         className={`primaryButton cultureButton ${
@@ -94,6 +104,7 @@ PrimaryCheckboxButton.propTypes = {
   setSportButtonClicked: PropTypes.func.isRequired,
   cultureButtonClicked: PropTypes.bool.isRequired,
   sportButtonClicked: PropTypes.bool.isRequired,
+  isFiltersMenuVisible: PropTypes.bool.isRequired,
 };
 
 export default PrimaryCheckboxButton;

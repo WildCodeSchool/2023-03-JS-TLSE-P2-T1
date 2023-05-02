@@ -17,7 +17,7 @@ function NavBar({ isFiltersMenuVisible, setIsFiltersMenuVisible }) {
       <ul>
         {/* define a li containing logo and website name */}
         <li>
-          <img src="/assets/myLogo.png" alt="Logo MyTouloulist" />
+          <img src="/assets/myLogo.png" alt="Logo MyTouloulist" id="logo" />
           <h1>myTouloulist</h1>
         </li>
         <li>
