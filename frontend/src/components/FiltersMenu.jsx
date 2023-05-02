@@ -103,48 +103,56 @@ function FiltersMenu({
   }, [isPlaceChecked, isEventChecked, fetchedResult]);
 
   return (
-    <div className="filtersMenu">
-      <div className="crossContainer">
-        <button type="button" onClick={() => setIsFiltersMenuVisible(false)}>
-          <img
-            src="/assets/close_icon.svg"
-            alt="Croix de fermeture"
-            className="closingCross"
-          />
-        </button>
+    <>
+      <div className="filtersMenu">
+        <div className="crossContainer">
+          <button type="button" onClick={() => setIsFiltersMenuVisible(false)}>
+            <img
+              src="/assets/close_icon.svg"
+              alt="Croix de fermeture"
+              className="closingCross"
+            />
+          </button>
+        </div>
+        <h3>Je suis amateur de :</h3>
+        <SportCultureMenu
+          isSportChecked={isSportChecked}
+          setIsSportChecked={setIsSportChecked}
+          isCultureChecked={isCultureChecked}
+          setIsCultureChecked={setIsCultureChecked}
+        />
+        <hr />
+        <h3>Je cherche :</h3>
+        <PlaceEventsMenu
+          isPlaceChecked={isPlaceChecked}
+          setIsPlaceChecked={setIsPlaceChecked}
+          isEventChecked={isEventChecked}
+          setIsEventChecked={setIsEventChecked}
+        />
+        <hr />
+        <DateFilter setDateFilter={setDateFilter} />
+        <p>{dateFilter}</p>
+        <hr />
+        <TagsFilter
+          mainFilterResult={mainFilterResult}
+          setFilteredResult={setFilteredResult}
+          selectedFilterTags={selectedFilterTags}
+          setSelectedFilterTags={setSelectedFilterTags}
+        />
+        <ApplyButton
+          filteredResult={filteredResult}
+          setFinalResult={setFinalResult}
+          setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+        />
       </div>
-      <h3>Je suis amateur de :</h3>
-      <SportCultureMenu
-        isSportChecked={isSportChecked}
-        setIsSportChecked={setIsSportChecked}
-        isCultureChecked={isCultureChecked}
-        setIsCultureChecked={setIsCultureChecked}
-      />
-      <hr />
-      <h3>Je cherche :</h3>
-      <PlaceEventsMenu
-        isPlaceChecked={isPlaceChecked}
-        setIsPlaceChecked={setIsPlaceChecked}
-        isEventChecked={isEventChecked}
-        setIsEventChecked={setIsEventChecked}
-      />
-      <hr />
-      <DateFilter setDateFilter={setDateFilter} />
-      <p>{dateFilter}</p>
-      <p>{mainFilterResult.length ? mainFilterResult[0].name : null}</p>
-      <hr />
-      <TagsFilter
-        mainFilterResult={mainFilterResult}
-        setFilteredResult={setFilteredResult}
-        selectedFilterTags={selectedFilterTags}
-        setSelectedFilterTags={setSelectedFilterTags}
-      />
-      <ApplyButton
-        filteredResult={filteredResult}
-        setFinalResult={setFinalResult}
-        setIsFiltersMenuVisible={setIsFiltersMenuVisible}
-      />
-    </div>
+      <button
+        type="button"
+        className="filtersMenuBackground"
+        onClick={() => setIsFiltersMenuVisible(false)}
+      >
+        .
+      </button>
+    </>
   );
 }
 
