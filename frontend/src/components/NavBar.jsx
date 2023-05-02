@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./NavBar.css";
 
-function NavBar({ isFiltersMenuVisible, setIsFiltersMenuVisible, navBarRef }) {
+function NavBar({ isFiltersMenuVisible, setIsFiltersMenuVisible }) {
   const [filterMainName, setFilterMainName] = useState("Culture et Sport");
   const [filterDateName, setFilterDateName] = useState("Flexible");
   const [filterTagName, setFilterTagName] = useState([
@@ -13,16 +13,7 @@ function NavBar({ isFiltersMenuVisible, setIsFiltersMenuVisible, navBarRef }) {
   ]);
 
   return (
-    <nav ref={navBarRef}>
-      <button
-        type="button"
-        onClick={() => setFilterTagName([...filterTagName, "tag"])}
-      >
-        Add tag
-      </button>
-      <button type="button" onClick={() => setFilterTagName([])}>
-        Remove tag
-      </button>
+    <nav>
       <ul>
         {/* define a li containing logo and website name */}
         <li>
@@ -61,7 +52,6 @@ function NavBar({ isFiltersMenuVisible, setIsFiltersMenuVisible, navBarRef }) {
 NavBar.propTypes = {
   isFiltersMenuVisible: PropTypes.bool.isRequired,
   setIsFiltersMenuVisible: PropTypes.func.isRequired,
-  navBarRef: PropTypes.shape({ current: PropTypes.node.isRequired }).isRequired,
 };
 
 export default NavBar;
