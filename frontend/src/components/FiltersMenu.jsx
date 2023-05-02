@@ -180,7 +180,6 @@ function FiltersMenu({
         setCultureButtonClicked={setCultureButtonClicked}
         setSportButtonClicked={setSportButtonClicked}
       />
-    </div>
       <button
         type="button"
         className="filtersMenuBackground"
