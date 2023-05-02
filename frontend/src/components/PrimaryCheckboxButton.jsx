@@ -5,6 +5,7 @@ import "./PrimaryCheckboxButton.css";
 function PrimaryCheckboxButton({
   setFinalResult,
   fetchedResult,
+  setNavbarDisplayedTags,
   isFiltersMenuVisible,
 }) {
   // defining two states for the buttons to know if they are clicked or not
@@ -23,6 +24,7 @@ function PrimaryCheckboxButton({
       setSportButtonClicked(!sportButtonClicked);
     }
     setCultureButtonClicked(!cultureButtonClicked);
+    setNavbarDisplayedTags(["Tous types d'activités"]);
   };
 
   const handleClickSport = () => {
@@ -30,6 +32,7 @@ function PrimaryCheckboxButton({
       setCultureButtonClicked(!cultureButtonClicked);
     }
     setSportButtonClicked(!sportButtonClicked);
+    setNavbarDisplayedTags(["Tous types d'activités"]);
   };
 
   // useEffect monitors any change on clicked state of the two buttons and filters fetched_result according to the buttons clicked
@@ -97,6 +100,7 @@ PrimaryCheckboxButton.propTypes = {
     PropTypes.shape({ nature: PropTypes.string.isRequired }).isRequired
   ).isRequired,
   isFiltersMenuVisible: PropTypes.bool.isRequired,
+  setNavbarDisplayedTags: PropTypes.func.isRequired,
 };
 
 export default PrimaryCheckboxButton;
