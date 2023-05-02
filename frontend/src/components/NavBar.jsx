@@ -7,6 +7,8 @@ function NavBar({
   isFiltersMenuVisible,
   setIsFiltersMenuVisible,
   navbarDisplayedTags,
+  setCultureButtonClicked,
+  setSportButtonClicked,
   navbarSportCulture,
 }) {
   const [filterDateName, setFilterDateName] = useState("Flexible");
@@ -31,7 +33,11 @@ function NavBar({
         <li>
           <button
             type="button"
-            onClick={() => setIsFiltersMenuVisible(!isFiltersMenuVisible)}
+            onClick={() => {
+              setIsFiltersMenuVisible(!isFiltersMenuVisible);
+              setCultureButtonClicked(false);
+              setSportButtonClicked(false);
+            }}
           >
             <img
               src="/assets/filter_icon.png"
@@ -61,6 +67,8 @@ NavBar.propTypes = {
   isFiltersMenuVisible: PropTypes.bool.isRequired,
   setIsFiltersMenuVisible: PropTypes.func.isRequired,
   navbarDisplayedTags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setCultureButtonClicked: PropTypes.func.isRequired,
+  setSportButtonClicked: PropTypes.func.isRequired,
   navbarSportCulture: PropTypes.string.isRequired,
 };
 

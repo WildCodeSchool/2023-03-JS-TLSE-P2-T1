@@ -8,8 +8,9 @@ function ApplyButton({
   setIsFiltersMenuVisible,
   setNavbarDisplayedTags,
   selectedFilterTags,
-  setSportButtonClicked,
-  setCultureButtonClicked,
+  setNavbarSportCulture,
+  isSportChecked,
+  isCultureChecked,
 }) {
   return (
     <button
@@ -20,10 +21,20 @@ function ApplyButton({
         setFinalResult(filteredResult);
         setIsFiltersMenuVisible(false);
         setNavbarDisplayedTags(selectedFilterTags);
-        setSportButtonClicked(false);
-        setCultureButtonClicked(false);
         // scrolling to the top of the page when clicking
         window.scrollTo(0, 0);
+        // if both sport and culture are checked, we display "Sport & Culture" in the navbar
+        if (!isSportChecked && !isCultureChecked) {
+          setNavbarSportCulture("Culture et sport");
+        }
+        // if only sport is checked, we display "Sport" in the navbar
+        else if (isSportChecked && !isCultureChecked) {
+          setNavbarSportCulture("Sport");
+        }
+        // if only culture is checked, we display "Culture" in the navbar
+        else if (!isSportChecked && isCultureChecked) {
+          setNavbarSportCulture("Culture");
+        }
       }}
     >
       Appliquer ({filteredResult.length})
@@ -41,7 +52,8 @@ ApplyButton.propTypes = {
   setIsFiltersMenuVisible: PropTypes.func.isRequired,
   setNavbarDisplayedTags: PropTypes.func.isRequired,
   selectedFilterTags: PropTypes.arrayOf(PropTypes.string).isRequired,
-  setSportButtonClicked: PropTypes.func.isRequired,
-  setCultureButtonClicked: PropTypes.func.isRequired,
+  setNavbarSportCulture: PropTypes.func.isRequired,
+  isSportChecked: PropTypes.bool.isRequired,
+  isCultureChecked: PropTypes.bool.isRequired,
 };
 export default ApplyButton;

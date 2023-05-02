@@ -27,9 +27,7 @@ function App() {
 
   // Navbar Filters related states
   const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
-  const [navbarSportCulture, setNavbarSportCulture] = useState([
-    "Sport et Culture",
-  ]);
+  const [navbarSportCulture, setNavbarSportCulture] = useState([]);
 
   // FilterTags related states
   // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
@@ -232,6 +230,8 @@ function App() {
         isFiltersMenuVisible={isFiltersMenuVisible}
         setIsFiltersMenuVisible={setIsFiltersMenuVisible}
         navbarDisplayedTags={navbarDisplayedTags}
+        setCultureButtonClicked={setCultureButtonClicked}
+        setSportButtonClicked={setSportButtonClicked}
         navbarSportCulture={navbarSportCulture}
       />
       {isFiltersMenuVisible ? (
@@ -243,8 +243,7 @@ function App() {
           setNavbarDisplayedTags={setNavbarDisplayedTags}
           selectedFilterTags={selectedFilterTags}
           setSelectedFilterTags={setSelectedFilterTags}
-          setCultureButtonClicked={setCultureButtonClicked}
-          setSportButtonClicked={setSportButtonClicked}
+          setNavbarSportCulture={setNavbarSportCulture}
         />
       ) : null}
       {/* the beneath div corresponds to the header section */}
