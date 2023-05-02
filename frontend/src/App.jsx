@@ -167,12 +167,7 @@ function App() {
   }, [fetchedResult]);
 
   return (
-    <div
-      onKeyUp={() => setIsFiltersMenuVisible(false)}
-      className="App"
-      role="button"
-      tabIndex={0}
-    >
+    <div className="App">
       <NavBar
         isFiltersMenuVisible={isFiltersMenuVisible}
         setIsFiltersMenuVisible={setIsFiltersMenuVisible}
