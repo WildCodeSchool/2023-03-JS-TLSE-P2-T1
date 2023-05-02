@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import "./PrimaryCheckboxButton.css";
 
@@ -7,11 +7,11 @@ function PrimaryCheckboxButton({
   fetchedResult,
   setNavbarDisplayedTags,
   isFiltersMenuVisible,
+  sportButtonClicked,
+  setSportButtonClicked,
+  cultureButtonClicked,
+  setCultureButtonClicked,
 }) {
-  // defining two states for the buttons to know if they are clicked or not
-  const [sportButtonClicked, setSportButtonClicked] = useState(false);
-  const [cultureButtonClicked, setCultureButtonClicked] = useState(false);
-
   // defining four consts for the buttons icons url depending whether the button is clicked or not
   const cultureIcon = "\\assets\\header_icons\\culture.png";
   const cultureClickedIcon = "\\assets\\header_icons\\culture_clicked.png";
@@ -101,6 +101,10 @@ PrimaryCheckboxButton.propTypes = {
   ).isRequired,
   isFiltersMenuVisible: PropTypes.bool.isRequired,
   setNavbarDisplayedTags: PropTypes.func.isRequired,
+  sportButtonClicked: PropTypes.bool.isRequired,
+  setSportButtonClicked: PropTypes.func.isRequired,
+  cultureButtonClicked: PropTypes.bool.isRequired,
+  setCultureButtonClicked: PropTypes.func.isRequired,
 };
 
 export default PrimaryCheckboxButton;

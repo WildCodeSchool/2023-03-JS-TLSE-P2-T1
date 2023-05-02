@@ -25,12 +25,17 @@ function App() {
 
   const [isFiltersMenuVisible, setIsFiltersMenuVisible] = useState(false);
 
-  // Navbar Filters relzated states
+  // Navbar Filters related states
   const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
 
   // FilterTags related states
   // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
   const [selectedFilterTags, setSelectedFilterTags] = useState([]);
+
+  // PrimaryCheckboxButtons related states
+  // defining two states for the buttons to know if they are clicked or not
+  const [sportButtonClicked, setSportButtonClicked] = useState(false);
+  const [cultureButtonClicked, setCultureButtonClicked] = useState(false);
 
   // Defining number of events
   useEffect(() => {
@@ -234,6 +239,8 @@ function App() {
           setNavbarDisplayedTags={setNavbarDisplayedTags}
           selectedFilterTags={selectedFilterTags}
           setSelectedFilterTags={setSelectedFilterTags}
+          setCultureButtonClicked={setCultureButtonClicked}
+          setSportButtonClicked={setSportButtonClicked}
         />
       ) : null}
       {/* the beneath div corresponds to the header section */}
@@ -244,6 +251,10 @@ function App() {
           fetchedResult={fetchedResult}
           setSelectedFilterTags={setSelectedFilterTags}
           setNavbarDisplayedTags={setNavbarDisplayedTags}
+          sportButtonClicked={sportButtonClicked}
+          cultureButtonClicked={cultureButtonClicked}
+          setSportButtonClicked={setSportButtonClicked}
+          setCultureButtonClicked={setCultureButtonClicked}
         />
       </header>
       <main>
