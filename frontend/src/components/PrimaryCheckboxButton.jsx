@@ -6,6 +6,7 @@ function PrimaryCheckboxButton({
   setFinalResult,
   fetchedResult,
   setNavbarDisplayedTags,
+  isFiltersMenuVisible,
 }) {
   // defining two states for the buttons to know if they are clicked or not
   const [sportButtonClicked, setSportButtonClicked] = useState(false);
@@ -56,7 +57,12 @@ function PrimaryCheckboxButton({
     }
   }, [cultureButtonClicked, sportButtonClicked]);
   return (
-    <div className="primaryCheckboxButtons">
+    // if isFiltersMenuVisible is true, don't display the buttons
+    <div
+      className={`primaryCheckboxButtons ${
+        isFiltersMenuVisible ? "hidden" : ""
+      }`}
+    >
       <button
         type="button"
         className={`primaryButton cultureButton ${
@@ -93,6 +99,7 @@ PrimaryCheckboxButton.propTypes = {
   fetchedResult: PropTypes.arrayOf(
     PropTypes.shape({ nature: PropTypes.string.isRequired }).isRequired
   ).isRequired,
+  isFiltersMenuVisible: PropTypes.bool.isRequired,
   setNavbarDisplayedTags: PropTypes.func.isRequired,
 };
 

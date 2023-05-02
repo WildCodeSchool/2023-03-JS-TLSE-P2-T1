@@ -195,16 +195,20 @@ function App() {
       {/* the beneath div corresponds to the header section */}
       <header>
         <PrimaryCheckboxButton
+          isFiltersMenuVisible={isFiltersMenuVisible}
           setFinalResult={setFinalResult}
           fetchedResult={fetchedResult}
           setNavbarDisplayedTags={setNavbarDisplayedTags}
         />
       </header>
       <main>
-        <div className="listContainer">
+        <div
+          className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""}`}
+        >
           {isLoaded
             ? finalResult.map((el) => (
                 <Card
+                  isFiltersMenuVisible={isFiltersMenuVisible}
                   key={el.id}
                   api={el.api}
                   name={el.name}
