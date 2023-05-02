@@ -31,7 +31,7 @@ function ScrollToTopButton() {
       className={`scroll-to-top ${isVisible ? "show" : ""}`}
       onClick={scrollToTop}
     >
-      Retour en haut de page
+      <img src="/assets/toTopButton.png" alt="to top button" />
     </button>
   );
 }
