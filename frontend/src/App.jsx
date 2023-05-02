@@ -6,7 +6,6 @@ import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 import Footer from "./components/Footer";
-import LoadingPage from "./components/LoadingPage";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -201,21 +200,19 @@ function App() {
       </header>
       <main>
         <div className="listContainer">
-          {isLoaded ? (
-            finalResult.map((el) => (
-              <Card
-                key={el.id}
-                api={el.api}
-                name={el.name}
-                shortDescription={el.shortDescription}
-                tags={el.tags}
-                address={el.address}
-                schedules={el.schedules}
-              />
-            ))
-          ) : (
-            <LoadingPage />
-          )}
+          {isLoaded
+            ? finalResult.map((el) => (
+                <Card
+                  key={el.id}
+                  api={el.api}
+                  name={el.name}
+                  shortDescription={el.shortDescription}
+                  tags={el.tags}
+                  address={el.address}
+                  schedules={el.schedules}
+                />
+              ))
+            : null}
         </div>
       </main>
       <Footer />
