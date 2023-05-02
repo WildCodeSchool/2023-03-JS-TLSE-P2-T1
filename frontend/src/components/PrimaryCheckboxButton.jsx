@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./PrimaryCheckboxButton.css";
 
-function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
+function PrimaryCheckboxButton({
+  setFinalResult,
+  fetchedResult,
+  setNavbarDisplayedTags,
+  isFiltersMenuVisible,
+}) {
   // defining two states for the buttons to know if they are clicked or not
   const [sportButtonClicked, setSportButtonClicked] = useState(false);
   const [cultureButtonClicked, setCultureButtonClicked] = useState(false);
@@ -19,6 +24,7 @@ function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
       setSportButtonClicked(!sportButtonClicked);
     }
     setCultureButtonClicked(!cultureButtonClicked);
+    setNavbarDisplayedTags(["Tous types d'activités"]);
   };
 
   const handleClickSport = () => {
@@ -26,6 +32,7 @@ function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
       setCultureButtonClicked(!cultureButtonClicked);
     }
     setSportButtonClicked(!sportButtonClicked);
+    setNavbarDisplayedTags(["Tous types d'activités"]);
   };
 
   // useEffect monitors any change on clicked state of the two buttons and filters fetched_result according to the buttons clicked
@@ -50,7 +57,12 @@ function PrimaryCheckboxButton({ setFinalResult, fetchedResult }) {
     }
   }, [cultureButtonClicked, sportButtonClicked]);
   return (
-    <div className="primaryCheckboxButtons">
+    // if isFiltersMenuVisible is true, don't display the buttons
+    <div
+      className={`primaryCheckboxButtons ${
+        isFiltersMenuVisible ? "hidden" : ""
+      }`}
+    >
       <button
         type="button"
         className={`primaryButton cultureButton ${
@@ -87,6 +99,8 @@ PrimaryCheckboxButton.propTypes = {
   fetchedResult: PropTypes.arrayOf(
     PropTypes.shape({ nature: PropTypes.string.isRequired }).isRequired
   ).isRequired,
+  isFiltersMenuVisible: PropTypes.bool.isRequired,
+  setNavbarDisplayedTags: PropTypes.func.isRequired,
 };
 
 export default PrimaryCheckboxButton;

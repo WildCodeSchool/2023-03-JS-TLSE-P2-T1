@@ -27,7 +27,8 @@ function TagsFilter({
         });
       }
     });
-    setAllMainFilterTags(allTags);
+    // all tags are sorted alphabetically
+    setAllMainFilterTags(allTags.sort());
   }, [mainFilterResult]);
 
   // handleTagClick modifies the list of selected tags on click on tag, in order to apply filters depending on the selected tags
@@ -70,7 +71,7 @@ function TagsFilter({
 
   // return a list of tags from allMainFilterTags, with a button for each tag
   return (
-    <div>
+    <div className="tags-filter-menu">
       {allMainFilterTags.map((tag) => (
         <button
           key={tag}

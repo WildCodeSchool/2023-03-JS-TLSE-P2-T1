@@ -6,6 +6,8 @@ function ApplyButton({
   setFinalResult,
   filteredResult,
   setIsFiltersMenuVisible,
+  setNavbarDisplayedTags,
+  selectedFilterTags,
 }) {
   return (
     <button
@@ -15,6 +17,7 @@ function ApplyButton({
       onClick={() => {
         setFinalResult(filteredResult);
         setIsFiltersMenuVisible(false);
+        setNavbarDisplayedTags(selectedFilterTags);
         // scrolling to the top of the page when clicking
         window.scrollTo(0, 0);
       }}
@@ -32,5 +35,7 @@ ApplyButton.propTypes = {
     })
   ).isRequired,
   setIsFiltersMenuVisible: PropTypes.func.isRequired,
+  setNavbarDisplayedTags: PropTypes.func.isRequired,
+  selectedFilterTags: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 export default ApplyButton;

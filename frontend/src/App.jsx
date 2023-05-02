@@ -25,12 +25,12 @@ function App() {
 
   const [isFiltersMenuVisible, setIsFiltersMenuVisible] = useState(false);
 
-  // FilterTags related components
+  // Navbar Filters relzated states
+  const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
+
+  // FilterTags related states
   // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
   const [selectedFilterTags, setSelectedFilterTags] = useState([]);
-
-  // Navbar filter tags
-  const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
 
   // Defining number of events
   useEffect(() => {
@@ -231,24 +231,29 @@ function App() {
           isLoaded={isLoaded}
           setFinalResult={setFinalResult}
           setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+          setNavbarDisplayedTags={setNavbarDisplayedTags}
           selectedFilterTags={selectedFilterTags}
           setSelectedFilterTags={setSelectedFilterTags}
-          setNavbarDisplayedTags={setNavbarDisplayedTags}
         />
       ) : null}
       {/* the beneath div corresponds to the header section */}
       <header>
         <PrimaryCheckboxButton
+          isFiltersMenuVisible={isFiltersMenuVisible}
           setFinalResult={setFinalResult}
           fetchedResult={fetchedResult}
           setSelectedFilterTags={setSelectedFilterTags}
+          setNavbarDisplayedTags={setNavbarDisplayedTags}
         />
       </header>
       <main>
-        <div className="listContainer">
+        <div
+          className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""}`}
+        >
           {isLoaded
             ? finalResult.map((el) => (
                 <Card
+                  isFiltersMenuVisible={isFiltersMenuVisible}
                   key={el.id}
                   api={el.api}
                   name={el.name}
