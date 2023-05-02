@@ -229,6 +229,8 @@ function App() {
         isFiltersMenuVisible={isFiltersMenuVisible}
         setIsFiltersMenuVisible={setIsFiltersMenuVisible}
         navbarDisplayedTags={navbarDisplayedTags}
+        setCultureButtonClicked={setCultureButtonClicked}
+        setSportButtonClicked={setSportButtonClicked}
       />
       {isFiltersMenuVisible ? (
         <FiltersMenu
@@ -239,8 +241,6 @@ function App() {
           setNavbarDisplayedTags={setNavbarDisplayedTags}
           selectedFilterTags={selectedFilterTags}
           setSelectedFilterTags={setSelectedFilterTags}
-          setCultureButtonClicked={setCultureButtonClicked}
-          setSportButtonClicked={setSportButtonClicked}
         />
       ) : null}
       {/* the beneath div corresponds to the header section */}
