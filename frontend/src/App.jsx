@@ -27,6 +27,9 @@ function App() {
 
   // Navbar Filters related states
   const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
+  const [navbarSportCulture, setNavbarSportCulture] = useState([
+    "Sport et Culture",
+  ]);
 
   // FilterTags related states
   // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
@@ -229,6 +232,7 @@ function App() {
         isFiltersMenuVisible={isFiltersMenuVisible}
         setIsFiltersMenuVisible={setIsFiltersMenuVisible}
         navbarDisplayedTags={navbarDisplayedTags}
+        navbarSportCulture={navbarSportCulture}
       />
       {isFiltersMenuVisible ? (
         <FiltersMenu
@@ -255,6 +259,7 @@ function App() {
           cultureButtonClicked={cultureButtonClicked}
           setSportButtonClicked={setSportButtonClicked}
           setCultureButtonClicked={setCultureButtonClicked}
+          setNavbarSportCulture={setNavbarSportCulture}
         />
       </header>
       <main>

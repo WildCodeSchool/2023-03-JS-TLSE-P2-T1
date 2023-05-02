@@ -7,8 +7,8 @@ function NavBar({
   isFiltersMenuVisible,
   setIsFiltersMenuVisible,
   navbarDisplayedTags,
+  navbarSportCulture,
 }) {
-  const [filterMainName, setFilterMainName] = useState("Culture et Sport");
   const [filterDateName, setFilterDateName] = useState("Flexible");
   const [filterTagName, setFilterTagName] = useState([]);
 
@@ -40,7 +40,7 @@ function NavBar({
             />
             <div className="header_filters">
               <div className="header_main_filters">
-                <p>{filterMainName} | </p>
+                <p>{navbarSportCulture} | </p>
                 <p>{filterDateName}</p>
               </div>
               <div className="header_tags_filters">
@@ -61,6 +61,7 @@ NavBar.propTypes = {
   isFiltersMenuVisible: PropTypes.bool.isRequired,
   setIsFiltersMenuVisible: PropTypes.func.isRequired,
   navbarDisplayedTags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  navbarSportCulture: PropTypes.string.isRequired,
 };
 
 export default NavBar;
