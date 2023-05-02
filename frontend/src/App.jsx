@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./App.css";
 import NavBar from "./components/NavBar";
@@ -24,6 +24,8 @@ function App() {
   const [finalResult, setFinalResult] = useState([]);
 
   const [isFiltersMenuVisible, setIsFiltersMenuVisible] = useState(false);
+
+  const navBarRef = useRef(null);
 
   // Defining number of events
   useEffect(() => {
@@ -166,10 +168,22 @@ function App() {
     }
   }, [fetchedResult]);
 
-  // list all unfiltered cards by map finalResul in a component Card
+  useEffect(() => {
+    if (isFiltersMenuVisible) {
+      const filtersModal = document.querySelector(".filtersMenu");
+      filtersModal.style.marginTop = `${navBarRef.current.offsetHeight}px`;
+    }
+  }, [navBarRef.current, isFiltersMenuVisible]);
+
   return (
-    <div className="App">
+    <div
+      onKeyUp={() => setIsFiltersMenuVisible(false)}
+      className="App"
+      role="button"
+      tabIndex={0}
+    >
       <NavBar
+        navBarRef={navBarRef}
         isFiltersMenuVisible={isFiltersMenuVisible}
         setIsFiltersMenuVisible={setIsFiltersMenuVisible}
       />

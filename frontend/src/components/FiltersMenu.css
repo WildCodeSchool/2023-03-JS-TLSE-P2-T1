@@ -10,7 +10,7 @@
   background-color: #fff;
   z-index: 5;
   overflow: auto;
-  margin-top: 5rem;
+  /* margin-top: 5rem; */
 }
 
 .filtersMenu h3 {
