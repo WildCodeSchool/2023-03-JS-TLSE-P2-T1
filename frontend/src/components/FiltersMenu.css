@@ -6,12 +6,11 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 90vw;
   border-radius: 10px;
-  position: sticky;
+  position: fixed;
   display: flex;
   align-items: center;
   flex-direction: column;
   background-color: #fff;
-  margin-top: 8px;
   margin-bottom: 92px;
   z-index: 8;
 }

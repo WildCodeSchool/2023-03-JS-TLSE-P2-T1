@@ -171,7 +171,7 @@ function App() {
   useEffect(() => {
     if (isFiltersMenuVisible) {
       const filtersModal = document.querySelector(".filtersMenu");
-      filtersModal.style.marginTop = `${navBarRef.current.offsetHeight}px`;
+      filtersModal.style.marginTop = `${navBarRef.current.offsetHeight + 8}px`;
     }
   }, [navBarRef.current, isFiltersMenuVisible]);
 
