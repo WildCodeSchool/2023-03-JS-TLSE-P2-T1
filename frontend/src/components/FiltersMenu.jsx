@@ -156,6 +156,46 @@ function FiltersMenu({
       >
         .
       </button>
+      <h3>Je suis amateur de :</h3>
+      <SportCultureMenu
+        isSportChecked={isSportChecked}
+        setIsSportChecked={setIsSportChecked}
+        isCultureChecked={isCultureChecked}
+        setIsCultureChecked={setIsCultureChecked}
+      />
+      <hr />
+      <h3>Je cherche :</h3>
+      <PlaceEventsMenu
+        isPlaceChecked={isPlaceChecked}
+        setIsPlaceChecked={setIsPlaceChecked}
+        isEventChecked={isEventChecked}
+        setIsEventChecked={setIsEventChecked}
+      />
+      <hr />
+      <DateFilter setDateFilter={setDateFilter} />
+      <p>{dateFilter}</p>
+      <p>{mainFilterResult.length ? mainFilterResult[0].name : null}</p>
+      <hr />
+      <TagsFilter
+        mainFilterResult={mainFilterResult}
+        setFilteredResult={setFilteredResult}
+        selectedFilterTags={selectedFilterTags}
+        setSelectedFilterTags={setSelectedFilterTags}
+      />
+      <ApplyButton
+        filteredResult={filteredResult}
+        setFinalResult={setFinalResult}
+        setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+        setCultureButtonClicked={setCultureButtonClicked}
+        setSportButtonClicked={setSportButtonClicked}
+      />
+      <button
+        type="button"
+        className="filtersMenuBackground"
+        onClick={() => setIsFiltersMenuVisible(false)}
+      >
+        .
+      </button>
     </>
   );
 }
