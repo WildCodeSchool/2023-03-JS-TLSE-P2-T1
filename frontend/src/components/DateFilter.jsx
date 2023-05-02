@@ -1,34 +1,45 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 
-function DateFilter({ setDateFilter }) {
-  const [isCustomDateChosen, setIsCustomDateChosen] = useState(false);
-
+function DateFilter({
+  isDateChosen,
+  setIsDateChosen,
+  dateChosen,
+  setDateChosen,
+}) {
   return (
     <div>
       <input
         type="radio"
         name="date"
         id="choseDate"
-        onChange={() => setIsCustomDateChosen(true)}
+        onChange={() => setIsDateChosen(true)}
       />
       <label htmlFor="choseDate">Choisir une date</label>
       <input
         type="radio"
         name="date"
         id="flexible"
-        onChange={() => setIsCustomDateChosen(false)}
+        onChange={() => setIsDateChosen(false)}
       />
       <label htmlFor="flexible">Je suis flexible</label>
-      {isCustomDateChosen ? (
-        <input type="date" onChange={(e) => setDateFilter(e.target.value)} />
+      {isDateChosen ? (
+        <input
+          type="date"
+          value={dateChosen}
+          onChange={(e) => {
+            setDateChosen(e.target.value);
+          }}
+        />
       ) : null}
     </div>
   );
 }
 
 DateFilter.propTypes = {
-  setDateFilter: PropTypes.func.isRequired,
+  isDateChosen: PropTypes.bool.isRequired,
+  setIsDateChosen: PropTypes.func.isRequired,
+  dateChosen: PropTypes.string.isRequired,
+  setDateChosen: PropTypes.func.isRequired,
 };
 
 export default DateFilter;

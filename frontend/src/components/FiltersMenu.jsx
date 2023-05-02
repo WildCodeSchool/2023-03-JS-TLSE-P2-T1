@@ -17,7 +17,8 @@ function FiltersMenu({
   const [isCultureChecked, setIsCultureChecked] = useState(false);
   const [isPlaceChecked, setIsPlaceChecked] = useState(false);
   const [isEventChecked, setIsEventChecked] = useState(false);
-  const [dateFilter, setDateFilter] = useState();
+  const [isDateChosen, setIsDateChosen] = useState(false);
+  const [dateChosen, setDateChosen] = useState("");
 
   // FilterTags related components
   // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
@@ -31,10 +32,12 @@ function FiltersMenu({
   const [firstLineResult, setFirstLineResult] = useState(fetchedResult);
   // secondLineResult is about the place/event filter
   const [secondLineResult, setSecondLineResult] = useState(fetchedResult);
+  // thirdLineResult is about the date filter
+  const [thirdLineResult, setThirdLineResult] = useState(fetchedResult);
 
   const [mainFilterResult, setMainFilterResult] = useState(fetchedResult);
 
-  // Define the first line result
+  // Define the first line result (sport/culture)
   const handleFirstLineResult = () => {
     if (isSportChecked) {
       setFirstLineResult(fetchedResult.filter((el) => el.nature === "sport"));
@@ -45,7 +48,7 @@ function FiltersMenu({
     }
   };
 
-  // Define the second line result
+  // Define the second line result (lieu/event)
   const handleSecondLineResult = () => {
     if (isPlaceChecked) {
       setSecondLineResult(fetchedResult.filter((el) => el.isPlace === true));
@@ -56,16 +59,54 @@ function FiltersMenu({
     }
   };
 
+  const handleThirdLineResult = () => {
+    if (dateChosen && isDateChosen) {
+      setThirdLineResult(
+        fetchedResult.filter(
+          (el) =>
+            el.startingDate &&
+            el.endingDate &&
+            el.startingDate.split("-")[0] <= dateChosen.split("-")[0] &&
+            dateChosen.split("-")[0] <= el.endingDate.split("-")[0] &&
+            el.startingDate.split("-")[1] <= dateChosen.split("-")[1] &&
+            dateChosen.split("-")[1] <= el.endingDate.split("-")[1] &&
+            el.startingDate.split("-")[2] <= dateChosen.split("-")[2] &&
+            dateChosen.split("-")[2] <= el.endingDate.split("-")[2]
+        )
+      );
+    } else {
+      setThirdLineResult(fetchedResult);
+    }
+  };
+
   // Define the main result when clicking on the first row
   const handleMainResFirstLineClick = () => {
+    let twoLinesCondensed = [];
+
+    if (dateChosen && isDateChosen) {
+      twoLinesCondensed = secondLineResult.filter(
+        (el) =>
+          el.startingDate &&
+          el.endingDate &&
+          el.startingDate.split("-")[0] <= dateChosen.split("-")[0] &&
+          dateChosen.split("-")[0] <= el.endingDate.split("-")[0] &&
+          el.startingDate.split("-")[1] <= dateChosen.split("-")[1] &&
+          dateChosen.split("-")[1] <= el.endingDate.split("-")[1] &&
+          el.startingDate.split("-")[2] <= dateChosen.split("-")[2] &&
+          dateChosen.split("-")[2] <= el.endingDate.split("-")[2]
+      );
+    } else {
+      twoLinesCondensed = secondLineResult;
+    }
+
     let newResult = [];
 
     if (isCultureChecked) {
-      newResult = secondLineResult.filter((el) => el.nature === "culture");
+      newResult = twoLinesCondensed.filter((el) => el.nature === "culture");
     } else if (isSportChecked) {
-      newResult = secondLineResult.filter((el) => el.nature === "sport");
+      newResult = twoLinesCondensed.filter((el) => el.nature === "sport");
     } else {
-      newResult = secondLineResult;
+      newResult = twoLinesCondensed;
     }
 
     setMainFilterResult(newResult);
@@ -73,14 +114,59 @@ function FiltersMenu({
 
   // Define the main result when clicking on the second row
   const handleMainResSecondLineClick = () => {
+    let twoLinesCondensed = [];
+
+    if (isCultureChecked) {
+      twoLinesCondensed = thirdLineResult.filter(
+        (el) => el.nature === "culture"
+      );
+    } else if (isSportChecked) {
+      twoLinesCondensed = thirdLineResult.filter((el) => el.nature === "sport");
+    } else {
+      twoLinesCondensed = thirdLineResult;
+    }
+
     let newResult = [];
 
     if (isPlaceChecked) {
-      newResult = firstLineResult.filter((el) => el.isPlace === true);
+      newResult = twoLinesCondensed.filter((el) => el.isPlace === true);
     } else if (isEventChecked) {
-      newResult = firstLineResult.filter((el) => el.isPlace === false);
+      newResult = twoLinesCondensed.filter((el) => el.isPlace === false);
     } else {
-      newResult = firstLineResult;
+      newResult = twoLinesCondensed;
+    }
+
+    setMainFilterResult(newResult);
+  };
+
+  // Define the main result when clicking on the third row
+  const handleMainResThirdLineClick = () => {
+    let twoLinesCondensed = [];
+
+    if (isPlaceChecked) {
+      twoLinesCondensed = firstLineResult.filter((el) => el.isPlace === true);
+    } else if (isEventChecked) {
+      twoLinesCondensed = firstLineResult.filter((el) => el.isPlace === false);
+    } else {
+      twoLinesCondensed = firstLineResult;
+    }
+
+    let newResult = [];
+
+    if (dateChosen && isDateChosen) {
+      newResult = twoLinesCondensed.filter(
+        (el) =>
+          el.startingDate &&
+          el.endingDate &&
+          el.startingDate.split("-")[0] <= dateChosen.split("-")[0] &&
+          dateChosen.split("-")[0] <= el.endingDate.split("-")[0] &&
+          el.startingDate.split("-")[1] <= dateChosen.split("-")[1] &&
+          dateChosen.split("-")[1] <= el.endingDate.split("-")[1] &&
+          el.startingDate.split("-")[2] <= dateChosen.split("-")[2] &&
+          dateChosen.split("-")[2] <= el.endingDate.split("-")[2]
+      );
+    } else {
+      newResult = twoLinesCondensed;
     }
 
     setMainFilterResult(newResult);
@@ -90,6 +176,7 @@ function FiltersMenu({
     if (isLoaded) {
       handleFirstLineResult();
       handleSecondLineResult();
+      handleThirdLineResult();
       handleMainResFirstLineClick();
     }
   }, [isSportChecked, isCultureChecked, fetchedResult]);
@@ -98,9 +185,19 @@ function FiltersMenu({
     if (isLoaded) {
       handleFirstLineResult();
       handleSecondLineResult();
+      handleThirdLineResult();
       handleMainResSecondLineClick();
     }
   }, [isPlaceChecked, isEventChecked, fetchedResult]);
+
+  useEffect(() => {
+    if (isLoaded) {
+      handleFirstLineResult();
+      handleSecondLineResult();
+      handleThirdLineResult();
+      handleMainResThirdLineClick();
+    }
+  }, [isDateChosen, dateChosen, fetchedResult]);
 
   return (
     <div className="filtersMenu">
@@ -129,9 +226,12 @@ function FiltersMenu({
         setIsEventChecked={setIsEventChecked}
       />
       <hr />
-      <DateFilter setDateFilter={setDateFilter} />
-      <p>{dateFilter}</p>
-      <p>{mainFilterResult.length ? mainFilterResult[0].name : null}</p>
+      <DateFilter
+        isDateChosen={isDateChosen}
+        setIsDateChosen={setIsDateChosen}
+        dateChosen={dateChosen}
+        setDateChosen={setDateChosen}
+      />
       <hr />
       <TagsFilter
         mainFilterResult={mainFilterResult}
