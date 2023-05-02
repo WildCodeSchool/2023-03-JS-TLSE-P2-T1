@@ -11,9 +11,6 @@ function PrimaryCheckboxButton({
   sportButtonClicked,
   isFiltersMenuVisible,
 }) {
-  // defining two states for the buttons to know if they are clicked or not
-  const [sportButtonClicked, setSportButtonClicked] = useState(false);
-  const [cultureButtonClicked, setCultureButtonClicked] = useState(false);
 
   // defining four consts for the buttons icons url depending whether the button is clicked or not
   const cultureIcon = "\\assets\\header_icons\\culture.png";
