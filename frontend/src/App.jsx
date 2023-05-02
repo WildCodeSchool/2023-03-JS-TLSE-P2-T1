@@ -264,6 +264,7 @@ function App() {
           <SortingMenu
             finalResult={finalResult}
             setFinalResult={setFinalResult}
+            fetchedResult={fetchedResult}
           />
           <button type="button">Map to List Button</button>
         </div>
