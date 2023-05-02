@@ -15,8 +15,6 @@ function FiltersMenu({
   setNavbarDisplayedTags,
   selectedFilterTags,
   setSelectedFilterTags,
-  setSportButtonClicked,
-  setCultureButtonClicked,
 }) {
   const [isSportChecked, setIsSportChecked] = useState(false);
   const [isCultureChecked, setIsCultureChecked] = useState(false);
@@ -147,8 +145,6 @@ function FiltersMenu({
           setIsFiltersMenuVisible={setIsFiltersMenuVisible}
           setNavbarDisplayedTags={setNavbarDisplayedTags}
           selectedFilterTags={selectedFilterTags}
-          setCultureButtonClicked={setCultureButtonClicked}
-          setSportButtonClicked={setSportButtonClicked}
         />
       </div>
       <button
@@ -175,8 +171,6 @@ FiltersMenu.propTypes = {
   setNavbarDisplayedTags: PropTypes.func.isRequired,
   selectedFilterTags: PropTypes.arrayOf(PropTypes.string).isRequired,
   setSelectedFilterTags: PropTypes.func.isRequired,
-  setSportButtonClicked: PropTypes.func.isRequired,
-  setCultureButtonClicked: PropTypes.func.isRequired,
 };
 
 export default FiltersMenu;
