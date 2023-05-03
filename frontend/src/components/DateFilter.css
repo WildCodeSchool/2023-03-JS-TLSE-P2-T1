@@ -28,8 +28,9 @@
   border-radius: 40px;
   padding: 8px 8px;
   margin: 8px 16px;
-  margin-top: 24px;
+  margin-top: 16px;
   font-size: 0.75rem;
+  text-align: center;
 }
 
 #dateFlexibleClicked {
@@ -87,6 +88,7 @@
 @media (min-width: 768px) {
   .dateInput {
     width: 40%;
+    margin: 8px;
   }
 
   .radioContainer {
