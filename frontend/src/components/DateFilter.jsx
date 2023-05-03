@@ -31,6 +31,7 @@ function DateFilter({
       </div>
       {isDateChosen ? (
         <input
+          className="dateInput"
           type="date"
           value={dateChosen}
           onChange={(e) => {
