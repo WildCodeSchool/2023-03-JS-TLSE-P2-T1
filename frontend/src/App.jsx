@@ -4,6 +4,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
+import Map from "./components/Map";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 import Footer from "./components/Footer";
 import ScrollToTopButton from "./components/ScrollToTopButton";
@@ -13,6 +14,8 @@ function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
 
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const [isMapActive, setIsMapActive] = useState(false);
 
   const [eventsNbr, setEventsNbr] = useState(0);
   const [eventsResult, setEventResult] = useState();
@@ -287,12 +290,21 @@ function App() {
             selectedSorting={selectedSorting}
             setSelectedSorting={setSelectedSorting}
           />
-          <button type="button">Map to List Button</button>
+          <div className="containerMapSwitch">
+            <label className="labelMapSwitch">
+              <input
+                type="checkbox"
+                className="inputMapSwitch"
+                onChange={() => setIsMapActive(!isMapActive)}
+              />
+              <span className="spanMapSwitch" />
+            </label>
+          </div>
         </div>
         <div
           className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""}`}
         >
-          {isLoaded
+          {isLoaded && !isMapActive
             ? finalResult.map((el) => (
                 <Card
                   isFiltersMenuVisible={isFiltersMenuVisible}
@@ -314,6 +326,9 @@ function App() {
               ))
             : null}
         </div>
+        {isLoaded && isMapActive && !isFiltersMenuVisible ? (
+          <Map finalResult={finalResult} />
+        ) : null}
       </main>
       <ScrollToTopButton />
       <Footer />
