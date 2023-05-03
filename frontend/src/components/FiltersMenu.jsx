@@ -18,6 +18,7 @@ function FiltersMenu({
   setNavbarSportCulture,
   dateChosen,
   setDateChosen,
+  setNavbarDate,
 }) {
   const [isSportChecked, setIsSportChecked] = useState(false);
   const [isCultureChecked, setIsCultureChecked] = useState(false);
@@ -251,6 +252,9 @@ function FiltersMenu({
           setNavbarSportCulture={setNavbarSportCulture}
           isSportChecked={isSportChecked}
           isCultureChecked={isCultureChecked}
+          setNavbarDate={setNavbarDate}
+          dateChosen={dateChosen}
+          isDateChosen={isDateChosen}
         />
       </div>
       <button
@@ -280,6 +284,7 @@ FiltersMenu.propTypes = {
   setNavbarSportCulture: PropTypes.func.isRequired,
   dateChosen: PropTypes.string.isRequired,
   setDateChosen: PropTypes.func.isRequired,
+  setNavbarDate: PropTypes.func.isRequired,
 };
 
 export default FiltersMenu;
