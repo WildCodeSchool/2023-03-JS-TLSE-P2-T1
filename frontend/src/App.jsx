@@ -4,6 +4,7 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
+import Map from "./components/Map";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 import Footer from "./components/Footer";
 
@@ -11,6 +12,8 @@ function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
 
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const [isMapActive] = useState(true);
 
   const [eventsNbr, setEventsNbr] = useState(0);
   const [eventsResult, setEventResult] = useState();
@@ -265,7 +268,7 @@ function App() {
         <div
           className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""}`}
         >
-          {isLoaded
+          {isLoaded && !isMapActive
             ? finalResult.map((el) => (
                 <Card
                   isFiltersMenuVisible={isFiltersMenuVisible}
@@ -280,6 +283,7 @@ function App() {
               ))
             : null}
         </div>
+        {isLoaded && isMapActive ? <Map /> : null}
       </main>
       <Footer />
     </div>
