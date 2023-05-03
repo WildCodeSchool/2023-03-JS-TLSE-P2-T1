@@ -1,7 +1,7 @@
 /*Footer styling*/
 
 footer {
-  height: 50px;
+  height: 32px;
   background: #151d48;
   color: white;
 
@@ -14,18 +14,15 @@ footer {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  z-index: 10;
 }
 
 footer p {
   margin-left: 20px;
+  font-size: 0.8rem;
 }
 footer button {
   margin-right: 20px;
-}
-
-/*footer p and a have a font size of 1.2rem*/
-footer p {
-  font-size: 1.2rem;
 }
 
 /*footer link animation*/
@@ -34,7 +31,7 @@ footer p {
   color: white;
   position: relative;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 
 .about-us:hover {
@@ -58,4 +55,24 @@ footer p {
 .about-us:hover::before {
   transform-origin: left;
   transform: scaleX(1);
+}
+
+/*media queries for screen over 768px*/
+@media screen and (min-width: 768px) {
+  footer {
+    height: 40px;
+  }
+
+  footer p {
+    margin-left: 32px;
+    font-size: 1rem;
+  }
+
+  footer button {
+    margin-right: 32px;
+  }
+
+  .about-us {
+    font-size: 1rem;
+  }
 }

@@ -12,6 +12,10 @@ function FiltersMenu({
   isLoaded,
   setFinalResult,
   setIsFiltersMenuVisible,
+  setNavbarDisplayedTags,
+  selectedFilterTags,
+  setSelectedFilterTags,
+  setNavbarSportCulture,
 }) {
   const [isSportChecked, setIsSportChecked] = useState(false);
   const [isCultureChecked, setIsCultureChecked] = useState(false);
@@ -20,9 +24,6 @@ function FiltersMenu({
   const [isDateChosen, setIsDateChosen] = useState(false);
   const [dateChosen, setDateChosen] = useState("");
 
-  // FilterTags related components
-  // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
-  const [selectedFilterTags, setSelectedFilterTags] = useState([]);
   // filteredResult : array of objects that have been filtered according to different filters
   const [filteredResult, setFilteredResult] = useState([]);
 
@@ -200,51 +201,65 @@ function FiltersMenu({
   }, [isDateChosen, dateChosen, fetchedResult]);
 
   return (
-    <div className="filtersMenu">
-      <div className="crossContainer">
-        <button type="button" onClick={() => setIsFiltersMenuVisible(false)}>
-          <img
-            src="/assets/close_icon.svg"
-            alt="Croix de fermeture"
-            className="closingCross"
-          />
-        </button>
+    <>
+      <div className="filtersMenu">
+        <div className="crossContainer">
+          <button type="button" onClick={() => setIsFiltersMenuVisible(false)}>
+            <img
+              src="/assets/close_icon.svg"
+              alt="Croix de fermeture"
+              className="closingCross"
+            />
+          </button>
+        </div>
+        <h3>Je suis amateur de :</h3>
+        <SportCultureMenu
+          isSportChecked={isSportChecked}
+          setIsSportChecked={setIsSportChecked}
+          isCultureChecked={isCultureChecked}
+          setIsCultureChecked={setIsCultureChecked}
+        />
+        <hr />
+        <h3>Je cherche :</h3>
+        <PlaceEventsMenu
+          isPlaceChecked={isPlaceChecked}
+          setIsPlaceChecked={setIsPlaceChecked}
+          isEventChecked={isEventChecked}
+          setIsEventChecked={setIsEventChecked}
+        />
+        <hr />
+        <DateFilter
+          isDateChosen={isDateChosen}
+          setIsDateChosen={setIsDateChosen}
+          dateChosen={dateChosen}
+          setDateChosen={setDateChosen}
+        />
+        <hr />
+        <TagsFilter
+          mainFilterResult={mainFilterResult}
+          setFilteredResult={setFilteredResult}
+          selectedFilterTags={selectedFilterTags}
+          setSelectedFilterTags={setSelectedFilterTags}
+        />
+        <ApplyButton
+          filteredResult={filteredResult}
+          setFinalResult={setFinalResult}
+          setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+          setNavbarDisplayedTags={setNavbarDisplayedTags}
+          selectedFilterTags={selectedFilterTags}
+          setNavbarSportCulture={setNavbarSportCulture}
+          isSportChecked={isSportChecked}
+          isCultureChecked={isCultureChecked}
+        />
       </div>
-      <h3>Je suis amateur de :</h3>
-      <SportCultureMenu
-        isSportChecked={isSportChecked}
-        setIsSportChecked={setIsSportChecked}
-        isCultureChecked={isCultureChecked}
-        setIsCultureChecked={setIsCultureChecked}
-      />
-      <hr />
-      <h3>Je cherche :</h3>
-      <PlaceEventsMenu
-        isPlaceChecked={isPlaceChecked}
-        setIsPlaceChecked={setIsPlaceChecked}
-        isEventChecked={isEventChecked}
-        setIsEventChecked={setIsEventChecked}
-      />
-      <hr />
-      <DateFilter
-        isDateChosen={isDateChosen}
-        setIsDateChosen={setIsDateChosen}
-        dateChosen={dateChosen}
-        setDateChosen={setDateChosen}
-      />
-      <hr />
-      <TagsFilter
-        mainFilterResult={mainFilterResult}
-        setFilteredResult={setFilteredResult}
-        selectedFilterTags={selectedFilterTags}
-        setSelectedFilterTags={setSelectedFilterTags}
-      />
-      <ApplyButton
-        filteredResult={filteredResult}
-        setFinalResult={setFinalResult}
-        setIsFiltersMenuVisible={setIsFiltersMenuVisible}
-      />
-    </div>
+      <button
+        type="button"
+        className="filtersMenuBackground"
+        onClick={() => setIsFiltersMenuVisible(false)}
+      >
+        .
+      </button>
+    </>
   );
 }
 
@@ -258,6 +273,10 @@ FiltersMenu.propTypes = {
   isLoaded: PropTypes.bool.isRequired,
   setFinalResult: PropTypes.func.isRequired,
   setIsFiltersMenuVisible: PropTypes.func.isRequired,
+  setNavbarDisplayedTags: PropTypes.func.isRequired,
+  selectedFilterTags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setSelectedFilterTags: PropTypes.func.isRequired,
+  setNavbarSportCulture: PropTypes.func.isRequired,
 };
 
 export default FiltersMenu;
