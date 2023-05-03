@@ -1,6 +1,6 @@
-import React from "react";
 import PropTypes from "prop-types";
 import "./Card.css";
+import { useState } from "react";
 
 function Card({
   name,
@@ -11,6 +11,7 @@ function Card({
   api,
   isFiltersMenuVisible,
 }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   let itemContainer;
   let imgSrc;
   if (api === "events") {
@@ -23,10 +24,16 @@ function Card({
     itemContainer = "itemContainer3";
     imgSrc = "/assets/cinema.png";
   }
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
-    // if the filters menu is visible, the itemcontainer class gets hidden class
     <div className={`${itemContainer} ${isFiltersMenuVisible ? "hidden" : ""}`}>
+      {/* if the filters menu is visible, the itemcontainer class gets hidden class */}
       <div className="imageContainer">
         <img src={imgSrc} alt={name} className="imgCard" />
       </div>
@@ -38,9 +45,30 @@ function Card({
         )}
         <p className="addressCard">{address}</p>
         <p className="tagCard">{tags}</p>
-        <button type="button" className="knowMore">
+        <button type="button" className="knowMore" onClick={openModal}>
           En savoir plus{" "}
         </button>
+        {isModalOpen && (
+          <div className="modalContainer">
+            <div className="modalContent">
+              <button
+                type="button"
+                className="closeButton"
+                onClick={closeModal}
+              >
+                <img
+                  src="/assets/close_icon.svg"
+                  alt="Croix de fermeture"
+                  className="closingCross"
+                />
+              </button>
+              <h2>{name}</h2>
+              <p>{shortDescription}</p>
+              <p>{address}</p>
+              <p>{tags}</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
