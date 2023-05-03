@@ -86,11 +86,12 @@ footer button {
   text-align: center;
 }
 
-.modalContent a
+.modalContent apush
 {
   text-decoration: none;
   color: #151d48;
 }
+
 /*media queries for screen over 768px*/
 @media screen and (min-width: 768px) {
   footer {
