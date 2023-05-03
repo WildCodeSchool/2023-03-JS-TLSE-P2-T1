@@ -283,7 +283,9 @@ function App() {
               ))
             : null}
         </div>
-        {isLoaded && isMapActive ? <Map /> : null}
+        {isLoaded && isMapActive && !isFiltersMenuVisible ? (
+          <Map finalResult={finalResult} />
+        ) : null}
       </main>
       <Footer />
     </div>

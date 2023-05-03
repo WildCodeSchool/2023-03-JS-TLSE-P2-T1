@@ -42,6 +42,6 @@ header {
   justify-content: center;
 }
 
-.listContainer.hidden {
+.hidden {
   display: none;
 }
