@@ -6,6 +6,7 @@ import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 import Footer from "./components/Footer";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 import SortingMenu from "./components/SortingMenu";
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
   // Navbar Filters related states
   const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
   const [navbarSportCulture, setNavbarSportCulture] = useState([]);
+  const [navbarDate, setNavbarDate] = useState(["Flexible"]);
 
   // FilterTags related states
   // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
@@ -240,6 +242,7 @@ function App() {
         setCultureButtonClicked={setCultureButtonClicked}
         setSportButtonClicked={setSportButtonClicked}
         navbarSportCulture={navbarSportCulture}
+        navbarDate={navbarDate}
       />
       {isFiltersMenuVisible ? (
         <FiltersMenu
@@ -254,6 +257,7 @@ function App() {
           setSelectedSorting={setSelectedSorting}
           dateChosen={dateChosen}
           setDateChosen={setDateChosen}
+          setNavbarDate={setNavbarDate}
         />
       ) : null}
       {/* the beneath div corresponds to the header section */}
@@ -269,6 +273,7 @@ function App() {
           setSportButtonClicked={setSportButtonClicked}
           setCultureButtonClicked={setCultureButtonClicked}
           setNavbarSportCulture={setNavbarSportCulture}
+          setNavbarDate={setNavbarDate}
           setSelectedSorting={setSelectedSorting}
         />
       </header>
@@ -303,6 +308,7 @@ function App() {
             : null}
         </div>
       </main>
+      <ScrollToTopButton />
       <Footer />
     </div>
   );

@@ -7,6 +7,7 @@ function DateFilter({
   dateChosen,
   setDateChosen,
 }) {
+  // setIsDateChosen(false);
   return (
     <div className="dateContainer">
       <div className="radioContainer">
@@ -31,6 +32,7 @@ function DateFilter({
       </div>
       {isDateChosen ? (
         <input
+          className="dateInput"
           type="date"
           value={dateChosen}
           onChange={(e) => {
