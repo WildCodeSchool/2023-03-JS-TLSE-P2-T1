@@ -6,6 +6,7 @@ import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 import Footer from "./components/Footer";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 import SortingMenu from "./components/SortingMenu";
 
 function App() {
@@ -303,6 +304,7 @@ function App() {
             : null}
         </div>
       </main>
+      <ScrollToTopButton />
       <Footer />
     </div>
   );
