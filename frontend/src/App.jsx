@@ -293,6 +293,7 @@ function App() {
             fetchedResult={fetchedResult}
             selectedSorting={selectedSorting}
             setSelectedSorting={setSelectedSorting}
+            isMapActive={isMapActive}
           />
           <div className="containerMapSwitch">
             <label className="labelMapSwitch">

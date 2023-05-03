@@ -6,6 +6,10 @@
   display: none;
 }
 
+.sorting-menu.hidden {
+  display: none;
+}
+
 .sorting-menu select {
   background: #fff;
   border: none;
