@@ -38,3 +38,18 @@ header {
 .listContainer.hidden {
   display: none;
 }
+
+/* sorting button and map buttons div styling  */
+.sorting-map-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: auto 16px;
+}
+
+/*media queries over 768 px*/
+@media screen and (min-width: 768px) {
+  .sorting-map-buttons {
+    margin: auto 15vw;
+  }
+}

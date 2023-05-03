@@ -9,7 +9,7 @@ function SortingMenu({
   setSelectedSorting,
 }) {
   return (
-    <div>
+    <div className="sorting-menu">
       <p>Trier par : </p>
       <select
         className="sorting-menu"
@@ -90,8 +90,8 @@ function SortingMenu({
           setSelectedSorting(event.target.value);
         }}
       >
-        <option value="date">Date la plus proche</option>
-        <option value="city-center">Proximité du centre-ville</option>
+        <option value="date">Date</option>
+        <option value="city-center">Proche du centre-ville</option>
         <option value="alphabetical">Nom</option>
       </select>
     </div>
