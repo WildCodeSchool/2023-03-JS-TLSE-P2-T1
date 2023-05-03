@@ -224,8 +224,8 @@ function FiltersMenu({
               isCultureChecked={isCultureChecked}
               setIsCultureChecked={setIsCultureChecked}
             />
-            <hr />
           </div>
+          <hr />
           <div className="place-event-filter">
             <h3>Je cherche :</h3>
             <PlaceEventsMenu
@@ -234,8 +234,8 @@ function FiltersMenu({
               isEventChecked={isEventChecked}
               setIsEventChecked={setIsEventChecked}
             />
-            <hr />
           </div>
+          <hr />
           <div className="date-filter">
             <h3>Je préfère :</h3>
             <DateFilter

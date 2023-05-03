@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import "./ScrollToTopButton.css";
 
-function ScrollToTopButton({ isFiltersMenuVisible }) {
+function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 300 && !isFiltersMenuVisible) {
+      if (window.pageYOffset > 600) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -36,9 +35,5 @@ function ScrollToTopButton({ isFiltersMenuVisible }) {
     </button>
   );
 }
-
-ScrollToTopButton.propTypes = {
-  isFiltersMenuVisible: PropTypes.bool.isRequired,
-};
 
 export default ScrollToTopButton;

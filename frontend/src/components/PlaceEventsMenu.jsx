@@ -30,7 +30,7 @@ function PlaceEventsMenu({
         }`}
         onClick={() => handleClickPlace()}
       >
-        Lieu
+        Lieux
       </button>
       <button
         type="button"
