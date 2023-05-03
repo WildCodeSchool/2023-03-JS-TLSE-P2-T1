@@ -90,7 +90,7 @@ header {
 
 .spanMapSwitch::before {
   content: "";
-  background-image: url("./public/assets/Map.png");
+  background-image: url("/assets/Map.png");
   background-repeat: no-repeat;
   background-position: center;
   height: 100%;
@@ -106,7 +106,7 @@ header {
 
 .inputMapSwitch:checked + .spanMapSwitch::before {
   content: "";
-  background-image: url("./public/assets/List.png");
+  background-image: url("/assets/List.png");
   background-repeat: no-repeat;
   background-position: center;
   transform: translateX(1.2rem);
