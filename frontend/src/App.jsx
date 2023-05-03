@@ -15,7 +15,7 @@ function App() {
 
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const [isMapActive] = useState(true);
+  const [isMapActive, setIsMapActive] = useState(false);
 
   const [eventsNbr, setEventsNbr] = useState(0);
   const [eventsResult, setEventResult] = useState();
@@ -290,7 +290,16 @@ function App() {
             selectedSorting={selectedSorting}
             setSelectedSorting={setSelectedSorting}
           />
-          <button type="button">Map to List Button</button>
+          <div className="containerMapSwitch">
+            <label className="labelMapSwitch">
+              <input
+                type="checkbox"
+                className="inputMapSwitch"
+                onChange={() => setIsMapActive(!isMapActive)}
+              />
+              <span className="spanMapSwitch" />
+            </label>
+          </div>
         </div>
         <div
           className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""}`}
