@@ -101,6 +101,10 @@ hr {
   gap: 16px;
 }
 
+/*don't display last h3*/
+#additional-filters {
+  display: none;
+}
 /*media queries over 768px*/
 @media (min-width: 768px) {
   .main-filters {
@@ -109,8 +113,11 @@ hr {
     /*wrap if needed*/
     flex-wrap: wrap;
     justify-content: center;
-    align-items: baseline;
+    align-items: center;
     margin-top: 8px;
+    margin-bottom: 24px;
+    /*horizontal gap between filters*/
+    gap: 32px;
   }
 
   .crossContainer {
@@ -127,6 +134,12 @@ hr {
 
   hr {
     display: none;
+  }
+
+  .hr-desktop-displayed {
+    display: initial;
+    width: 0px;
+    height: 50px;
   }
 
   /* don't display last hr */
@@ -149,5 +162,10 @@ hr {
 
   .filtersMenu {
     z-index: 12;
+  }
+
+  #additional-filters {
+    display: initial;
+    margin-bottom: 24px;
   }
 }

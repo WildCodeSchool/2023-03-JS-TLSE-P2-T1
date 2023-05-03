@@ -279,7 +279,11 @@ function App() {
       </header>
       <main>
         {/* create div with className sorting-map-buttons and className hidden if isFiltersMenuVisible is true */}
-        <div className="sorting-map-buttons">
+        <div
+          className={`sorting-map-buttons ${
+            isFiltersMenuVisible ? "hidden" : ""
+          }`}
+        >
           <SortingMenu
             finalResult={finalResult}
             setFinalResult={setFinalResult}

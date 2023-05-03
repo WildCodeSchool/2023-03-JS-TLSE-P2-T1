@@ -225,7 +225,7 @@ function FiltersMenu({
               setIsCultureChecked={setIsCultureChecked}
             />
           </div>
-          <hr />
+          <hr className="hr-desktop-displayed" />
           <div className="place-event-filter">
             <h3>Je cherche :</h3>
             <PlaceEventsMenu
@@ -235,7 +235,7 @@ function FiltersMenu({
               setIsEventChecked={setIsEventChecked}
             />
           </div>
-          <hr />
+          <hr className="hr-desktop-displayed" />
           <div className="date-filter">
             <h3>Je préfère :</h3>
             <DateFilter
@@ -247,6 +247,7 @@ function FiltersMenu({
             <hr />
           </div>
         </div>
+        <h3 id="additional-filters">Filtres additionnels</h3>
         <TagsFilter
           mainFilterResult={mainFilterResult}
           setFilteredResult={setFilteredResult}

@@ -54,7 +54,7 @@
     align-items: center;
 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
+    border-radius: 40px;
     width: 7rem;
     height: initial;
   }
@@ -68,6 +68,6 @@
   }
   .sport-culture-container img {
     margin: 0;
-    height: 30%;
+    height: 30px;
   }
 }
