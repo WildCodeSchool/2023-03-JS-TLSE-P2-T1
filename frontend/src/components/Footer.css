@@ -81,13 +81,11 @@ footer button {
   max-height: 80%;
   overflow-y: auto;
 }
-.modalContent h2
-{
+.modalContent h2 {
   text-align: center;
 }
 
-.modalContent apush
-{
+.modalContent apush {
   text-decoration: none;
   color: #151d48;
 }

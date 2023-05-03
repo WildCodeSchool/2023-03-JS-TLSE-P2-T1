@@ -3,14 +3,6 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import PropTypes from "prop-types";
 import "./Map.css";
 
-// var map = L.map("map").setView([43.592328, 1.444702], 13);
-
-// L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-//   maxZoom: 19,
-//   attribution:
-//     '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-// }).addTo(map);
-
 function Map({ finalResult }) {
   return (
     <MapContainer
