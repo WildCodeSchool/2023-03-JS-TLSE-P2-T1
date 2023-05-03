@@ -77,7 +77,7 @@ function App() {
             // defining the tags result as an array of tags, split by comma, from el.fields.theme_de_la_manifestation, only if it exists
             tags:
               el.fields.theme_de_la_manifestation &&
-              el.fields.theme_de_la_manifestation.split(", "),
+              el.fields.theme_de_la_manifestation.split(","),
             schedules: el.fields.dates_affichage_horaires,
             phone: el.fields.reservation_telephone,
             email: el.fields.reservation_email,
@@ -120,8 +120,8 @@ function App() {
             coordinates: el.fields.geo_point_2d,
             // getting adress from API. If it doesn't exist, developer must write a condition that returns sector instead
             adress: `${
-              el.fields.ins_adresse
-            }, ${el.fields.ins_codepostal.toString()}`,
+              el.fields.ins_adresse ? `${el.fields.ins_adresse} ,` : ""
+            }${el.fields.ins_codepostal.toString()}`,
             tags: ["Stade"],
           }));
           setStadiumsResult(data);
@@ -274,8 +274,15 @@ function App() {
                   name={el.name}
                   shortDescription={el.shortDescription}
                   tags={el.tags}
-                  address={el.address}
+                  adress={el.adress}
                   schedules={el.schedules}
+                  longDescription={el.longDescription}
+                  phone={el.phone}
+                  email={el.email}
+                  startingDate={el.startingDate}
+                  endingDate={el.endingDate}
+                  access={el.access}
+                  nature={el.nature}
                 />
               ))
             : null}

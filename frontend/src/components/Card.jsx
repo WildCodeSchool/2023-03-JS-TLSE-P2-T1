@@ -6,10 +6,15 @@ function Card({
   name,
   shortDescription,
   tags,
-  address,
+  adress,
   schedules,
   api,
   isFiltersMenuVisible,
+  longDescription,
+  phone,
+  email,
+  nature,
+  access,
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   let itemContainer;
@@ -39,35 +44,34 @@ function Card({
       </div>
       <div className="descriptionContainer">
         <h3>{name}</h3>
-        {api !== "events" && <p>{schedules}</p>}
-        {api === "events" && (
+        {shortDescription ? (
           <p className="shortDescriptionCard">{shortDescription}</p>
-        )}
-        <p className="addressCard">{address}</p>
-        <p className="tagCard">{tags}</p>
+        ) : null}
+        {adress ? <p className="adressCard"> 📍{adress}</p> : null}
+        <p className="tagCard">
+          {tags} {nature}
+        </p>
         <button type="button" className="knowMore" onClick={openModal}>
           En savoir plus{" "}
         </button>
+        {/* contain of Modal card */}
         {isModalOpen && (
-          <div className="modalContainer">
+          <button className="modalContainer" type="button" onClick={closeModal}>
             <div className="modalContent">
-              <button
-                type="button"
-                className="closeButton"
-                onClick={closeModal}
-              >
-                <img
-                  src="/assets/close_icon.svg"
-                  alt="Croix de fermeture"
-                  className="closingCross"
-                />
-              </button>
-              <h2>{name}</h2>
-              <p>{shortDescription}</p>
-              <p>{address}</p>
-              <p>{tags}</p>
+              <div className="imageContainerModal">
+                <img src={imgSrc} alt={name} className="imgModal" />
+              </div>
+              <h3>{name}</h3>
+              {shortDescription ? <p>Résumé:{shortDescription}</p> : null}
+              {schedules ? <p>{schedules}</p> : null}
+              {longDescription ? <p>{longDescription}</p> : null}
+              {phone ? <p>☎️:{phone}</p> : null}
+              {email ? <p>📧{email}</p> : null}
+              {adress ? <p>{adress}</p> : null}
+              {access ? <p>Accès 🚇: {access}</p> : null}
+              <p className="tagCard">{tags}</p>
             </div>
-          </div>
+          </button>
         )}
       </div>
     </div>
@@ -78,9 +82,14 @@ Card.propTypes = {
   name: PropTypes.string.isRequired,
   shortDescription: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-  address: PropTypes.string.isRequired,
+  adress: PropTypes.string.isRequired,
   schedules: PropTypes.string.isRequired,
   api: PropTypes.string.isRequired,
+  longDescription: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  access: PropTypes.string.isRequired,
+  nature: PropTypes.string.isRequired,
   isFiltersMenuVisible: PropTypes.bool.isRequired,
 };
 
