@@ -42,6 +42,9 @@ function App() {
   // SortingMenu related states
   const [selectedSorting, setSelectedSorting] = useState("date");
 
+  // State that contains the selected date from the filters menu
+  const [dateChosen, setDateChosen] = useState("");
+
   // Defining number of events
   useEffect(() => {
     axios
@@ -249,6 +252,8 @@ function App() {
           setSelectedFilterTags={setSelectedFilterTags}
           setNavbarSportCulture={setNavbarSportCulture}
           setSelectedSorting={setSelectedSorting}
+          dateChosen={dateChosen}
+          setDateChosen={setDateChosen}
         />
       ) : null}
       {/* the beneath div corresponds to the header section */}
