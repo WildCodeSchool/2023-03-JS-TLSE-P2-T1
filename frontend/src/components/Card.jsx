@@ -1,8 +1,22 @@
-import React from "react";
 import PropTypes from "prop-types";
 import "./Card.css";
+import { useState } from "react";
 
-function Card({ name, shortDescription, tags, address, schedules, api }) {
+function Card({
+  name,
+  shortDescription,
+  tags,
+  address,
+  schedules,
+  api,
+  isFiltersMenuVisible,
+  longDescription,
+  phone,
+  email,
+  nature,
+  access,
+}) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   let itemContainer;
   let imgSrc;
   if (api === "events") {
@@ -15,23 +29,50 @@ function Card({ name, shortDescription, tags, address, schedules, api }) {
     itemContainer = "itemContainer3";
     imgSrc = "/assets/cinema.png";
   }
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   return (
-    <div className={itemContainer}>
+    <div className={`${itemContainer} ${isFiltersMenuVisible ? "hidden" : ""}`}>
+      {/* if the filters menu is visible, the itemcontainer class gets hidden class */}
       <div className="imageContainer">
         <img src={imgSrc} alt={name} className="imgCard" />
-        <button type="button" className="knowMore">
-          En savoir plus{" "}
-        </button>
       </div>
       <div className="descriptionContainer">
         <h3>{name}</h3>
-        {api !== "events" && <p>{schedules}</p>}
-        {api === "events" && (
+        {shortDescription ? (
           <p className="shortDescriptionCard">{shortDescription}</p>
+        ) : null}
+        {address ? <p className="addressCard"> 📍{address}</p> : null}
+        <p className="tagCard">
+          {tags} {nature}
+        </p>
+        <button type="button" className="knowMore" onClick={openModal}>
+          En savoir plus{" "}
+        </button>
+        {/* contain of Modal card */}
+        {isModalOpen && (
+          <button className="modalContainer" type="button" onClick={closeModal}>
+            <div className="modalContent">
+              <div className="imageContainerModal">
+                <img src={imgSrc} alt={name} className="imgModal" />
+              </div>
+              <h3>{name}</h3>
+              {shortDescription ? <p>Résumé:{shortDescription}</p> : null}
+              {schedules ? <p>{schedules}</p> : null}
+              {longDescription ? <p>{longDescription}</p> : null}
+              {phone ? <p>☎️:{phone}</p> : null}
+              {email ? <p>📧{email}</p> : null}
+              {address ? <p>{address}</p> : null}
+              {access ? <p>Accès 🚇: {access}</p> : null}
+              <p className="tagCard">{tags}</p>
+            </div>
+          </button>
         )}
-        <p>{address}</p>
-        <p className="tagCard">{tags}</p>
       </div>
     </div>
   );
@@ -44,6 +85,12 @@ Card.propTypes = {
   address: PropTypes.string.isRequired,
   schedules: PropTypes.string.isRequired,
   api: PropTypes.string.isRequired,
+  longDescription: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  access: PropTypes.string.isRequired,
+  nature: PropTypes.string.isRequired,
+  isFiltersMenuVisible: PropTypes.bool.isRequired,
 };
 
 export default Card;

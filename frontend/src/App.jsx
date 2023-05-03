@@ -4,13 +4,18 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
+import Map from "./components/Map";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 import Footer from "./components/Footer";
+import ScrollToTopButton from "./components/ScrollToTopButton";
+import SortingMenu from "./components/SortingMenu";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
 
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const [isMapActive, setIsMapActive] = useState(false);
 
   const [eventsNbr, setEventsNbr] = useState(0);
   const [eventsResult, setEventResult] = useState();
@@ -24,6 +29,26 @@ function App() {
   const [finalResult, setFinalResult] = useState([]);
 
   const [isFiltersMenuVisible, setIsFiltersMenuVisible] = useState(false);
+
+  // Navbar Filters related states
+  const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
+  const [navbarSportCulture, setNavbarSportCulture] = useState([]);
+  const [navbarDate, setNavbarDate] = useState(["Flexible"]);
+
+  // FilterTags related states
+  // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
+  const [selectedFilterTags, setSelectedFilterTags] = useState([]);
+
+  // PrimaryCheckboxButtons related states
+  // defining two states for the buttons to know if they are clicked or not
+  const [sportButtonClicked, setSportButtonClicked] = useState(false);
+  const [cultureButtonClicked, setCultureButtonClicked] = useState(false);
+
+  // SortingMenu related states
+  const [selectedSorting, setSelectedSorting] = useState("date");
+
+  // State that contains the selected date from the filters menu
+  const [dateChosen, setDateChosen] = useState("");
 
   // Defining number of events
   useEffect(() => {
@@ -57,14 +82,14 @@ function App() {
             isPlace: false,
             id: el.fields.identifiant,
             coordinates: el.fields.geo_point,
-            // defining the adress result as 'XX rue de XXX, 31XXX SOMECITY"
-            adress: `${
+            // defining the address result as 'XX rue de XXX, 31XXX SOMECITY"
+            address: `${
               el.fields.lieu_adresse_2
             }, ${el.fields.code_postal.toString()} ${el.fields.commune}`,
             // defining the tags result as an array of tags, split by comma, from el.fields.theme_de_la_manifestation, only if it exists
             tags:
               el.fields.theme_de_la_manifestation &&
-              el.fields.theme_de_la_manifestation.split(", "),
+              el.fields.theme_de_la_manifestation.split(","),
             schedules: el.fields.dates_affichage_horaires,
             phone: el.fields.reservation_telephone,
             email: el.fields.reservation_email,
@@ -105,10 +130,10 @@ function App() {
             isPlace: true,
             id: el.recordid,
             coordinates: el.fields.geo_point_2d,
-            // getting adress from API. If it doesn't exist, developer must write a condition that returns sector instead
-            adress: `${
-              el.fields.ins_adresse
-            }, ${el.fields.ins_codepostal.toString()}`,
+            // getting address from API. If it doesn't exist, developer must write a condition that returns sector instead
+            address: `${
+              el.fields.ins_adresse ? `${el.fields.ins_adresse} ,` : ""
+            }${el.fields.ins_codepostal.toString()}`,
             tags: ["Stade"],
           }));
           setStadiumsResult(data);
@@ -141,7 +166,7 @@ function App() {
             isPlace: true,
             id: el.recordid,
             coordinates: el.fields.geo_point_2d,
-            adress: `${el.fields.numero} ${
+            address: `${el.fields.numero} ${
               el.fields.lib_off
             }, ${el.fields.id_secteur_postal.toString()} ${el.fields.eq_ville}`,
             tags: ["Cinéma"],
@@ -154,7 +179,51 @@ function App() {
   // Concatinating all results into fetchedResult
   useEffect(() => {
     if (eventsResult && cinemasResult && stadiumsResult) {
-      setFetchedResult([...eventsResult, ...cinemasResult, ...stadiumsResult]);
+      // sort elements from minimum difference between (starting date or ending date) and today to maximum difference, then by nature
+      const sortedByDate = [
+        ...eventsResult,
+        ...cinemasResult,
+        ...stadiumsResult,
+      ].sort((a, b) => {
+        // declaring now as today's date
+        const now = new Date().getTime();
+
+        // declaring aDate as the minimum difference between (starting date or ending date) and today
+        let aDate = null;
+        // if both starting date and ending date exist, aDate is the minimum difference between both and today
+        if (a.startingDate && a.endingDate) {
+          const diff1 = Math.abs(new Date(a.startingDate).getTime() - now);
+          const diff2 = Math.abs(new Date(a.endingDate).getTime() - now);
+          aDate = Math.min(diff1, diff2);
+          // if only starting date exists, aDate is the difference between starting date and today
+        } else if (a.startingDate) {
+          aDate = Math.abs(new Date(a.startingDate).getTime() - now);
+          // if only ending date exists, aDate is the difference between ending date and today
+        } else if (a.endingDate) {
+          aDate = Math.abs(new Date(a.endingDate).getTime() - now);
+        }
+        // declaring bDate as the minimum difference between (starting date or ending date) and today
+        let bDate = null;
+        // if both starting date and ending date exist, bDate is the minimum difference between both and today
+        if (b.startingDate && b.endingDate) {
+          const diff1 = Math.abs(new Date(b.startingDate).getTime() - now);
+          const diff2 = Math.abs(new Date(b.endingDate).getTime() - now);
+          bDate = Math.min(diff1, diff2);
+          // if only starting date exists, bDate is the difference between starting date and today
+        } else if (b.startingDate) {
+          bDate = Math.abs(new Date(b.startingDate).getTime() - now);
+          // if only ending date exists, bDate is the difference between ending date and today
+        } else if (b.endingDate) {
+          bDate = Math.abs(new Date(b.endingDate).getTime() - now);
+        }
+        // if both aDate and bDate exist, sort by minimum difference between both and today
+        return aDate !== null && bDate !== null
+          ? aDate - bDate
+          : // if only aDate exists, sort by aDate
+            (aDate === null ? 1 : -1) || a.nature.localeCompare(b.nature);
+      });
+
+      setFetchedResult(sortedByDate);
     }
   }, [eventsResult, cinemasResult, stadiumsResult]);
 
@@ -172,6 +241,11 @@ function App() {
       <NavBar
         isFiltersMenuVisible={isFiltersMenuVisible}
         setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+        navbarDisplayedTags={navbarDisplayedTags}
+        setCultureButtonClicked={setCultureButtonClicked}
+        setSportButtonClicked={setSportButtonClicked}
+        navbarSportCulture={navbarSportCulture}
+        navbarDate={navbarDate}
       />
       {isFiltersMenuVisible ? (
         <FiltersMenu
@@ -179,20 +253,61 @@ function App() {
           isLoaded={isLoaded}
           setFinalResult={setFinalResult}
           setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+          setNavbarDisplayedTags={setNavbarDisplayedTags}
+          selectedFilterTags={selectedFilterTags}
+          setSelectedFilterTags={setSelectedFilterTags}
+          setNavbarSportCulture={setNavbarSportCulture}
+          setSelectedSorting={setSelectedSorting}
+          dateChosen={dateChosen}
+          setDateChosen={setDateChosen}
+          setNavbarDate={setNavbarDate}
         />
       ) : null}
       {/* the beneath div corresponds to the header section */}
       <header>
         <PrimaryCheckboxButton
+          isFiltersMenuVisible={isFiltersMenuVisible}
           setFinalResult={setFinalResult}
           fetchedResult={fetchedResult}
+          setSelectedFilterTags={setSelectedFilterTags}
+          setNavbarDisplayedTags={setNavbarDisplayedTags}
+          sportButtonClicked={sportButtonClicked}
+          cultureButtonClicked={cultureButtonClicked}
+          setSportButtonClicked={setSportButtonClicked}
+          setCultureButtonClicked={setCultureButtonClicked}
+          setNavbarSportCulture={setNavbarSportCulture}
+          setNavbarDate={setNavbarDate}
+          setSelectedSorting={setSelectedSorting}
         />
       </header>
       <main>
-        <div className="listContainer">
-          {isLoaded
+        {/* create div with className sorting-map-buttons and className hidden if isFiltersMenuVisible is true */}
+        <div className="sorting-map-buttons">
+          <SortingMenu
+            finalResult={finalResult}
+            setFinalResult={setFinalResult}
+            fetchedResult={fetchedResult}
+            selectedSorting={selectedSorting}
+            setSelectedSorting={setSelectedSorting}
+          />
+          <div className="containerMapSwitch">
+            <label className="labelMapSwitch">
+              <input
+                type="checkbox"
+                className="inputMapSwitch"
+                onChange={() => setIsMapActive(!isMapActive)}
+              />
+              <span className="spanMapSwitch" />
+            </label>
+          </div>
+        </div>
+        <div
+          className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""}`}
+        >
+          {isLoaded && !isMapActive
             ? finalResult.map((el) => (
                 <Card
+                  isFiltersMenuVisible={isFiltersMenuVisible}
                   key={el.id}
                   api={el.api}
                   name={el.name}
@@ -200,11 +315,22 @@ function App() {
                   tags={el.tags}
                   address={el.address}
                   schedules={el.schedules}
+                  longDescription={el.longDescription}
+                  phone={el.phone}
+                  email={el.email}
+                  startingDate={el.startingDate}
+                  endingDate={el.endingDate}
+                  access={el.access}
+                  nature={el.nature}
                 />
               ))
             : null}
         </div>
+        {isLoaded && isMapActive && !isFiltersMenuVisible ? (
+          <Map finalResult={finalResult} />
+        ) : null}
       </main>
+      <ScrollToTopButton />
       <Footer />
     </div>
   );

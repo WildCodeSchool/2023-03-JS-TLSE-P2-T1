@@ -1,0 +1,31 @@
+.dateContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  width: 95%;
+  gap: 0.8rem;
+  margin: 0.8rem auto;
+}
+
+.radioContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.dateInput {
+  width: 80%;
+  align-self: center;
+}
+
+@media (min-width: 768px) {
+  .dateContainer {
+    width: 50%;
+    gap: 1rem;
+    margin: 1rem auto;
+  }
+
+  .dateInput {
+    width: 50%;
+    align-self: center;
+  }
+}
