@@ -7,6 +7,7 @@ function DateFilter({
   dateChosen,
   setDateChosen,
 }) {
+  // setIsDateChosen(false);
   return (
     <div className="dateContainer">
       <div className="radioContainer">
