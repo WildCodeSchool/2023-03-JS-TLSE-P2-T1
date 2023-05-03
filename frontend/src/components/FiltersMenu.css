@@ -106,7 +106,15 @@ hr {
   .main-filters {
     display: flex;
     flex-direction: row;
+    /*wrap if needed*/
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
     margin-top: 8px;
+  }
+
+  .crossContainer {
+    display: none;
   }
 
   .filtersMenu {
@@ -117,12 +125,12 @@ hr {
     transform: translate(-50%, -50%);
   }
 
-  .filtersMenu h3 {
-    font-size: 1rem;
-    margin: 0;
+  hr {
+    display: none;
   }
 
-  hr {
+  /* don't display last hr */
+  .main-filters hr:last-child {
     display: none;
   }
 

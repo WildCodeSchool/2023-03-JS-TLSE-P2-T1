@@ -24,3 +24,11 @@
   transition: all 0.3s ease-in-out;
   color: white;
 }
+
+/*media queries over 768 px*/
+@media (min-width: 768px) {
+  .place-events-container {
+    /* flex-direction: row; */
+    gap: 5vw;
+  }
+}

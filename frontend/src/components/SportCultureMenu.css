@@ -41,3 +41,33 @@
   transition: all 0.3s ease-in-out;
   color: white;
 }
+
+/*media queries over 768 px*/
+@media (min-width: 768px) {
+  .sport-culture-container {
+    gap: 5vw;
+  }
+
+  /*sport-culture-container button is displayed in row*/
+  .sport-culture-container button {
+    flex-direction: row;
+    align-items: center;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 7rem;
+    height: initial;
+  }
+
+  /*sport-culture-container button p and img have no margin*/
+  .sport-culture-container button p {
+    margin: 0;
+    padding: 0;
+    padding-left: 8px;
+    font-size: 0.85rem;
+  }
+  .sport-culture-container img {
+    margin: 0;
+    height: 30%;
+  }
+}
