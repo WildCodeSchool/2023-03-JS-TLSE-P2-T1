@@ -2,7 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Card.css";
 
-function Card({ name, shortDescription, tags, address, schedules, api }) {
+function Card({
+  name,
+  shortDescription,
+  tags,
+  address,
+  schedules,
+  api,
+  isFiltersMenuVisible,
+}) {
   let itemContainer;
   let imgSrc;
   if (api === "events") {
@@ -17,7 +25,8 @@ function Card({ name, shortDescription, tags, address, schedules, api }) {
   }
 
   return (
-    <div className={itemContainer}>
+    // if the filters menu is visible, the itemcontainer class gets hidden class
+    <div className={`${itemContainer} ${isFiltersMenuVisible ? "hidden" : ""}`}>
       <div className="imageContainer">
         <img src={imgSrc} alt={name} className="imgCard" />
       </div>
@@ -44,6 +53,7 @@ Card.propTypes = {
   address: PropTypes.string.isRequired,
   schedules: PropTypes.string.isRequired,
   api: PropTypes.string.isRequired,
+  isFiltersMenuVisible: PropTypes.bool.isRequired,
 };
 
 export default Card;
