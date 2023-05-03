@@ -55,6 +55,7 @@
 @media screen and (min-width: 770px) {
   .primaryCheckboxButtons {
     margin: 24px auto;
+    margin-bottom: 0;
   }
 
   .primaryCheckboxButtons img {
