@@ -29,8 +29,8 @@ function App() {
 
   // Navbar Filters related states
   const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
-  const [navbarSportCulture, setNavbarSportCulture] = useState([]);
-  const [navbarDate, setNavbarDate] = useState(["Flexible"]);
+  const [navbarSportCulture, setNavbarSportCulture] = useState("");
+  const [navbarDate, setNavbarDate] = useState("Flexible");
 
   // FilterTags related states
   // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
@@ -308,7 +308,7 @@ function App() {
             : null}
         </div>
       </main>
-      <ScrollToTopButton />
+      <ScrollToTopButton isFiltersMenuVisible={isFiltersMenuVisible} />
       <Footer />
     </div>
   );
