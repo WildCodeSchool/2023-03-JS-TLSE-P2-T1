@@ -11,6 +11,7 @@ function PrimaryCheckboxButton({
   setSportButtonClicked,
   cultureButtonClicked,
   setCultureButtonClicked,
+  setNavbarSportCulture,
 }) {
   // defining four consts for the buttons icons url depending whether the button is clicked or not
   const cultureIcon = "\\assets\\header_icons\\culture.png";
@@ -25,6 +26,7 @@ function PrimaryCheckboxButton({
     }
     setCultureButtonClicked(!cultureButtonClicked);
     setNavbarDisplayedTags(["Tous types d'activités"]);
+    setNavbarDisplayedTags(["Tous types d'activités"]);
   };
 
   const handleClickSport = () => {
@@ -32,6 +34,7 @@ function PrimaryCheckboxButton({
       setCultureButtonClicked(!cultureButtonClicked);
     }
     setSportButtonClicked(!sportButtonClicked);
+    setNavbarDisplayedTags(["Tous types d'activités"]);
     setNavbarDisplayedTags(["Tous types d'activités"]);
   };
 
@@ -43,17 +46,20 @@ function PrimaryCheckboxButton({
       !sportButtonClicked
     ) {
       setFinalResult(fetchedResult);
+      setNavbarSportCulture("Culture et sport");
       // two other cases : only one button is clicked, returns result depending on the button chosen. Applies filters
     } else if (cultureButtonClicked && !sportButtonClicked) {
       const mainFilterResult = fetchedResult.filter(
         (result) => result.nature === "culture"
       );
       setFinalResult(mainFilterResult);
+      setNavbarSportCulture("Culture");
     } else if (!cultureButtonClicked && sportButtonClicked) {
       const mainFilterResult = fetchedResult.filter(
         (result) => result.nature === "sport"
       );
       setFinalResult(mainFilterResult);
+      setNavbarSportCulture("Sport");
     }
   }, [cultureButtonClicked, sportButtonClicked]);
   return (
@@ -63,33 +69,40 @@ function PrimaryCheckboxButton({
         isFiltersMenuVisible ? "hidden" : ""
       }`}
     >
-      <button
-        type="button"
-        className={`primaryButton cultureButton ${
-          cultureButtonClicked ? "mainButtonClicked" : ""
+      {/* if isFiltersMenuVisible is true, don't display the buttons */}
+      <div
+        className={`primaryCheckboxButtons ${
+          isFiltersMenuVisible ? "hidden" : ""
         }`}
-        onClick={() => handleClickCulture()}
       >
-        {/* displaying one icon or the other depending on button status : clicked or not */}
-        <img
-          src={cultureButtonClicked ? cultureClickedIcon : cultureIcon}
-          alt="culture"
-        />
-        <p>Culture</p>
-      </button>
-      <button
-        type="button"
-        className={`primaryButton sportButton ${
-          sportButtonClicked ? "mainButtonClicked" : ""
-        }`}
-        onClick={() => handleClickSport()}
-      >
-        <img
-          src={sportButtonClicked ? sportClickedIcon : sportIcon}
-          alt="sport"
-        />
-        <p>Sport</p>
-      </button>
+        <button
+          type="button"
+          className={`primaryButton cultureButton ${
+            cultureButtonClicked ? "mainButtonClicked" : ""
+          }`}
+          onClick={() => handleClickCulture()}
+        >
+          {/* displaying one icon or the other depending on button status : clicked or not */}
+          <img
+            src={cultureButtonClicked ? cultureClickedIcon : cultureIcon}
+            alt="culture"
+          />
+          <p>Culture</p>
+        </button>
+        <button
+          type="button"
+          className={`primaryButton sportButton ${
+            sportButtonClicked ? "mainButtonClicked" : ""
+          }`}
+          onClick={() => handleClickSport()}
+        >
+          <img
+            src={sportButtonClicked ? sportClickedIcon : sportIcon}
+            alt="sport"
+          />
+          <p>Sport</p>
+        </button>
+      </div>
     </div>
   );
 }
@@ -105,6 +118,7 @@ PrimaryCheckboxButton.propTypes = {
   setSportButtonClicked: PropTypes.func.isRequired,
   cultureButtonClicked: PropTypes.bool.isRequired,
   setCultureButtonClicked: PropTypes.func.isRequired,
+  setNavbarSportCulture: PropTypes.func.isRequired,
 };
 
 export default PrimaryCheckboxButton;

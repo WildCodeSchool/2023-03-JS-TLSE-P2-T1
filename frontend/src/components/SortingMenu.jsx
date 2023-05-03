@@ -8,6 +8,7 @@ function SortingMenu({ finalResult, setFinalResult }) {
       <p>Trier par : </p>
       <select
         className="sorting-menu"
+        defaultValue="date"
         onChange={(event) => {
           if (event.target.value === "alphabetical") {
             const alphabeticalSort = [...finalResult].sort((a, b) => {
@@ -68,8 +69,9 @@ function SortingMenu({ finalResult, setFinalResult }) {
           }
         }}
       >
-        <option value="date">Date la plus proche</option>
-        <option value="alphabetical">Ordre alphabétique</option>
+        <option value="date">Date</option>
+        <option value="alphabetical">Nom</option>
+        <option value="city-center">Proche du centre</option>
       </select>
     </div>
   );
