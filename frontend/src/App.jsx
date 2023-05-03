@@ -82,14 +82,14 @@ function App() {
             isPlace: false,
             id: el.fields.identifiant,
             coordinates: el.fields.geo_point,
-            // defining the adress result as 'XX rue de XXX, 31XXX SOMECITY"
-            adress: `${
+            // defining the address result as 'XX rue de XXX, 31XXX SOMECITY"
+            address: `${
               el.fields.lieu_adresse_2
             }, ${el.fields.code_postal.toString()} ${el.fields.commune}`,
             // defining the tags result as an array of tags, split by comma, from el.fields.theme_de_la_manifestation, only if it exists
             tags:
               el.fields.theme_de_la_manifestation &&
-              el.fields.theme_de_la_manifestation.split(", "),
+              el.fields.theme_de_la_manifestation.split(","),
             schedules: el.fields.dates_affichage_horaires,
             phone: el.fields.reservation_telephone,
             email: el.fields.reservation_email,
@@ -130,10 +130,10 @@ function App() {
             isPlace: true,
             id: el.recordid,
             coordinates: el.fields.geo_point_2d,
-            // getting adress from API. If it doesn't exist, developer must write a condition that returns sector instead
-            adress: `${
-              el.fields.ins_adresse
-            }, ${el.fields.ins_codepostal.toString()}`,
+            // getting address from API. If it doesn't exist, developer must write a condition that returns sector instead
+            address: `${
+              el.fields.ins_adresse ? `${el.fields.ins_adresse} ,` : ""
+            }${el.fields.ins_codepostal.toString()}`,
             tags: ["Stade"],
           }));
           setStadiumsResult(data);
@@ -166,7 +166,7 @@ function App() {
             isPlace: true,
             id: el.recordid,
             coordinates: el.fields.geo_point_2d,
-            adress: `${el.fields.numero} ${
+            address: `${el.fields.numero} ${
               el.fields.lib_off
             }, ${el.fields.id_secteur_postal.toString()} ${el.fields.eq_ville}`,
             tags: ["Cinéma"],
@@ -315,6 +315,13 @@ function App() {
                   tags={el.tags}
                   address={el.address}
                   schedules={el.schedules}
+                  longDescription={el.longDescription}
+                  phone={el.phone}
+                  email={el.email}
+                  startingDate={el.startingDate}
+                  endingDate={el.endingDate}
+                  access={el.access}
+                  nature={el.nature}
                 />
               ))
             : null}
