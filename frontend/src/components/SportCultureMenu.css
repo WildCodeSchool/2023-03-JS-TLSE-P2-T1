@@ -45,7 +45,7 @@
 /*media queries over 768 px*/
 @media (min-width: 768px) {
   .sport-culture-container {
-    gap: 5vw;
+    gap: 3vw;
   }
 
   /*sport-culture-container button is displayed in row*/

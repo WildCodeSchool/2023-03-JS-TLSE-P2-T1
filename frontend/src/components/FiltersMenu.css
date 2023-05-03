@@ -78,8 +78,8 @@ hr {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin-top: 8px;
-    margin-bottom: 24px;
+    margin: 8px 16px 24px 16px;
+
     /*horizontal gap between filters*/
     gap: 32px;
   }
@@ -89,7 +89,7 @@ hr {
   }
 
   .filtersMenu {
-    width: 85vw;
+    width: 80vw;
     position: fixed;
     top: 50%;
     left: 50%;
