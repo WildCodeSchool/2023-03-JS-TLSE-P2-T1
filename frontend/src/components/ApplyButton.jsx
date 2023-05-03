@@ -11,6 +11,7 @@ function ApplyButton({
   setNavbarSportCulture,
   isSportChecked,
   isCultureChecked,
+  setSelectedSorting,
 }) {
   return (
     <button
@@ -21,6 +22,7 @@ function ApplyButton({
         setFinalResult(filteredResult);
         setIsFiltersMenuVisible(false);
         setNavbarDisplayedTags(selectedFilterTags);
+        setSelectedSorting("date");
         // scrolling to the top of the page when clicking
         window.scrollTo(0, 0);
         // if both sport and culture are checked, we display "Sport & Culture" in the navbar
@@ -55,5 +57,6 @@ ApplyButton.propTypes = {
   setNavbarSportCulture: PropTypes.func.isRequired,
   isSportChecked: PropTypes.bool.isRequired,
   isCultureChecked: PropTypes.bool.isRequired,
+  setSelectedSorting: PropTypes.func.isRequired,
 };
 export default ApplyButton;

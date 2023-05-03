@@ -16,6 +16,7 @@ function FiltersMenu({
   selectedFilterTags,
   setSelectedFilterTags,
   setNavbarSportCulture,
+  setSelectedSorting,
   dateChosen,
   setDateChosen,
 }) {
@@ -251,6 +252,7 @@ function FiltersMenu({
           setNavbarSportCulture={setNavbarSportCulture}
           isSportChecked={isSportChecked}
           isCultureChecked={isCultureChecked}
+          setSelectedSorting={setSelectedSorting}
         />
       </div>
       <button
@@ -278,6 +280,7 @@ FiltersMenu.propTypes = {
   selectedFilterTags: PropTypes.arrayOf(PropTypes.string).isRequired,
   setSelectedFilterTags: PropTypes.func.isRequired,
   setNavbarSportCulture: PropTypes.func.isRequired,
+  setSelectedSorting: PropTypes.func.isRequired,
   dateChosen: PropTypes.string.isRequired,
   setDateChosen: PropTypes.func.isRequired,
 };
