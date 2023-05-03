@@ -12,6 +12,8 @@ function PrimaryCheckboxButton({
   cultureButtonClicked,
   setCultureButtonClicked,
   setNavbarSportCulture,
+  setNavbarDate,
+  setSelectedSorting,
 }) {
   // defining four consts for the buttons icons url depending whether the button is clicked or not
   const cultureIcon = "\\assets\\header_icons\\culture.png";
@@ -26,6 +28,8 @@ function PrimaryCheckboxButton({
     }
     setCultureButtonClicked(!cultureButtonClicked);
     setNavbarDisplayedTags(["Tous types d'activités"]);
+    setNavbarDisplayedTags(["Tous types d'activités"]);
+    setSelectedSorting("date");
   };
 
   const handleClickSport = () => {
@@ -34,6 +38,8 @@ function PrimaryCheckboxButton({
     }
     setSportButtonClicked(!sportButtonClicked);
     setNavbarDisplayedTags(["Tous types d'activités"]);
+    setNavbarDisplayedTags(["Tous types d'activités"]);
+    setSelectedSorting("date");
   };
 
   // useEffect monitors any change on clicked state of the two buttons and filters fetched_result according to the buttons clicked
@@ -52,12 +58,14 @@ function PrimaryCheckboxButton({
       );
       setFinalResult(mainFilterResult);
       setNavbarSportCulture("Culture");
+      setNavbarDate("Je suis flexible");
     } else if (!cultureButtonClicked && sportButtonClicked) {
       const mainFilterResult = fetchedResult.filter(
         (result) => result.nature === "sport"
       );
       setFinalResult(mainFilterResult);
       setNavbarSportCulture("Sport");
+      setNavbarDate("Je suis flexible");
     }
   }, [cultureButtonClicked, sportButtonClicked]);
   return (
@@ -67,33 +75,40 @@ function PrimaryCheckboxButton({
         isFiltersMenuVisible ? "hidden" : ""
       }`}
     >
-      <button
-        type="button"
-        className={`primaryButton cultureButton ${
-          cultureButtonClicked ? "mainButtonClicked" : ""
+      {/* if isFiltersMenuVisible is true, don't display the buttons */}
+      <div
+        className={`primaryCheckboxButtons ${
+          isFiltersMenuVisible ? "hidden" : ""
         }`}
-        onClick={() => handleClickCulture()}
       >
-        {/* displaying one icon or the other depending on button status : clicked or not */}
-        <img
-          src={cultureButtonClicked ? cultureClickedIcon : cultureIcon}
-          alt="culture"
-        />
-        <p>Culture</p>
-      </button>
-      <button
-        type="button"
-        className={`primaryButton sportButton ${
-          sportButtonClicked ? "mainButtonClicked" : ""
-        }`}
-        onClick={() => handleClickSport()}
-      >
-        <img
-          src={sportButtonClicked ? sportClickedIcon : sportIcon}
-          alt="sport"
-        />
-        <p>Sport</p>
-      </button>
+        <button
+          type="button"
+          className={`primaryButton cultureButton ${
+            cultureButtonClicked ? "mainButtonClicked" : ""
+          }`}
+          onClick={() => handleClickCulture()}
+        >
+          {/* displaying one icon or the other depending on button status : clicked or not */}
+          <img
+            src={cultureButtonClicked ? cultureClickedIcon : cultureIcon}
+            alt="culture"
+          />
+          <p>Culture</p>
+        </button>
+        <button
+          type="button"
+          className={`primaryButton sportButton ${
+            sportButtonClicked ? "mainButtonClicked" : ""
+          }`}
+          onClick={() => handleClickSport()}
+        >
+          <img
+            src={sportButtonClicked ? sportClickedIcon : sportIcon}
+            alt="sport"
+          />
+          <p>Sport</p>
+        </button>
+      </div>
     </div>
   );
 }
@@ -110,6 +125,8 @@ PrimaryCheckboxButton.propTypes = {
   cultureButtonClicked: PropTypes.bool.isRequired,
   setCultureButtonClicked: PropTypes.func.isRequired,
   setNavbarSportCulture: PropTypes.func.isRequired,
+  setNavbarDate: PropTypes.func.isRequired,
+  setSelectedSorting: PropTypes.func.isRequired,
 };
 
 export default PrimaryCheckboxButton;

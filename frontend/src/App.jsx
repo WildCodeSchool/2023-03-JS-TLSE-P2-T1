@@ -6,6 +6,8 @@ import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 import Footer from "./components/Footer";
+import ScrollToTopButton from "./components/ScrollToTopButton";
+import SortingMenu from "./components/SortingMenu";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -28,6 +30,7 @@ function App() {
   // Navbar Filters related states
   const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
   const [navbarSportCulture, setNavbarSportCulture] = useState([]);
+  const [navbarDate, setNavbarDate] = useState(["Flexible"]);
 
   // FilterTags related states
   // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
@@ -37,6 +40,12 @@ function App() {
   // defining two states for the buttons to know if they are clicked or not
   const [sportButtonClicked, setSportButtonClicked] = useState(false);
   const [cultureButtonClicked, setCultureButtonClicked] = useState(false);
+
+  // SortingMenu related states
+  const [selectedSorting, setSelectedSorting] = useState("date");
+
+  // State that contains the selected date from the filters menu
+  const [dateChosen, setDateChosen] = useState("");
 
   // Defining number of events
   useEffect(() => {
@@ -233,6 +242,7 @@ function App() {
         setCultureButtonClicked={setCultureButtonClicked}
         setSportButtonClicked={setSportButtonClicked}
         navbarSportCulture={navbarSportCulture}
+        navbarDate={navbarDate}
       />
       {isFiltersMenuVisible ? (
         <FiltersMenu
@@ -244,6 +254,10 @@ function App() {
           selectedFilterTags={selectedFilterTags}
           setSelectedFilterTags={setSelectedFilterTags}
           setNavbarSportCulture={setNavbarSportCulture}
+          setSelectedSorting={setSelectedSorting}
+          dateChosen={dateChosen}
+          setDateChosen={setDateChosen}
+          setNavbarDate={setNavbarDate}
         />
       ) : null}
       {/* the beneath div corresponds to the header section */}
@@ -259,9 +273,22 @@ function App() {
           setSportButtonClicked={setSportButtonClicked}
           setCultureButtonClicked={setCultureButtonClicked}
           setNavbarSportCulture={setNavbarSportCulture}
+          setNavbarDate={setNavbarDate}
+          setSelectedSorting={setSelectedSorting}
         />
       </header>
       <main>
+        {/* create div with className sorting-map-buttons and className hidden if isFiltersMenuVisible is true */}
+        <div className="sorting-map-buttons">
+          <SortingMenu
+            finalResult={finalResult}
+            setFinalResult={setFinalResult}
+            fetchedResult={fetchedResult}
+            selectedSorting={selectedSorting}
+            setSelectedSorting={setSelectedSorting}
+          />
+          <button type="button">Map to List Button</button>
+        </div>
         <div
           className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""}`}
         >
@@ -288,6 +315,7 @@ function App() {
             : null}
         </div>
       </main>
+      <ScrollToTopButton />
       <Footer />
     </div>
   );
