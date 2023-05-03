@@ -15,6 +15,13 @@
   font-family: Poppins, sans-serif;
 }
 
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* styling all buttons  */
 button {
   padding: 0;
@@ -35,7 +42,7 @@ header {
   justify-content: center;
 }
 
-.listContainer.hidden {
+.hidden {
   display: none;
 }
 
@@ -44,7 +51,65 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin: auto 16px;
+  width: 90%;
+}
+
+/* Map toggler styling */
+.containerMapSwitch {
+  width: 5rem;
+  height: 1.9rem;
+  position: relative;
+}
+
+.labelMapSwitch {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.inputMapSwitch {
+  position: absolute;
+  display: none;
+}
+
+.spanMapSwitch {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  /* background-color: black; */
+  border: 1px solid black;
+  background: #fff;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.spanMapSwitch::before {
+  content: "";
+  background-image: url("/assets/Map.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  transform: translateX(-1.2rem);
+}
+
+.inputMapSwitch:checked + .spanMapSwitch::before {
+  content: "";
+  background-image: url("/assets/List.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translateX(1.2rem);
 }
 
 .sorting-map-buttons.hidden {
