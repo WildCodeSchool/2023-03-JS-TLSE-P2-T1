@@ -39,6 +39,9 @@ function App() {
   const [sportButtonClicked, setSportButtonClicked] = useState(false);
   const [cultureButtonClicked, setCultureButtonClicked] = useState(false);
 
+  // State that contains the selected date from the filters menu
+  const [dateChosen, setDateChosen] = useState("");
+
   // Defining number of events
   useEffect(() => {
     axios
@@ -245,6 +248,8 @@ function App() {
           selectedFilterTags={selectedFilterTags}
           setSelectedFilterTags={setSelectedFilterTags}
           setNavbarSportCulture={setNavbarSportCulture}
+          dateChosen={dateChosen}
+          setDateChosen={setDateChosen}
         />
       ) : null}
       {/* the beneath div corresponds to the header section */}
