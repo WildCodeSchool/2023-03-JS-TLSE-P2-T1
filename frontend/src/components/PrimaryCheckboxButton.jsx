@@ -11,6 +11,7 @@ function PrimaryCheckboxButton({
   setSportButtonClicked,
   cultureButtonClicked,
   setCultureButtonClicked,
+  setNavbarSportCulture,
 }) {
   // defining four consts for the buttons icons url depending whether the button is clicked or not
   const cultureIcon = "\\assets\\header_icons\\culture.png";
@@ -43,17 +44,20 @@ function PrimaryCheckboxButton({
       !sportButtonClicked
     ) {
       setFinalResult(fetchedResult);
+      setNavbarSportCulture("Culture et sport");
       // two other cases : only one button is clicked, returns result depending on the button chosen. Applies filters
     } else if (cultureButtonClicked && !sportButtonClicked) {
       const mainFilterResult = fetchedResult.filter(
         (result) => result.nature === "culture"
       );
       setFinalResult(mainFilterResult);
+      setNavbarSportCulture("Culture");
     } else if (!cultureButtonClicked && sportButtonClicked) {
       const mainFilterResult = fetchedResult.filter(
         (result) => result.nature === "sport"
       );
       setFinalResult(mainFilterResult);
+      setNavbarSportCulture("Sport");
     }
   }, [cultureButtonClicked, sportButtonClicked]);
   return (
@@ -105,6 +109,7 @@ PrimaryCheckboxButton.propTypes = {
   setSportButtonClicked: PropTypes.func.isRequired,
   cultureButtonClicked: PropTypes.bool.isRequired,
   setCultureButtonClicked: PropTypes.func.isRequired,
+  setNavbarSportCulture: PropTypes.func.isRequired,
 };
 
 export default PrimaryCheckboxButton;
