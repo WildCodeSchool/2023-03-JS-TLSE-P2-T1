@@ -2,9 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: space-between;
-  width: 95%;
-  gap: 10vw;
-  margin: 0.8rem auto;
+  margin-bottom: 16px;
 }
 .choseDateContainer label {
   white-space: nowrap;
@@ -23,12 +21,13 @@
 
 .dateInput {
   border: none;
-  width: 80%;
+  width: 50%;
   align-self: center;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-  border-radius: 5rem;
-  padding: 4px 8px;
-  margin: 8px 8px;
+  border-radius: 40px;
+  padding: 8px 8px;
+  margin: 8px 16px;
+  margin-top: 24px;
   font-size: 0.75rem;
 }
 
@@ -50,11 +49,7 @@
 
 @media (min-width: 768px) {
   .dateInput {
-    width: 30%;
-  }
-
-  .dateContainer {
-    margin: 0;
+    width: 40%;
   }
 
   .radioContainer {
