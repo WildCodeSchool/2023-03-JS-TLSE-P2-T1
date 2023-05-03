@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import "./DateFilter.css";
 
 function DateFilter({
   isDateChosen,
@@ -7,21 +8,27 @@ function DateFilter({
   setDateChosen,
 }) {
   return (
-    <div>
-      <input
-        type="radio"
-        name="date"
-        id="choseDate"
-        onChange={() => setIsDateChosen(true)}
-      />
-      <label htmlFor="choseDate">Choisir une date</label>
-      <input
-        type="radio"
-        name="date"
-        id="flexible"
-        onChange={() => setIsDateChosen(false)}
-      />
-      <label htmlFor="flexible">Je suis flexible</label>
+    <div className="dateContainer">
+      <div className="radioContainer">
+        <div className="choseDateContainer">
+          <input
+            type="radio"
+            name="date"
+            id="choseDate"
+            onChange={() => setIsDateChosen(true)}
+          />
+          <label htmlFor="choseDate">Choisir une date</label>
+        </div>
+        <div className="flexibleContainer">
+          <input
+            type="radio"
+            name="date"
+            id="flexible"
+            onChange={() => setIsDateChosen(false)}
+          />
+          <label htmlFor="flexible">Je suis flexible</label>
+        </div>
+      </div>
       {isDateChosen ? (
         <input
           type="date"

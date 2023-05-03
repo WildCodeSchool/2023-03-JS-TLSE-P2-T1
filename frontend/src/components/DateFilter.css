@@ -1,0 +1,12 @@
+.dateContainer {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  gap: 0.8rem;
+  margin: 0.8rem auto;
+}
+
+.radioContainer {
+  display: flex;
+  justify-content: space-around;
+}
