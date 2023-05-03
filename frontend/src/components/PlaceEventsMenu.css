@@ -1,8 +1,15 @@
+.place-events-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10vw;
+}
+
 .placeEventsButton {
-  width: 8rem;
+  width: 7rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   padding: 8px;
+  font-size: 0.85rem;
 }
 
 .placeEventsButton:hover {

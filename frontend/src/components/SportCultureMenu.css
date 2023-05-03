@@ -1,0 +1,43 @@
+.sport-culture-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10vw;
+}
+
+.sport-culture-container button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 75px;
+}
+
+.sport-culture-container p {
+  margin: 5px;
+  padding-bottom: 8px;
+}
+.sport-culture-container button:hover {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transform: translateY(1px);
+}
+
+.sport-culture-container button p {
+  font-size: 0.8rem;
+}
+
+.sport-culture-container img {
+  height: 45%;
+  width: auto;
+  margin-top: 16px;
+}
+
+.sport-culture-clicked {
+  background: #151d48;
+  box-shadow: none;
+  transition: all 0.3s ease-in-out;
+  color: white;
+}

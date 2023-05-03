@@ -22,7 +22,7 @@ function PlaceEventsMenu({
   };
 
   return (
-    <div className="primaryCheckboxButtons">
+    <div className="place-events-container">
       <button
         type="button"
         className={`placeEventsButton ${
