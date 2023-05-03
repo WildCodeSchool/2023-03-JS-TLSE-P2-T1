@@ -6,6 +6,7 @@ import FiltersMenu from "./components/FiltersMenu";
 import Card from "./components/Card";
 import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 import Footer from "./components/Footer";
+import SortingMenu from "./components/SortingMenu";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -37,6 +38,9 @@ function App() {
   // defining two states for the buttons to know if they are clicked or not
   const [sportButtonClicked, setSportButtonClicked] = useState(false);
   const [cultureButtonClicked, setCultureButtonClicked] = useState(false);
+
+  // SortingMenu related states
+  const [selectedSorting, setSelectedSorting] = useState("date");
 
   // State that contains the selected date from the filters menu
   const [dateChosen, setDateChosen] = useState("");
@@ -247,6 +251,7 @@ function App() {
           selectedFilterTags={selectedFilterTags}
           setSelectedFilterTags={setSelectedFilterTags}
           setNavbarSportCulture={setNavbarSportCulture}
+          setSelectedSorting={setSelectedSorting}
           dateChosen={dateChosen}
           setDateChosen={setDateChosen}
         />
@@ -264,9 +269,21 @@ function App() {
           setSportButtonClicked={setSportButtonClicked}
           setCultureButtonClicked={setCultureButtonClicked}
           setNavbarSportCulture={setNavbarSportCulture}
+          setSelectedSorting={setSelectedSorting}
         />
       </header>
       <main>
+        {/* create div with className sorting-map-buttons and className hidden if isFiltersMenuVisible is true */}
+        <div className="sorting-map-buttons">
+          <SortingMenu
+            finalResult={finalResult}
+            setFinalResult={setFinalResult}
+            fetchedResult={fetchedResult}
+            selectedSorting={selectedSorting}
+            setSelectedSorting={setSelectedSorting}
+          />
+          <button type="button">Map to List Button</button>
+        </div>
         <div
           className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""}`}
         >
