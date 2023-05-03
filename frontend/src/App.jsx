@@ -79,9 +79,9 @@ function App() {
             isPlace: false,
             id: el.fields.identifiant,
             coordinates: el.fields.geo_point,
-            // defining the adress result as 'XX rue de XXX, 31XXX SOMECITY"
-            adress: `${
-              el.fields.lieu_adresse_2
+            // defining the address result as 'XX rue de XXX, 31XXX SOMECITY"
+            address: `${
+              el.fields.lieu_addresse_2
             }, ${el.fields.code_postal.toString()} ${el.fields.commune}`,
             // defining the tags result as an array of tags, split by comma, from el.fields.theme_de_la_manifestation, only if it exists
             tags:
@@ -127,9 +127,9 @@ function App() {
             isPlace: true,
             id: el.recordid,
             coordinates: el.fields.geo_point_2d,
-            // getting adress from API. If it doesn't exist, developer must write a condition that returns sector instead
-            adress: `${
-              el.fields.ins_adresse ? `${el.fields.ins_adresse} ,` : ""
+            // getting address from API. If it doesn't exist, developer must write a condition that returns sector instead
+            address: `${
+              el.fields.ins_addresse ? `${el.fields.ins_addresse} ,` : ""
             }${el.fields.ins_codepostal.toString()}`,
             tags: ["Stade"],
           }));
@@ -163,7 +163,7 @@ function App() {
             isPlace: true,
             id: el.recordid,
             coordinates: el.fields.geo_point_2d,
-            adress: `${el.fields.numero} ${
+            address: `${el.fields.numero} ${
               el.fields.lib_off
             }, ${el.fields.id_secteur_postal.toString()} ${el.fields.eq_ville}`,
             tags: ["Cinéma"],
@@ -301,7 +301,7 @@ function App() {
                   name={el.name}
                   shortDescription={el.shortDescription}
                   tags={el.tags}
-                  adress={el.adress}
+                  address={el.address}
                   schedules={el.schedules}
                   longDescription={el.longDescription}
                   phone={el.phone}

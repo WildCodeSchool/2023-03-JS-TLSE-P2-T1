@@ -6,7 +6,7 @@ function Card({
   name,
   shortDescription,
   tags,
-  adress,
+  address,
   schedules,
   api,
   isFiltersMenuVisible,
@@ -47,7 +47,7 @@ function Card({
         {shortDescription ? (
           <p className="shortDescriptionCard">{shortDescription}</p>
         ) : null}
-        {adress ? <p className="adressCard"> 📍{adress}</p> : null}
+        {address ? <p className="addressCard"> 📍{address}</p> : null}
         <p className="tagCard">
           {tags} {nature}
         </p>
@@ -67,7 +67,7 @@ function Card({
               {longDescription ? <p>{longDescription}</p> : null}
               {phone ? <p>☎️:{phone}</p> : null}
               {email ? <p>📧{email}</p> : null}
-              {adress ? <p>{adress}</p> : null}
+              {address ? <p>{address}</p> : null}
               {access ? <p>Accès 🚇: {access}</p> : null}
               <p className="tagCard">{tags}</p>
             </div>
@@ -82,7 +82,7 @@ Card.propTypes = {
   name: PropTypes.string.isRequired,
   shortDescription: PropTypes.string.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-  adress: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
   schedules: PropTypes.string.isRequired,
   api: PropTypes.string.isRequired,
   longDescription: PropTypes.string.isRequired,
