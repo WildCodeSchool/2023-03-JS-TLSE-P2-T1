@@ -12,6 +12,7 @@ function PrimaryCheckboxButton({
   cultureButtonClicked,
   setCultureButtonClicked,
   setNavbarSportCulture,
+  setSelectedSorting,
 }) {
   // defining four consts for the buttons icons url depending whether the button is clicked or not
   const cultureIcon = "\\assets\\header_icons\\culture.png";
@@ -27,6 +28,7 @@ function PrimaryCheckboxButton({
     setCultureButtonClicked(!cultureButtonClicked);
     setNavbarDisplayedTags(["Tous types d'activités"]);
     setNavbarDisplayedTags(["Tous types d'activités"]);
+    setSelectedSorting("date");
   };
 
   const handleClickSport = () => {
@@ -36,6 +38,7 @@ function PrimaryCheckboxButton({
     setSportButtonClicked(!sportButtonClicked);
     setNavbarDisplayedTags(["Tous types d'activités"]);
     setNavbarDisplayedTags(["Tous types d'activités"]);
+    setSelectedSorting("date");
   };
 
   // useEffect monitors any change on clicked state of the two buttons and filters fetched_result according to the buttons clicked
@@ -119,6 +122,7 @@ PrimaryCheckboxButton.propTypes = {
   cultureButtonClicked: PropTypes.bool.isRequired,
   setCultureButtonClicked: PropTypes.func.isRequired,
   setNavbarSportCulture: PropTypes.func.isRequired,
+  setSelectedSorting: PropTypes.func.isRequired,
 };
 
 export default PrimaryCheckboxButton;

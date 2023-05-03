@@ -2,13 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./SortingMenu.css";
 
-function SortingMenu({ finalResult, setFinalResult }) {
+function SortingMenu({
+  finalResult,
+  setFinalResult,
+  selectedSorting,
+  setSelectedSorting,
+}) {
   return (
     <div>
       <p>Trier par : </p>
       <select
         className="sorting-menu"
-        defaultValue="date"
+        value={selectedSorting}
         onChange={(event) => {
           if (event.target.value === "alphabetical") {
             const alphabeticalSort = [...finalResult].sort((a, b) => {
@@ -66,12 +71,28 @@ function SortingMenu({ finalResult, setFinalResult }) {
             });
 
             setFinalResult(sortedByDate);
+          } else if (event.target.value === "city-center") {
+            // Capitole's place coordinates are 43.6044290, 1.4438120
+            const sortedByCityCenter = [...finalResult].sort((a, b) => {
+              // declaring aDistance as the distance between a and Capitole
+              const aDistance =
+                Math.abs(a.coordinates[0] - 43.604429) ** 2 +
+                Math.abs(a.coordinates[1] - 1.443812) ** 2;
+              // declaring bDistance as the distance between b and Capitole
+              const bDistance =
+                Math.abs(b.coordinates[0] - 43.604429) ** 2 +
+                Math.abs(b.coordinates[1] - 1.443812) ** 2;
+              // sort by distance
+              return aDistance - bDistance;
+            });
+            setFinalResult(sortedByCityCenter);
           }
+          setSelectedSorting(event.target.value);
         }}
       >
-        <option value="date">Date</option>
+        <option value="date">Date la plus proche</option>
+        <option value="city-center">Proximité du centre-ville</option>
         <option value="alphabetical">Nom</option>
-        <option value="city-center">Proche du centre</option>
       </select>
     </div>
   );
@@ -84,4 +105,6 @@ SortingMenu.propTypes = {
     PropTypes.shape({ nature: PropTypes.string.isRequired }).isRequired
   ).isRequired,
   setFinalResult: PropTypes.func.isRequired,
+  selectedSorting: PropTypes.string.isRequired,
+  setSelectedSorting: PropTypes.func.isRequired,
 };

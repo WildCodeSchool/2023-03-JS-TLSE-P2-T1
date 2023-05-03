@@ -39,6 +39,9 @@ function App() {
   const [sportButtonClicked, setSportButtonClicked] = useState(false);
   const [cultureButtonClicked, setCultureButtonClicked] = useState(false);
 
+  // SortingMenu related states
+  const [selectedSorting, setSelectedSorting] = useState("date");
+
   // Defining number of events
   useEffect(() => {
     axios
@@ -260,6 +263,7 @@ function App() {
           setSportButtonClicked={setSportButtonClicked}
           setCultureButtonClicked={setCultureButtonClicked}
           setNavbarSportCulture={setNavbarSportCulture}
+          setSelectedSorting={setSelectedSorting}
         />
       </header>
       <main>
@@ -269,6 +273,8 @@ function App() {
             finalResult={finalResult}
             setFinalResult={setFinalResult}
             fetchedResult={fetchedResult}
+            selectedSorting={selectedSorting}
+            setSelectedSorting={setSelectedSorting}
           />
           <button type="button">Map to List Button</button>
         </div>
