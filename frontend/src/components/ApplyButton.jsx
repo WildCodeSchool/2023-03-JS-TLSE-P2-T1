@@ -11,6 +11,7 @@ function ApplyButton({
   setNavbarSportCulture,
   isSportChecked,
   isCultureChecked,
+  setSelectedSorting,
   setNavbarDate,
   dateChosen,
   isDateChosen,
@@ -25,10 +26,16 @@ function ApplyButton({
         setIsFiltersMenuVisible(false);
         setNavbarDisplayedTags(selectedFilterTags);
         if (isDateChosen) {
-          setNavbarDate(dateChosen);
+          /* modify dateChosen "2023-05-25" like into "25/05/2023" */
+          const dateChosenModified = `${dateChosen.slice(
+            8,
+            10
+          )}/${dateChosen.slice(5, 7)}/${dateChosen.slice(0, 4)}`;
+          setNavbarDate(dateChosenModified);
         } else {
           setNavbarDate("Je suis flexible");
         }
+        setSelectedSorting("date");
         // scrolling to the top of the page when clicking
         window.scrollTo(0, 0);
         // if both sport and culture are checked, we display "Sport & Culture" in the navbar
@@ -66,5 +73,6 @@ ApplyButton.propTypes = {
   setNavbarDate: PropTypes.func.isRequired,
   dateChosen: PropTypes.string.isRequired,
   isDateChosen: PropTypes.bool.isRequired,
+  setSelectedSorting: PropTypes.func.isRequired,
 };
 export default ApplyButton;
