@@ -81,7 +81,7 @@ function App() {
             coordinates: el.fields.geo_point,
             // defining the address result as 'XX rue de XXX, 31XXX SOMECITY"
             address: `${
-              el.fields.lieu_addresse_2
+              el.fields.lieu_adresse_2
             }, ${el.fields.code_postal.toString()} ${el.fields.commune}`,
             // defining the tags result as an array of tags, split by comma, from el.fields.theme_de_la_manifestation, only if it exists
             tags:
@@ -129,7 +129,7 @@ function App() {
             coordinates: el.fields.geo_point_2d,
             // getting address from API. If it doesn't exist, developer must write a condition that returns sector instead
             address: `${
-              el.fields.ins_addresse ? `${el.fields.ins_addresse} ,` : ""
+              el.fields.ins_adresse ? `${el.fields.ins_adresse} ,` : ""
             }${el.fields.ins_codepostal.toString()}`,
             tags: ["Stade"],
           }));
