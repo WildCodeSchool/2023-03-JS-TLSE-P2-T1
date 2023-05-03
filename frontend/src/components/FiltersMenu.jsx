@@ -12,6 +12,7 @@ function FiltersMenu({
   isLoaded,
   setFinalResult,
   setIsFiltersMenuVisible,
+  setNavbarDisplayedTags,
   selectedFilterTags,
   setSelectedFilterTags,
   setNavbarSportCulture,
@@ -243,6 +244,7 @@ function FiltersMenu({
         filteredResult={filteredResult}
         setFinalResult={setFinalResult}
         setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+        setNavbarDisplayedTags={setNavbarDisplayedTags}
         setNavbarSportCulture={setNavbarSportCulture}
         isSportChecked={isSportChecked}
         isCultureChecked={isCultureChecked}
@@ -261,6 +263,7 @@ FiltersMenu.propTypes = {
   isLoaded: PropTypes.bool.isRequired,
   setFinalResult: PropTypes.func.isRequired,
   setIsFiltersMenuVisible: PropTypes.func.isRequired,
+  setNavbarDisplayedTags: PropTypes.func.isRequired,
   selectedFilterTags: PropTypes.arrayOf(PropTypes.string).isRequired,
   setSelectedFilterTags: PropTypes.func.isRequired,
   setNavbarSportCulture: PropTypes.func.isRequired,
