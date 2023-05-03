@@ -248,6 +248,7 @@ function App() {
           selectedFilterTags={selectedFilterTags}
           setSelectedFilterTags={setSelectedFilterTags}
           setNavbarSportCulture={setNavbarSportCulture}
+          setSelectedSorting={setSelectedSorting}
         />
       ) : null}
       {/* the beneath div corresponds to the header section */}
