@@ -46,8 +46,8 @@ function NavBar({
             />
             <div className="header_filters">
               <div className="header_main_filters">
-                <p>{navbarSportCulture} | </p>
-                <p id="navbar-date">{navbarDate}</p>
+                <p>{navbarSportCulture}</p>
+                <p id="navbar-date">| {navbarDate}</p>
               </div>
               <div className="header_tags_filters">
                 {/* map the filterTagName element to display p */}
