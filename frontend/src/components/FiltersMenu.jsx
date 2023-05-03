@@ -12,6 +12,8 @@ function FiltersMenu({
   isLoaded,
   setFinalResult,
   setIsFiltersMenuVisible,
+  selectedFilterTags,
+  setSelectedFilterTags,
 }) {
   const [isSportChecked, setIsSportChecked] = useState(false);
   const [isCultureChecked, setIsCultureChecked] = useState(false);
@@ -20,9 +22,6 @@ function FiltersMenu({
   const [isDateChosen, setIsDateChosen] = useState(false);
   const [dateChosen, setDateChosen] = useState("");
 
-  // FilterTags related components
-  // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
-  const [selectedFilterTags, setSelectedFilterTags] = useState([]);
   // filteredResult : array of objects that have been filtered according to different filters
   const [filteredResult, setFilteredResult] = useState([]);
 
@@ -258,6 +257,8 @@ FiltersMenu.propTypes = {
   isLoaded: PropTypes.bool.isRequired,
   setFinalResult: PropTypes.func.isRequired,
   setIsFiltersMenuVisible: PropTypes.func.isRequired,
+  selectedFilterTags: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setSelectedFilterTags: PropTypes.func.isRequired,
 };
 
 export default FiltersMenu;

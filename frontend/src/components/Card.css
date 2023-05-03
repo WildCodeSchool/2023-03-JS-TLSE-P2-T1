@@ -1,4 +1,10 @@
 /* container card of events */
+.itemContainer.hidden,
+.itemContainer2.hidden,
+.itemContainer3.hidden {
+  display: none;
+}
+
 .itemContainer {
   display: flex;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -111,6 +117,12 @@
 
 /* responsive for device higher to 575px */
 @media (min-width: 575px) {
+  .itemContainer.hidden,
+  .itemContainer2.hidden,
+  .itemContainer3.hidden {
+    display: initial;
+  }
+
   /* card of events */
   .itemContainer {
     width: 25vw;
