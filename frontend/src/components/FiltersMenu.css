@@ -84,10 +84,6 @@ hr {
     gap: 32px;
   }
 
-  .crossContainer {
-    /* display: none; */
-  }
-
   .filtersMenu {
     width: 80vw;
     position: fixed;
