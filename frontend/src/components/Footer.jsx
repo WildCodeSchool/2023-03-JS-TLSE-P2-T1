@@ -20,10 +20,11 @@ function Footer() {
         {/* contain of Modal card */}
         {isModalOpen && (
           <button className="modalContainer" type="button" onClick={closeModal}>
-            <div className="modalContent aboutUsContent">
+            <div className="aboutUsContent">
               <h2>Qui Sommes-Nous</h2>
               <p>
                 Bienvenue sur myTouloulist ! <br />
+                <br />
                 Nous sommes Gaspard Caillaud, Nolan de Puydt et Jean-Nicaise
                 Konan, trois étudiants en développement web à Toulouse. <br />
                 <br />
@@ -40,10 +41,8 @@ function Footer() {
                 travailler à l’amélioration de notre site. <br />
                 <br />
                 Enfin, nous aimerions remercier Toulouse Métropole pour la
-                qualité et la disponibilité de ses données.
-                <br />
-                <br /> Si vous cherchez des données fiables sur Toulouse et sa
-                région, nous vous invitons à visiter leur site Web 🌐:
+                qualité et la disponibilité de ses données. Nous vous invitons à
+                visiter leur site Web 🌐:
                 <br />
                 <a
                   href="https://data.toulouse-metropole.fr/pages/accueil/"

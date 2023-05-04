@@ -65,25 +65,25 @@ footer button {
 }
 
 /* content of modal */
-.modalContent {
+.aboutUsContent {
   text-align: justify;
   background-color: white;
-  padding: 1rem;
-  /* border-radius: 0.5rem; */
-  z-index: 1000;
+  padding: 24px;
   max-width: 80%;
   max-height: 80%;
   overflow-y: auto;
+  border-radius: 40px;
 }
-.modalContent h2 {
+.aboutUsContent h2 {
   text-align: center;
+  margin-top: 0;
 }
 
-.modalContainer p {
-  margin: auto 32px;
+.aboutUsContent p {
+  margin: 16px;
 }
 
-.modalContent apush {
+.aboutUsContent apush {
   text-decoration: none;
   color: #151d48;
 }
