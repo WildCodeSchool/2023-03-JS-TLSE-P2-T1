@@ -12,7 +12,7 @@
   flex-direction: column;
   background-color: #fff;
   margin-top: 8px;
-  margin-bottom: 92px;
+  margin-bottom: 96px;
   z-index: 8;
 }
 
@@ -31,36 +31,84 @@
   margin: 8px;
 }
 
+.culture-sport-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.place-event-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date-filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .filtersMenu h3 {
-  font-weight: 500;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0 auto 8px auto;
 }
 
 hr {
-  width: 85%;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  width: 70vw;
+}
+.main-filters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
+/*don't display last h3*/
+#additional-filters {
+  display: none;
+}
 /*media queries over 768px*/
 @media (min-width: 768px) {
+  .main-filters {
+    display: flex;
+    flex-direction: row;
+    /*wrap if needed*/
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 8px 16px 24px 16px;
+
+    /*horizontal gap between filters*/
+    gap: 32px;
+  }
+
+  .crossContainer {
+    display: none;
+  }
+
   .filtersMenu {
-    width: 85vw;
+    width: 80vw;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
 
-  .filtersMenu h3 {
-    font-size: 1.3rem;
-    margin: 0;
+  hr {
+    display: none;
   }
 
-  hr {
-    width: 90%;
-    margin: 8px;
+  .hr-desktop-displayed {
+    display: initial;
+    width: 0px;
+    height: 50px;
+  }
+
+  /* don't display last hr */
+  .main-filters hr:last-child {
+    display: none;
   }
 
   /*filters menu background fits all the page*/
@@ -78,5 +126,20 @@ hr {
 
   .filtersMenu {
     z-index: 12;
+  }
+
+  #additional-filters {
+    display: initial;
+    margin-bottom: 24px;
+  }
+
+  .filtersMenu h3 {
+    font-weight: 300;
+    margin: 0 auto 8px auto;
+  }
+
+  .date-filter {
+    margin: 0;
+    margin-top: 8px;
   }
 }

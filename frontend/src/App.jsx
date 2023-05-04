@@ -32,8 +32,8 @@ function App() {
 
   // Navbar Filters related states
   const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
-  const [navbarSportCulture, setNavbarSportCulture] = useState([]);
-  const [navbarDate, setNavbarDate] = useState(["Flexible"]);
+  const [navbarSportCulture, setNavbarSportCulture] = useState("");
+  const [navbarDate, setNavbarDate] = useState("Flexible");
 
   // FilterTags related states
   // selectedFilterTags : array of tags that have been chosen by user by clicking on corresponding buttons
@@ -282,13 +282,18 @@ function App() {
       </header>
       <main>
         {/* create div with className sorting-map-buttons and className hidden if isFiltersMenuVisible is true */}
-        <div className="sorting-map-buttons">
+        <div
+          className={`sorting-map-buttons ${
+            isFiltersMenuVisible ? "hidden" : ""
+          }`}
+        >
           <SortingMenu
             finalResult={finalResult}
             setFinalResult={setFinalResult}
             fetchedResult={fetchedResult}
             selectedSorting={selectedSorting}
             setSelectedSorting={setSelectedSorting}
+            isMapActive={isMapActive}
           />
           <div className="containerMapSwitch">
             <label className="labelMapSwitch">
@@ -333,7 +338,7 @@ function App() {
           />
         ) : null}
       </main>
-      <ScrollToTopButton />
+      <ScrollToTopButton isFiltersMenuVisible={isFiltersMenuVisible} />
       <Footer />
     </div>
   );

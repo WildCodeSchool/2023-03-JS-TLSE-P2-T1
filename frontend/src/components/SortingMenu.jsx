@@ -7,12 +7,12 @@ function SortingMenu({
   setFinalResult,
   selectedSorting,
   setSelectedSorting,
+  isMapActive,
 }) {
   return (
-    <div className="sorting-menu">
+    <div className={`sorting-menu ${isMapActive ? "hidden" : ""}`}>
       <p>Trier par : </p>
       <select
-        className="sorting-menu"
         value={selectedSorting}
         onChange={(event) => {
           if (event.target.value === "alphabetical") {
@@ -107,4 +107,5 @@ SortingMenu.propTypes = {
   setFinalResult: PropTypes.func.isRequired,
   selectedSorting: PropTypes.string.isRequired,
   setSelectedSorting: PropTypes.func.isRequired,
+  isMapActive: PropTypes.bool.isRequired,
 };

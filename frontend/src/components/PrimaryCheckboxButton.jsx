@@ -69,12 +69,7 @@ function PrimaryCheckboxButton({
     }
   }, [cultureButtonClicked, sportButtonClicked]);
   return (
-    // if isFiltersMenuVisible is true, don't display the buttons
-    <div
-      className={`primaryCheckboxButtons ${
-        isFiltersMenuVisible ? "hidden" : ""
-      }`}
-    >
+    <>
       {/* if isFiltersMenuVisible is true, don't display the buttons */}
       <div
         className={`primaryCheckboxButtons ${
@@ -109,7 +104,7 @@ function PrimaryCheckboxButton({
           <p>Sport</p>
         </button>
       </div>
-    </div>
+    </>
   );
 }
 

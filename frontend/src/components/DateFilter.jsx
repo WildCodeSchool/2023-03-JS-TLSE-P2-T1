@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import "./DateFilter.css";
+import { useState } from "react";
 
 function DateFilter({
   isDateChosen,
@@ -7,6 +8,9 @@ function DateFilter({
   dateChosen,
   setDateChosen,
 }) {
+  const [isDateClicked, setIsDateClicked] = useState(false);
+  const [isFlexibleClicked, setIsFlexibleClicked] = useState(false);
+
   // setIsDateChosen(false);
   return (
     <div className="dateContainer">
@@ -16,18 +20,36 @@ function DateFilter({
             type="radio"
             name="date"
             id="choseDate"
-            onChange={() => setIsDateChosen(true)}
+            onChange={() => {
+              setIsDateChosen(true);
+              setIsDateClicked(!isDateClicked);
+              setIsFlexibleClicked(false);
+            }}
           />
-          <label htmlFor="choseDate">Choisir une date</label>
+          <label
+            htmlFor="choseDate"
+            id={`${isDateClicked ? "dateDateClicked" : ""}`}
+          >
+            Choisir une date
+          </label>
         </div>
         <div className="flexibleContainer">
           <input
             type="radio"
             name="date"
             id="flexible"
-            onChange={() => setIsDateChosen(false)}
+            onChange={() => {
+              setIsDateChosen(false);
+              setIsFlexibleClicked(!isFlexibleClicked);
+              setIsDateClicked(false);
+            }}
           />
-          <label htmlFor="flexible">Je suis flexible</label>
+          <label
+            htmlFor="flexible"
+            id={`${isFlexibleClicked ? "dateFlexibleClicked" : ""}`}
+          >
+            Je suis flexible
+          </label>
         </div>
       </div>
       {isDateChosen ? (
