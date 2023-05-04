@@ -9,6 +9,7 @@ import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 import Footer from "./components/Footer";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import SortingMenu from "./components/SortingMenu";
+import Error from "./components/Error";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -29,6 +30,10 @@ function App() {
   const [finalResult, setFinalResult] = useState([]);
 
   const [isFiltersMenuVisible, setIsFiltersMenuVisible] = useState(false);
+
+  // Error 429 related states
+  const [isError, setIsError] = useState(false);
+  setIsError(false);
 
   // Navbar Filters related states
   const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
@@ -247,95 +252,99 @@ function App() {
         navbarSportCulture={navbarSportCulture}
         navbarDate={navbarDate}
       />
-      {isFiltersMenuVisible ? (
-        <FiltersMenu
-          fetchedResult={fetchedResult}
-          isLoaded={isLoaded}
-          setFinalResult={setFinalResult}
-          setIsFiltersMenuVisible={setIsFiltersMenuVisible}
-          setNavbarDisplayedTags={setNavbarDisplayedTags}
-          selectedFilterTags={selectedFilterTags}
-          setSelectedFilterTags={setSelectedFilterTags}
-          setNavbarSportCulture={setNavbarSportCulture}
-          setSelectedSorting={setSelectedSorting}
-          dateChosen={dateChosen}
-          setDateChosen={setDateChosen}
-          setNavbarDate={setNavbarDate}
-        />
-      ) : null}
-      {/* the beneath div corresponds to the header section */}
-      <header>
-        <PrimaryCheckboxButton
-          isFiltersMenuVisible={isFiltersMenuVisible}
-          setFinalResult={setFinalResult}
-          fetchedResult={fetchedResult}
-          setSelectedFilterTags={setSelectedFilterTags}
-          setNavbarDisplayedTags={setNavbarDisplayedTags}
-          sportButtonClicked={sportButtonClicked}
-          cultureButtonClicked={cultureButtonClicked}
-          setSportButtonClicked={setSportButtonClicked}
-          setCultureButtonClicked={setCultureButtonClicked}
-          setNavbarSportCulture={setNavbarSportCulture}
-          setNavbarDate={setNavbarDate}
-          setSelectedSorting={setSelectedSorting}
-        />
-      </header>
-      <main>
-        {/* create div with className sorting-map-buttons and className hidden if isFiltersMenuVisible is true */}
-        <div
-          className={`sorting-map-buttons ${
-            isFiltersMenuVisible ? "hidden" : ""
-          }`}
-        >
-          <SortingMenu
-            finalResult={finalResult}
+      <div className="noDisplayIfError">
+        {isFiltersMenuVisible ? (
+          <FiltersMenu
+            fetchedResult={fetchedResult}
+            isLoaded={isLoaded}
+            setFinalResult={setFinalResult}
+            setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+            setNavbarDisplayedTags={setNavbarDisplayedTags}
+            selectedFilterTags={selectedFilterTags}
+            setSelectedFilterTags={setSelectedFilterTags}
+            setNavbarSportCulture={setNavbarSportCulture}
+            setSelectedSorting={setSelectedSorting}
+            dateChosen={dateChosen}
+            setDateChosen={setDateChosen}
+            setNavbarDate={setNavbarDate}
+          />
+        ) : null}
+        {/* the beneath div corresponds to the header section */}
+
+        <header>
+          <PrimaryCheckboxButton
+            isFiltersMenuVisible={isFiltersMenuVisible}
             setFinalResult={setFinalResult}
             fetchedResult={fetchedResult}
-            selectedSorting={selectedSorting}
+            setSelectedFilterTags={setSelectedFilterTags}
+            setNavbarDisplayedTags={setNavbarDisplayedTags}
+            sportButtonClicked={sportButtonClicked}
+            cultureButtonClicked={cultureButtonClicked}
+            setSportButtonClicked={setSportButtonClicked}
+            setCultureButtonClicked={setCultureButtonClicked}
+            setNavbarSportCulture={setNavbarSportCulture}
+            setNavbarDate={setNavbarDate}
             setSelectedSorting={setSelectedSorting}
-            isMapActive={isMapActive}
           />
-          <div className="containerMapSwitch">
-            <label className="labelMapSwitch">
-              <input
-                type="checkbox"
-                className="inputMapSwitch"
-                onChange={() => setIsMapActive(!isMapActive)}
-              />
-              <span className="spanMapSwitch" />
-            </label>
-          </div>
-        </div>
-        <div
-          className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""}`}
-        >
-          {isLoaded && !isMapActive
-            ? finalResult.map((el) => (
-                <Card
-                  isFiltersMenuVisible={isFiltersMenuVisible}
-                  key={el.id}
-                  api={el.api}
-                  name={el.name}
-                  shortDescription={el.shortDescription}
-                  tags={el.tags}
-                  address={el.address}
-                  schedules={el.schedules}
-                  longDescription={el.longDescription}
-                  phone={el.phone}
-                  email={el.email}
-                  startingDate={el.startingDate}
-                  endingDate={el.endingDate}
-                  access={el.access}
-                  nature={el.nature}
+        </header>
+        <main>
+          {/* create div with className sorting-map-buttons and className hidden if isFiltersMenuVisible is true */}
+          <div
+            className={`sorting-map-buttons ${
+              isFiltersMenuVisible ? "hidden" : ""
+            }`}
+          >
+            <SortingMenu
+              finalResult={finalResult}
+              setFinalResult={setFinalResult}
+              fetchedResult={fetchedResult}
+              selectedSorting={selectedSorting}
+              setSelectedSorting={setSelectedSorting}
+              isMapActive={isMapActive}
+            />
+            <div className="containerMapSwitch">
+              <label className="labelMapSwitch">
+                <input
+                  type="checkbox"
+                  className="inputMapSwitch"
+                  onChange={() => setIsMapActive(!isMapActive)}
                 />
-              ))
-            : null}
-        </div>
-        {isLoaded && isMapActive && !isFiltersMenuVisible ? (
-          <Map finalResult={finalResult} />
-        ) : null}
-      </main>
-      <ScrollToTopButton isFiltersMenuVisible={isFiltersMenuVisible} />
+                <span className="spanMapSwitch" />
+              </label>
+            </div>
+          </div>
+          <div
+            className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""}`}
+          >
+            {isLoaded && !isMapActive
+              ? finalResult.map((el) => (
+                  <Card
+                    isFiltersMenuVisible={isFiltersMenuVisible}
+                    key={el.id}
+                    api={el.api}
+                    name={el.name}
+                    shortDescription={el.shortDescription}
+                    tags={el.tags}
+                    address={el.address}
+                    schedules={el.schedules}
+                    longDescription={el.longDescription}
+                    phone={el.phone}
+                    email={el.email}
+                    startingDate={el.startingDate}
+                    endingDate={el.endingDate}
+                    access={el.access}
+                    nature={el.nature}
+                  />
+                ))
+              : null}
+          </div>
+          {isLoaded && isMapActive && !isFiltersMenuVisible ? (
+            <Map finalResult={finalResult} />
+          ) : null}
+        </main>
+        <ScrollToTopButton isFiltersMenuVisible={isFiltersMenuVisible} />
+      </div>
+      <Error isError={isError} />
       <Footer />
     </div>
   );
