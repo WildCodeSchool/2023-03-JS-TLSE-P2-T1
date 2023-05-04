@@ -57,86 +57,111 @@ header {
 }
 
 /* Map toggler styling */
-.labelMapSwitch {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-}
 
-.containerMapSwitch {
-  width: 4rem;
-  height: 1.8rem;
+.toggle {
   position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 24px;
+  margin: 10px;
 }
 
-.inputMapSwitch {
-  display: none;
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-.spanMapSwitch {
+.slider {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 5rem;
+  transition: 0.4s;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
-.spanUnchosenSwitch {
+.slider:before {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 1px;
+  background-image: url("assets/List_chosen.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 50%;
+  transition: 0.4s;
 }
 
-.spanMapSwitch::before {
-  content: "";
-  background-image: url("/assets/List_chosen.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  transition: 0.3s;
-  transform: translateX(-1.1rem);
+input:checked + .slider:before {
+  transform: translateX(32px);
+  background-image: url("assets/Map_chosen.png");
 }
 
-.spanUnchosenSwitch::before {
+.slider:after {
+  position: absolute;
   content: "";
-  background-image: url("/assets/Map.png");
+  height: 22px;
+  width: 22px;
+  right: 3px;
+  bottom: 1px;
+  background-image: url("assets/Map.png");
   background-repeat: no-repeat;
+  background-size: 80%;
+  /*background image is centered*/
   background-position: center;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  transition: 0.3s;
-  transform: translateX(1.1rem);
+  /* border-radius: 50%; */
+  transition: 0.4s;
 }
 
-.inputMapSwitch:checked + .spanMapSwitch::before {
-  content: "";
-  background-image: url("/assets/Map_chosen.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  transform: translateX(1.1rem);
-}
-
-.inputMapSwitch:checked + .spanUnchosenSwitch::before {
-  content: "";
-  background-image: url("/assets/List.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  transform: translateX(-1.1rem);
+input:checked + .slider:after {
+  transform: translateX(-32px);
+  background-image: url("assets/List.png");
 }
 
 .sorting-map-buttons.hidden {
   display: none;
 }
 
+.sorting-map-buttons.mapActive {
+  justify-content: flex-end;
+}
+
 /*media queries over 768 px*/
 @media screen and (min-width: 768px) {
   .sorting-map-buttons {
     margin: auto 15vw;
+  }
+
+  .toggle {
+    width: 70px;
+    height: 30px;
+  }
+
+  .slider:before {
+    height: 28px;
+    width: 28px;
+    left: 3px;
+    bottom: 1px;
+  }
+
+  .slider:after {
+    height: 28px;
+    width: 28px;
+    right: 3px;
+    bottom: 1px;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(37px);
+  }
+  input:checked + .slider:after {
+    transform: translateX(-37px);
   }
 }
