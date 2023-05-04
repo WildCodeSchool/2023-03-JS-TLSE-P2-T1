@@ -115,7 +115,9 @@ function App() {
         "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=stades&q=&rows=0"
       )
       .then((res) => setStadiumsNbr(res.data.nhits))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        if (err.response.status === 429) setIsError(true);
+      });
   }, []);
 
   // Fetching the API with rows equal to number of stadiums, putting result into a result object
@@ -154,7 +156,9 @@ function App() {
         "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=cinemas&q=&rows=0"
       )
       .then((res) => setCinemasNbr(res.data.nhits))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        if (err.response.status === 429) setIsError(true);
+      });
   }, []);
 
   // Fetching the API with rows equal to number of cinemas, putting result into a result object

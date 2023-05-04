@@ -5,7 +5,11 @@ import "./Error.css";
 function Error({ isError }) {
   return (
     <div className={`errorDisplay ${!isError ? "hidden" : ""}`}>
-      <p>Le site a reçu trop de requêtes pour aujourd'hui, à demain !</p>
+      <p id="oups">Oups !</p>
+      <p id="errorText">
+        Le site data.toulouse-metropole.fr a eu trop de requêtes pour
+        aujourd'hui... Revenez-demain !
+      </p>
     </div>
   );
 }
