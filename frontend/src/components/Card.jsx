@@ -36,6 +36,14 @@ function Card({
   const closeModalCard = () => {
     setIsModalCardOpen(false);
   };
+
+  // prevents body to be scrollable when modal is open
+
+  if (isModalCardOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "unset";
+  }
   return (
     <div className={`${itemContainer} ${isFiltersMenuVisible ? "hidden" : ""}`}>
       {/* if the filters menu is visible, the itemcontainer class gets hidden class */}
@@ -47,7 +55,7 @@ function Card({
         {shortDescription ? (
           <p className="shortDescriptionCard">{shortDescription}</p>
         ) : null}
-        {address ? (
+        {address.length !== 0 ? (
           <p className="addressCard"> 📍{address.toLowerCase()}</p>
         ) : null}
         <p className="tagCards">
@@ -59,12 +67,24 @@ function Card({
         </button>
         {/* contain of Modal card */}
         {isModalCardOpen && (
-          <button
-            className="modalCardContainer"
-            type="button"
-            onClick={closeModalCard}
-          >
+          <div>
+            <button
+              className="modalCardContainer"
+              type="button"
+              onClick={closeModalCard}
+            >
+              <p>.</p>
+            </button>
             <div className="modalCardContent">
+              <div className="crossContainer">
+                <button type="button" onClick={closeModalCard}>
+                  <img
+                    src="/assets/close_icon.svg"
+                    alt="Croix de fermeture"
+                    className="closingCross"
+                  />
+                </button>
+              </div>
               <div className="imageContainerModal">
                 <img src={imgSrc} alt={name} className="imgModal" />
               </div>
@@ -81,7 +101,7 @@ function Card({
                 {nature ? <span className="natureCard">{nature}</span> : null}
               </p>
             </div>
-          </button>
+          </div>
         )}
       </div>
     </div>
