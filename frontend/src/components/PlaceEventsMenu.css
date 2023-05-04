@@ -28,7 +28,6 @@
 /*media queries over 768 px*/
 @media (min-width: 768px) {
   .place-events-container {
-    /* flex-direction: row; */
     gap: 3vw;
   }
 }
