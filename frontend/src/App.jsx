@@ -33,7 +33,6 @@ function App() {
 
   // Error 429 related states
   const [isError, setIsError] = useState(false);
-  setIsError(false);
 
   // Navbar Filters related states
   const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
@@ -62,7 +61,9 @@ function App() {
         "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=agenda-des-manifestations-culturelles-so-toulouse&q=&rows=0&facet=date_debut&facet=date_fin&facet=categorie_de_la_manifestation&facet=theme_de_la_manifestation"
       )
       .then((res) => setEventsNbr(res.data.nhits))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        if (err.response.status === 429) setIsError(true);
+      });
   }, []);
 
   // Fetching the API with rows equal to number of events, putting result into a result object
@@ -252,7 +253,7 @@ function App() {
         navbarSportCulture={navbarSportCulture}
         navbarDate={navbarDate}
       />
-      <div className="noDisplayIfError">
+      <div className={`noDisplayIfError} ${isError ? "hidden" : ""}`}>
         {isFiltersMenuVisible ? (
           <FiltersMenu
             fetchedResult={fetchedResult}
