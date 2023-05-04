@@ -99,13 +99,13 @@ header {
   background-image: url("assets/List_chosen.png");
   background-repeat: no-repeat;
   background-size: contain;
-  border-radius: 50%;
+  /*background image is centered*/
+  background-position: center;
   transition: 0.4s;
 }
 
 input:checked + .slider:before {
-  transform: translateX(32px);
-  background-image: url("assets/Map_chosen.png");
+  background-image: url("assets/List.png");
 }
 
 .slider:after {
@@ -117,16 +117,14 @@ input:checked + .slider:before {
   bottom: 1px;
   background-image: url("assets/Map.png");
   background-repeat: no-repeat;
-  background-size: 80%;
+  background-size: contain;
   /*background image is centered*/
   background-position: center;
-  /* border-radius: 50%; */
   transition: 0.4s;
 }
 
 input:checked + .slider:after {
-  transform: translateX(-32px);
-  background-image: url("assets/List.png");
+  background-image: url("assets/Map_chosen.png");
 }
 
 .sorting-map-buttons.hidden {
@@ -160,12 +158,5 @@ input:checked + .slider:after {
     width: 23px;
     right: 3px;
     bottom: 1px;
-  }
-
-  input:checked + .slider:before {
-    transform: translateX(32px);
-  }
-  input:checked + .slider:after {
-    transform: translateX(-32px);
   }
 }
