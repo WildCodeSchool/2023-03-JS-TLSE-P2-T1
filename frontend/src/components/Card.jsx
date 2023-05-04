@@ -73,7 +73,7 @@ function Card({
               type="button"
               onClick={closeModal}
             >
-              <p>voilà</p>
+              <p>.</p>
             </button>
             <div className="modalContent">
               <div className="crossContainer">
