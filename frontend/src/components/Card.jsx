@@ -47,7 +47,9 @@ function Card({
         {shortDescription ? (
           <p className="shortDescriptionCard">{shortDescription}</p>
         ) : null}
-        {address ? <p className="addressCard"> 📍{address}</p> : null}
+        {address.length !== 0 ? (
+          <p className="addressCard"> 📍{address}</p>
+        ) : null}
         <p className="tagCard">
           {tags} {nature}
         </p>
