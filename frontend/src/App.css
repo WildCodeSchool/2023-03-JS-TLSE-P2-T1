@@ -119,6 +119,7 @@ header {
 /*media queries over 768 px*/
 @media screen and (min-width: 768px) {
   .sorting-map-buttons {
-    margin: auto 15vw;
+    justify-content: space-around;
+    gap: 45vw;
   }
 }
