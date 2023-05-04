@@ -22,7 +22,7 @@ function PlaceEventsMenu({
   };
 
   return (
-    <div className="primaryCheckboxButtons">
+    <div className="place-events-container">
       <button
         type="button"
         className={`placeEventsButton ${
@@ -30,7 +30,7 @@ function PlaceEventsMenu({
         }`}
         onClick={() => handleClickPlace()}
       >
-        Lieu
+        Lieux
       </button>
       <button
         type="button"

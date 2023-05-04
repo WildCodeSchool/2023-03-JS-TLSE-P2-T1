@@ -1,0 +1,73 @@
+.sport-culture-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10vw;
+}
+
+.sport-culture-container button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 75px;
+}
+
+.sport-culture-container p {
+  margin: 5px;
+  padding-bottom: 8px;
+}
+.sport-culture-container button:hover {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transform: translateY(1px);
+}
+
+.sport-culture-container button p {
+  font-size: 0.8rem;
+}
+
+.sport-culture-container img {
+  height: 45%;
+  width: auto;
+  margin-top: 16px;
+}
+
+.sport-culture-clicked {
+  background: #151d48;
+  box-shadow: none;
+  transition: all 0.3s ease-in-out;
+  color: white;
+}
+
+/*media queries over 768 px*/
+@media (min-width: 768px) {
+  .sport-culture-container {
+    gap: 3vw;
+  }
+
+  /*sport-culture-container button is displayed in row*/
+  .sport-culture-container button {
+    flex-direction: row;
+    align-items: center;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    width: 7rem;
+    height: initial;
+  }
+
+  /*sport-culture-container button p and img have no margin*/
+  .sport-culture-container button p {
+    margin: 0;
+    padding: 0;
+    padding-left: 8px;
+    font-size: 0.85rem;
+  }
+  .sport-culture-container img {
+    margin: 0;
+    height: 30px;
+  }
+}

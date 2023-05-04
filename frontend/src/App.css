@@ -112,6 +112,10 @@ header {
   transform: translateX(1.2rem);
 }
 
+.sorting-map-buttons.hidden {
+  display: none;
+}
+
 /*media queries over 768 px*/
 @media screen and (min-width: 768px) {
   .sorting-map-buttons {

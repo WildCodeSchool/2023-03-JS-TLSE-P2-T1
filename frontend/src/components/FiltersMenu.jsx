@@ -215,29 +215,39 @@ function FiltersMenu({
             />
           </button>
         </div>
-        <h3>Je suis amateur de :</h3>
-        <SportCultureMenu
-          isSportChecked={isSportChecked}
-          setIsSportChecked={setIsSportChecked}
-          isCultureChecked={isCultureChecked}
-          setIsCultureChecked={setIsCultureChecked}
-        />
-        <hr />
-        <h3>Je cherche :</h3>
-        <PlaceEventsMenu
-          isPlaceChecked={isPlaceChecked}
-          setIsPlaceChecked={setIsPlaceChecked}
-          isEventChecked={isEventChecked}
-          setIsEventChecked={setIsEventChecked}
-        />
-        <hr />
-        <DateFilter
-          isDateChosen={isDateChosen}
-          setIsDateChosen={setIsDateChosen}
-          dateChosen={dateChosen}
-          setDateChosen={setDateChosen}
-        />
-        <hr />
+        <div className="main-filters">
+          <div className="culture-sport-filter">
+            <h3>Je suis amateur de :</h3>
+            <SportCultureMenu
+              isSportChecked={isSportChecked}
+              setIsSportChecked={setIsSportChecked}
+              isCultureChecked={isCultureChecked}
+              setIsCultureChecked={setIsCultureChecked}
+            />
+          </div>
+          <hr className="hr-desktop-displayed" />
+          <div className="place-event-filter">
+            <h3>Je cherche :</h3>
+            <PlaceEventsMenu
+              isPlaceChecked={isPlaceChecked}
+              setIsPlaceChecked={setIsPlaceChecked}
+              isEventChecked={isEventChecked}
+              setIsEventChecked={setIsEventChecked}
+            />
+          </div>
+          <hr className="hr-desktop-displayed" />
+          <div className="date-filter">
+            <h3>Je préfère :</h3>
+            <DateFilter
+              isDateChosen={isDateChosen}
+              setIsDateChosen={setIsDateChosen}
+              dateChosen={dateChosen}
+              setDateChosen={setDateChosen}
+            />
+            <hr />
+          </div>
+        </div>
+        <h3 id="additional-filters">Filtres additionnels</h3>
         <TagsFilter
           mainFilterResult={mainFilterResult}
           setFilteredResult={setFilteredResult}
