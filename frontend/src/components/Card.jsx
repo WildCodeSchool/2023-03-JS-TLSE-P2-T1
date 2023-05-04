@@ -65,6 +65,15 @@ function Card({
               <p>voilà</p>
             </button>
             <div className="modalContent">
+              <div className="crossContainer">
+                <button type="button" onClick={closeModal}>
+                  <img
+                    src="/assets/close_icon.svg"
+                    alt="Croix de fermeture"
+                    className="closingCross"
+                  />
+                </button>
+              </div>
               <div className="imageContainerModal">
                 <img src={imgSrc} alt={name} className="imgModal" />
               </div>
