@@ -122,6 +122,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  /*width and height full screen*/
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -131,9 +132,17 @@
   align-items: center;
 }
 
+.modalCardContainer p {
+  display: none;
+}
+
 /* content of modal */
+/*.modalCardContent is centered horizontally and vertically on the screen*/
 .modalCardContent {
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: white;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -141,6 +150,21 @@
   width: 80%;
   height: 70%;
   overflow-y: auto;
+}
+
+.modalCardContent.crossContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.modalCardcontent.closingCross {
+  width: 24px;
+  height: 24px;
+  margin: 8px;
 }
 
 .imageContainerModal {
@@ -190,5 +214,23 @@
   }
   .descriptionContainer {
     width: 93%;
+  }
+
+  .modalCardContent {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    z-index: 15;
+    max-width: 80vw;
+    max-height: 80vw;
+    overflow-y: auto;
+  }
+
+  .modalContainer.crossContainer {
+    display: initial;
   }
 }

@@ -235,6 +235,13 @@ function App() {
     }
   }, [fetchedResult]);
 
+  // define behaviour of the toggle "map/list" button onclick
+  const [mapToggleChecked, setMapToggleChecked] = useState(false);
+
+  const handleMapToggle = () => {
+    setMapToggleChecked(!mapToggleChecked);
+  };
+
   // list all unfiltered cards by map finalResul in a component Card
   return (
     <div className="App">
@@ -285,7 +292,7 @@ function App() {
         <div
           className={`sorting-map-buttons ${
             isFiltersMenuVisible ? "hidden" : ""
-          }`}
+          } ${isMapActive ? "mapActive" : ""}`}
         >
           <SortingMenu
             finalResult={finalResult}
@@ -296,13 +303,16 @@ function App() {
             isMapActive={isMapActive}
           />
           <div className="containerMapSwitch">
-            <label className="labelMapSwitch">
+            <label className="toggle">
               <input
                 type="checkbox"
-                className="inputMapSwitch"
-                onChange={() => setIsMapActive(!isMapActive)}
+                onChange={() => {
+                  setIsMapActive(!isMapActive);
+                  handleMapToggle(!mapToggleChecked);
+                }}
+                checked={mapToggleChecked}
               />
-              <span className="spanMapSwitch" />
+              <span className="slider round" />
             </label>
           </div>
         </div>
