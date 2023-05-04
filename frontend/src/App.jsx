@@ -317,7 +317,9 @@ function App() {
           </div>
         </div>
         <div
-          className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""}`}
+          className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""} ${
+            isMapActive ? "hidden" : ""
+          }`}
         >
           {isLoaded && !isMapActive
             ? finalResult.map((el) => (
