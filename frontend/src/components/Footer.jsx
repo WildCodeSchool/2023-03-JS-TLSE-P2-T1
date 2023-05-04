@@ -61,6 +61,7 @@ function Footer() {
                 {" "}
                 Si vous cherchez des données fiables sur Toulouse et sa région,
                 nous vous invitons à visiter leur site Web 🌐:
+                <br />
                 <a
                   href="https://data.toulouse-metropole.fr/pages/accueil/"
                   target="_blank"
