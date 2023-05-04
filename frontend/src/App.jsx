@@ -292,7 +292,7 @@ function App() {
         <div
           className={`sorting-map-buttons ${
             isFiltersMenuVisible ? "hidden" : ""
-          } ${isMapActive ? "toRight" : ""} ${isMapActive ? "mapActive" : ""}`}
+          } ${isMapActive ? "mapActive" : ""}`}
         >
           <SortingMenu
             finalResult={finalResult}

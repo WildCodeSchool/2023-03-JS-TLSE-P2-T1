@@ -140,28 +140,28 @@ input:checked + .slider:after {
   }
 
   .toggle {
-    width: 70px;
-    height: 30px;
+    width: 60px;
+    height: 24px;
   }
 
   .slider:before {
-    height: 28px;
-    width: 28px;
+    height: 23px;
+    width: 23px;
     left: 3px;
     bottom: 1px;
   }
 
   .slider:after {
-    height: 28px;
-    width: 28px;
+    height: 23px;
+    width: 23px;
     right: 3px;
     bottom: 1px;
   }
 
   input:checked + .slider:before {
-    transform: translateX(37px);
+    transform: translateX(32px);
   }
   input:checked + .slider:after {
-    transform: translateX(-37px);
+    transform: translateX(-32px);
   }
 }
