@@ -85,7 +85,7 @@ hr {
   }
 
   .crossContainer {
-    display: none;
+    /* display: none; */
   }
 
   .filtersMenu {
