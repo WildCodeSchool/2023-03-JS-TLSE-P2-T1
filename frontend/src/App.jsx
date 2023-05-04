@@ -285,7 +285,7 @@ function App() {
         <div
           className={`sorting-map-buttons ${
             isFiltersMenuVisible ? "hidden" : ""
-          }`}
+          } ${isMapActive ? "toRight" : ""}`}
         >
           <SortingMenu
             finalResult={finalResult}
