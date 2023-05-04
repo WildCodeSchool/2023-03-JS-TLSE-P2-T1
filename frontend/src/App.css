@@ -22,6 +22,10 @@ main {
   align-items: center;
 }
 
+.listContainer {
+  margin-bottom: 32px;
+}
+
 /* styling all buttons  */
 button {
   padding: 0;
@@ -57,66 +61,79 @@ header {
 }
 
 /* Map toggler styling */
-.containerMapSwitch {
-  width: 5rem;
-  height: 1.9rem;
+
+.toggle {
   position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 24px;
+  margin: 10px;
 }
 
-.labelMapSwitch {
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
   position: absolute;
-  width: 100%;
-  height: 100%;
   cursor: pointer;
-  border-radius: 50px;
-}
-
-.inputMapSwitch {
-  position: absolute;
-  display: none;
-}
-
-.spanMapSwitch {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 50px;
-  /* background-color: black; */
-  border: 1px solid black;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 5rem;
+  transition: 0.4s;
   background: #fff;
-  border: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
-.spanMapSwitch::before {
-  content: "";
-  background-image: url("/assets/Map.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100%;
-  width: 100%;
+.slider:before {
   position: absolute;
-  display: flex;
-  transition: 0.3s;
-  display: flex;
-  align-items: center;
-  font-size: 1.6rem;
-  transform: translateX(-1.2rem);
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 1px;
+  background-image: url("assets/List_chosen.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 50%;
+  transition: 0.4s;
 }
 
-.inputMapSwitch:checked + .spanMapSwitch::before {
+input:checked + .slider:before {
+  transform: translateX(32px);
+  background-image: url("assets/Map_chosen.png");
+}
+
+.slider:after {
+  position: absolute;
   content: "";
-  background-image: url("/assets/List.png");
+  height: 22px;
+  width: 22px;
+  right: 3px;
+  bottom: 1px;
+  background-image: url("assets/Map.png");
   background-repeat: no-repeat;
+  background-size: 80%;
+  /*background image is centered*/
   background-position: center;
-  transform: translateX(1.2rem);
+  /* border-radius: 50%; */
+  transition: 0.4s;
+}
+
+input:checked + .slider:after {
+  transform: translateX(-32px);
+  background-image: url("assets/List.png");
 }
 
 .sorting-map-buttons.hidden {
   display: none;
 }
 
-.sorting-map-buttons.toRight {
+.sorting-map-buttons.mapActive {
   justify-content: flex-end;
 }
 
@@ -124,5 +141,31 @@ header {
 @media screen and (min-width: 768px) {
   .sorting-map-buttons {
     margin: auto 15vw;
+  }
+
+  .toggle {
+    width: 60px;
+    height: 24px;
+  }
+
+  .slider:before {
+    height: 23px;
+    width: 23px;
+    left: 3px;
+    bottom: 1px;
+  }
+
+  .slider:after {
+    height: 23px;
+    width: 23px;
+    right: 3px;
+    bottom: 1px;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(32px);
+  }
+  input:checked + .slider:after {
+    transform: translateX(-32px);
   }
 }
