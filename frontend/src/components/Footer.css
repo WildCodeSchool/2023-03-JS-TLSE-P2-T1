@@ -91,10 +91,15 @@ footer button {
 
 .modalAboutContent h2 {
   text-align: center;
+  margin-top: 1.5rem;
 }
 
 .modalAboutContainer p {
   margin: auto 32px;
+}
+
+.modalAboutContainer p:last-child {
+  margin-bottom: 1.5rem;
 }
 
 .modalAboutContent apush {
