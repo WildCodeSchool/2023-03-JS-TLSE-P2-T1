@@ -56,7 +56,14 @@ function Card({
         </button>
         {/* contain of Modal card */}
         {isModalOpen && (
-          <button className="modalContainer" type="button" onClick={closeModal}>
+          <div>
+            <button
+              className="modalContainer"
+              type="button"
+              onClick={closeModal}
+            >
+              <p>voilà</p>
+            </button>
             <div className="modalContent">
               <div className="imageContainerModal">
                 <img src={imgSrc} alt={name} className="imgModal" />
@@ -71,7 +78,7 @@ function Card({
               {access ? <p>Accès 🚇: {access}</p> : null}
               <p className="tagCard">{tags}</p>
             </div>
-          </button>
+          </div>
         )}
       </div>
     </div>
