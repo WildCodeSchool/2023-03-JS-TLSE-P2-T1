@@ -24,7 +24,7 @@ function Footer() {
             type="button"
             onClick={closeModal}
           >
-            <div className="modalContent">
+            <div className="modalAboutContent">
               <h2>Qui sommes-nous ?</h2>
               <p>
                 Bienvenue sur myTouloulist ! Nous sommes Gaspard Caillaud, Nolan
@@ -50,6 +50,7 @@ function Footer() {
                 travailler à l’amélioration de notre site.{" "}
               </p>
               <br />
+
               <p>
                 Enfin, nous aimerions remercier Toulouse Métropole pour la
                 qualité et la disponibilité de ses données. Nous avons été en
@@ -57,6 +58,7 @@ function Footer() {
                 unique grâce à leur précieuse contribution.
               </p>
               <br />
+
               <p>
                 {" "}
                 Si vous cherchez des données fiables sur Toulouse et sa région,

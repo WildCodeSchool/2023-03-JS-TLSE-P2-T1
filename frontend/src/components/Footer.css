@@ -71,17 +71,25 @@ footer button {
 }
 
 /* content of modal */
-.modalContent {
+.modalAboutContent {
   text-align: justify;
   background-color: white;
   padding: 1rem;
-  /* border-radius: 0.5rem; */
-  z-index: 1000;
   max-width: 80%;
   max-height: 80%;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 0.5rem;
+  z-index: 15;
+  width: 80%;
 }
-.modalContent h2 {
+
+.modalAboutContent h2 {
   text-align: center;
 }
 
@@ -89,7 +97,7 @@ footer button {
   margin: auto 32px;
 }
 
-.modalContent apush {
+.modalAboutContent apush {
   text-decoration: none;
   color: #151d48;
 }
