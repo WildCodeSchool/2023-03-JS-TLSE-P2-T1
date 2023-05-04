@@ -303,6 +303,7 @@ function App() {
                 onChange={() => setIsMapActive(!isMapActive)}
               />
               <span className="spanMapSwitch" />
+              <span className="spanUnchosenSwitch" />
             </label>
           </div>
         </div>

@@ -57,22 +57,20 @@ header {
 }
 
 /* Map toggler styling */
-.containerMapSwitch {
-  width: 5rem;
-  height: 1.9rem;
-  position: relative;
-}
-
 .labelMapSwitch {
   position: absolute;
   width: 100%;
   height: 100%;
   cursor: pointer;
-  border-radius: 50px;
+}
+
+.containerMapSwitch {
+  width: 4rem;
+  height: 1.8rem;
+  position: relative;
 }
 
 .inputMapSwitch {
-  position: absolute;
   display: none;
 }
 
@@ -81,35 +79,55 @@ header {
   width: 100%;
   height: 100%;
   border-radius: 50px;
-  /* background-color: black; */
-  border: 1px solid black;
-  background: #fff;
-  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.spanUnchosenSwitch {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
 }
 
 .spanMapSwitch::before {
+  content: "";
+  background-image: url("/assets/List_chosen.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  transition: 0.3s;
+  transform: translateX(-1.1rem);
+}
+
+.spanUnchosenSwitch::before {
   content: "";
   background-image: url("/assets/Map.png");
   background-repeat: no-repeat;
   background-position: center;
   height: 100%;
   width: 100%;
-  position: absolute;
   display: flex;
   transition: 0.3s;
-  display: flex;
-  align-items: center;
-  font-size: 1.6rem;
-  transform: translateX(-1.2rem);
+  transform: translateX(1.1rem);
 }
 
 .inputMapSwitch:checked + .spanMapSwitch::before {
   content: "";
+  background-image: url("/assets/Map_chosen.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translateX(1.1rem);
+}
+
+.inputMapSwitch:checked + .spanUnchosenSwitch::before {
+  content: "";
   background-image: url("/assets/List.png");
   background-repeat: no-repeat;
   background-position: center;
-  transform: translateX(1.2rem);
+  transform: translateX(-1.1rem);
 }
 
 .sorting-map-buttons.hidden {
