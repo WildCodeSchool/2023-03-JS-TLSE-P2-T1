@@ -36,6 +36,15 @@ function Card({
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  // prevents body to be scrollable when modal is open
+
+  if (isModalOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "unset";
+  }
+
   return (
     <div className={`${itemContainer} ${isFiltersMenuVisible ? "hidden" : ""}`}>
       {/* if the filters menu is visible, the itemcontainer class gets hidden class */}
@@ -47,7 +56,9 @@ function Card({
         {shortDescription ? (
           <p className="shortDescriptionCard">{shortDescription}</p>
         ) : null}
-        {address ? <p className="addressCard"> 📍{address}</p> : null}
+        {address.length !== 0 ? (
+          <p className="addressCard"> 📍{address}</p>
+        ) : null}
         <p className="tagCard">
           {tags} {nature}
         </p>
@@ -56,8 +67,24 @@ function Card({
         </button>
         {/* contain of Modal card */}
         {isModalOpen && (
-          <button className="modalContainer" type="button" onClick={closeModal}>
+          <div>
+            <button
+              className="modalContainer"
+              type="button"
+              onClick={closeModal}
+            >
+              <p>.</p>
+            </button>
             <div className="modalContent">
+              <div className="crossContainer">
+                <button type="button" onClick={closeModal}>
+                  <img
+                    src="/assets/close_icon.svg"
+                    alt="Croix de fermeture"
+                    className="closingCross"
+                  />
+                </button>
+              </div>
               <div className="imageContainerModal">
                 <img src={imgSrc} alt={name} className="imgModal" />
               </div>
@@ -71,7 +98,7 @@ function Card({
               {access ? <p>Accès 🚇: {access}</p> : null}
               <p className="tagCard">{tags}</p>
             </div>
-          </button>
+          </div>
         )}
       </div>
     </div>
