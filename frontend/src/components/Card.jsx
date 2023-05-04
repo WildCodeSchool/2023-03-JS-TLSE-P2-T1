@@ -36,6 +36,15 @@ function Card({
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  // prevents body to be scrollable when modal is open
+
+  if (isModalOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "unset";
+  }
+
   return (
     <div className={`${itemContainer} ${isFiltersMenuVisible ? "hidden" : ""}`}>
       {/* if the filters menu is visible, the itemcontainer class gets hidden class */}
