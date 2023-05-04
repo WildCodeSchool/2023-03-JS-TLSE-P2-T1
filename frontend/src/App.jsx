@@ -332,10 +332,7 @@ function App() {
             : null}
         </div>
         {isLoaded && isMapActive && !isFiltersMenuVisible ? (
-          <Map
-            finalResult={finalResult}
-            isFiltersMenuVisible={isFiltersMenuVisible}
-          />
+          <Map finalResult={finalResult} />
         ) : null}
       </main>
       <ScrollToTopButton isFiltersMenuVisible={isFiltersMenuVisible} />
