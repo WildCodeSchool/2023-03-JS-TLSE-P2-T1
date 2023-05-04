@@ -22,6 +22,10 @@ main {
   align-items: center;
 }
 
+.listContainer {
+  margin-bottom: 32px;
+}
+
 /* styling all buttons  */
 button {
   padding: 0;
