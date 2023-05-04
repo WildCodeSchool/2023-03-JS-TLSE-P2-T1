@@ -116,6 +116,10 @@ header {
   display: none;
 }
 
+.sorting-map-buttons.toRight {
+  justify-content: flex-end;
+}
+
 /*media queries over 768 px*/
 @media screen and (min-width: 768px) {
   .sorting-map-buttons {
