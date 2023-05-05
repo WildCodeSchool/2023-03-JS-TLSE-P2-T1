@@ -264,7 +264,7 @@ function App() {
         navbarSportCulture={navbarSportCulture}
         navbarDate={navbarDate}
       />
-      <div className={`noDisplayIfError} ${isError ? "hidden" : ""}`}>
+      <div className={`noDisplayIfError ${isError ? "hidden" : ""}`}>
         {isFiltersMenuVisible ? (
           <FiltersMenu
             fetchedResult={fetchedResult}
