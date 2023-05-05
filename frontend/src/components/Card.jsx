@@ -16,7 +16,7 @@ function Card({
   nature,
   access,
 }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalCardOpen, setIsModalCardOpen] = useState(false);
   let itemContainer;
   let imgSrc;
   if (api === "events") {
@@ -29,13 +29,21 @@ function Card({
     itemContainer = "itemContainer3";
     imgSrc = "/assets/cinema.png";
   }
-  const openModal = () => {
-    setIsModalOpen(true);
+  const openModalCard = () => {
+    setIsModalCardOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeModalCard = () => {
+    setIsModalCardOpen(false);
   };
+
+  // prevents body to be scrollable when modal is open
+  if (isModalCardOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "unset";
+  }
+
   return (
     <div className={`${itemContainer} ${isFiltersMenuVisible ? "hidden" : ""}`}>
       {/* if the filters menu is visible, the itemcontainer class gets hidden class */}
@@ -44,34 +52,54 @@ function Card({
       </div>
       <div className="descriptionContainer">
         <h3>{name}</h3>
+        <p className="tagCards">
+          {tags ? <span className="tagCard">{tags}</span> : null}
+          {nature ? <span className="natureCard">{nature}</span> : null}
+        </p>
         {shortDescription ? (
           <p className="shortDescriptionCard">{shortDescription}</p>
         ) : null}
-        {address ? <p className="addressCard"> 📍{address}</p> : null}
-        <p className="tagCard">
-          {tags} {nature}
-        </p>
-        <button type="button" className="knowMore" onClick={openModal}>
-          En savoir plus{" "}
-        </button>
-        {/* contain of Modal card */}
-        {isModalOpen && (
-          <button className="modalContainer" type="button" onClick={closeModal}>
-            <div className="modalContent">
-              <div className="imageContainerModal">
-                <img src={imgSrc} alt={name} className="imgModal" />
-              </div>
-              <h3>{name}</h3>
-              {shortDescription ? <p>Résumé:{shortDescription}</p> : null}
-              {schedules ? <p>{schedules}</p> : null}
-              {longDescription ? <p>{longDescription}</p> : null}
-              {phone ? <p>☎️:{phone}</p> : null}
-              {email ? <p>📧{email}</p> : null}
-              {address ? <p>{address}</p> : null}
-              {access ? <p>Accès 🚇: {access}</p> : null}
-              <p className="tagCard">{tags}</p>
-            </div>
+        {address.length !== 0 ? (
+          <p className="addressCard"> 📍{address.toLowerCase()}</p>
+        ) : null}
+
+        <div className="button-container">
+          <button type="button" className="knowMore" onClick={openModalCard}>
+            En savoir plus{" "}
           </button>
+        </div>
+        {/* contain of Modal card */}
+        {isModalCardOpen && (
+          <div>
+            <button className="modalCardContainer" type="button">
+              <div className="modalCardContent">
+                <div className="crossContainer">
+                  <button type="button" onClick={closeModalCard}>
+                    <img
+                      src="/assets/close_icon.svg"
+                      alt="Croix de fermeture"
+                      className="closingCross"
+                    />
+                  </button>
+                </div>
+                <div className="imageContainerModal">
+                  <img src={imgSrc} alt={name} className="imgModal" />
+                </div>
+                <h3>{name}</h3>
+                <p className="tagCards">
+                  {tags ? <span className="tagCard">{tags}</span> : null}
+                  {nature ? <span className="natureCard">{nature}</span> : null}
+                </p>
+                {shortDescription ? <p>{shortDescription}</p> : null}
+                {schedules ? <p>{schedules}</p> : null}
+                {longDescription ? <p>{longDescription}</p> : null}
+                {phone ? <p>☎️:{phone}</p> : null}
+                {email ? <p>📧{email}</p> : null}
+                {address.length !== 0 ? <p>📍{address.toLowerCase()}</p> : null}
+                {access ? <p>Accès 🚇: {access}</p> : null}
+              </div>
+            </button>
+          </div>
         )}
       </div>
     </div>

@@ -4,53 +4,37 @@
 .itemContainer3.hidden {
   display: none;
 }
-
-.itemContainer {
-  display: flex;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  border-radius: 5px;
-  margin: 15px;
-  width: 85vw;
-  max-height: 30vh;
-}
-.itemContainer:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-/* container card of stadiums */
-.itemContainer2 {
-  display: flex;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  border-radius: 5px;
-  margin: 15px;
-  width: 85vw;
-  max-height: 30vh;
-}
-.itemContainer2:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
+/* itemContainer container card of stadiums */
+/* itemContainer2 container card of cinemas */
 /* container card of cinemas */
+.itemContainer,
+.itemContainer2,
 .itemContainer3 {
   display: flex;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 5px;
-  margin: 15px;
   width: 85vw;
-  max-height: 20vh;
+  box-shadow: 0 4px 8px #0003;
+  transition: 0.3s;
+  margin: 15px;
+  padding: 1.5rem;
+  width: 85vw;
 }
+.itemContainer:hover,
+.itemContainer2:hover,
 .itemContainer3:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
+
 /* reduce h3 size */
 .descriptionContainer h3 {
-  font-size: 0.8rem;
+  font-size: 1rem;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin-bottom: 8px;
+  margin-top: 0;
 }
 
 /* set p display to have 3 lines maximum*/
@@ -59,61 +43,97 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  font-size: 0.9rem;
 }
 
+/* image in card */
 .imgCard {
   border-radius: 5px 0 0 5px;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
 /* Container of image's card */
 .imageContainer {
-  display: flex;
-  flex-direction: column;
-  max-width: 30vw;
-  max-height: 20vh;
+  max-width: 15vw;
   position: relative;
-  top: 30%;
 }
 /* Container of description from card */
 .descriptionContainer {
+  margin-left: 10px;
   width: 90%;
-  height: 93%;
-  text-align: left;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 /* styling tag of card */
-.tagCard {
-  font-size: 0.8rem;
-  background-color: black;
+.tagCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+}
+.tagCard,
+.natureCard {
+  font-size: 0.7rem;
+  background-color: rgba(21, 29, 72, 0.1);
   width: fit-content;
   height: auto;
-  color: white;
+  color: #151d48;
   border-radius: 5px;
   text-align: center;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  border: 1px solid #151d48;
+  padding: 2px 4px;
+  text-transform: capitalize;
 }
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.crossContainer button:hover {
+  cursor: pointer;
+}
+
+/*modal card content title display on multiple lines*/
+.modalCardContent h3 {
+  -webkit-line-clamp: initial;
+}
+
+/* style of button 'en savoir plus' */
 .knowMore {
-  font-size: 0.8rem;
-  width: fit-content;
-  height: auto;
-  background: #d1c7c7;
-  box-shadow: 1px 1px 4px rgba(117, 117, 117, 0.2);
-  border-radius: 6px;
+  background: #151d48;
+  width: 5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  padding: 8px;
+  font-size: 0.5rem;
+  color: white;
+}
+.knowMore:hover {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transform: translateY(1px);
+}
+
+/* style of card address */
+.addressCard {
+  text-transform: capitalize;
+  font-size: 0.9rem;
 }
 
 /* style of modal */
+
 /* container of modal */
-.modalContainer {
+.modalCardContainer {
   position: fixed;
   top: 0;
   left: 0;
+  /*width and height full screen*/
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -124,80 +144,123 @@
 }
 
 /* content of modal */
-.modalContent {
-  position: relative;
+/*.modalCardContent is centered horizontally and vertically on the screen*/
+.modalCardContent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: white;
   padding: 1rem;
   border-radius: 0.5rem;
-  z-index: 1000;
-  max-width: 80%;
+  z-index: 15;
+  width: 80%;
   max-height: 80%;
   overflow-y: auto;
+}
+
+.modalCardContent.crossContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.modalCardcontent.closingCross {
+  width: 24px;
+  height: 24px;
+  margin: 8px;
 }
 
 .imageContainerModal {
   display: flex;
   justify-content: center;
 }
-/* responsive for device higher to 575px */
-@media (min-width: 575px) {
+/* responsive for device higher to 768px */
+@media (min-width: 768px) {
   .itemContainer.hidden,
   .itemContainer2.hidden,
   .itemContainer3.hidden {
     display: initial;
   }
 
-  /* card of events */
-  .itemContainer {
-    width: 25vw;
-    max-height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  /* card of stadiums */
-  .itemContainer2 {
-    width: 25vw;
-    max-height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  /* Card of cinemas */
+  /* card of events,cinema, stadiums */
+  .itemContainer,
+  .itemContainer2,
   .itemContainer3 {
     width: 25vw;
-    max-height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
-
   /* Container of image's card */
   .imageContainer {
-    max-width: 20%;
-    height: auto;
+    width: 100%;
+    height: 5vw;
     position: relative;
     top: 1%;
+    margin-bottom: 1rem;
   }
-  /* buttton En savoir plus */
   .knowMore {
-    font-size: 0.8rem;
-    width: fit-content;
-    height: auto;
-    background: #f9f9f960;
-    box-shadow: 1px 1px 4px rgba(117, 117, 117, 0.2);
-    border-radius: 6px;
+    background: #151d48;
+    width: 7rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    padding: 8px;
+    font-size: 0.85rem;
+    color: white;
+  }
+  .knowMore:hover {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transform: translateY(1px);
   }
 
-  .tagCard {
-    background-color: black;
-    width: fit-content;
-    color: white;
-    border-radius: 5px;
-    text-align: center;
+  .descriptionContainer h3 {
+    font-size: 1.1rem;
+    -webkit-line-clamp: initial;
   }
+
+  .modalCardContainer h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+
   .descriptionContainer {
-    width: 83%;
-    height: 70%;
+    width: 93%;
+  }
+
+  .modalCardContent {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 32px;
+    border-radius: 0.5rem;
+    z-index: 15;
+    width: initial;
+    height: initial;
+    max-width: 80vw;
+    max-height: 80vw;
+    overflow-y: auto;
+  }
+
+  .modalContainer.crossContainer {
+    display: initial;
+  }
+
+  .tagCards {
+    margin: 0;
+    margin-bottom: 16px;
+  }
+
+  .modalCardContainer .tagCard {
+    margin-bottom: 16px;
+  }
+  .modalCardContainer .natureCard {
+    margin-bottom: 16px;
   }
 }

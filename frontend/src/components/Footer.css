@@ -56,10 +56,11 @@ footer button {
   transform-origin: left;
   transform: scaleX(1);
 }
-.modalContainer {
+.modalAboutContainer {
   position: fixed;
   top: 0;
   left: 0;
+  /*width and height full screen*/
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -70,22 +71,38 @@ footer button {
 }
 
 /* content of modal */
-.modalContent {
-  position: relative;
+.modalAboutContent {
   text-align: justify;
   background-color: white;
   padding: 1rem;
-  border-radius: 0.5rem;
-  z-index: 1000;
   max-width: 80%;
   max-height: 80%;
   overflow-y: auto;
-}
-.modalContent h2 {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 0.5rem;
+  z-index: 15;
+  width: 80%;
 }
 
-.modalContent apush {
+.modalAboutContent h2 {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.modalAboutContainer p {
+  margin: auto 32px;
+}
+
+.modalAboutContainer p:last-child {
+  margin-bottom: 1.5rem;
+}
+
+.modalAboutContent apush {
   text-decoration: none;
   color: #151d48;
 }

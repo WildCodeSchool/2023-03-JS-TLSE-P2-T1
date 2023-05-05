@@ -1,8 +1,15 @@
+.place-events-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10vw;
+}
+
 .placeEventsButton {
-  width: 8rem;
+  width: 7rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
   padding: 8px;
+  font-size: 0.85rem;
 }
 
 .placeEventsButton:hover {
@@ -16,4 +23,11 @@
   box-shadow: none;
   transition: all 0.3s ease-in-out;
   color: white;
+}
+
+/*media queries over 768 px*/
+@media (min-width: 768px) {
+  .place-events-container {
+    gap: 3vw;
+  }
 }

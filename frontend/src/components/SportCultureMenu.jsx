@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import "./SportCultureMenu.css";
 
 function SportCultureMenu({
   isSportChecked,
@@ -27,11 +28,11 @@ function SportCultureMenu({
   };
 
   return (
-    <div className="primaryCheckboxButtons">
+    <div className="sport-culture-container">
       <button
         type="button"
-        className={`primaryButton cultureButton ${
-          isCultureChecked ? "mainButtonClicked" : ""
+        className={`cultureButton ${
+          isCultureChecked ? "sport-culture-clicked" : ""
         }`}
         onClick={() => handleClickCulture()}
       >
@@ -44,8 +45,8 @@ function SportCultureMenu({
       </button>
       <button
         type="button"
-        className={`primaryButton sportButton ${
-          isSportChecked ? "mainButtonClicked" : ""
+        className={`sportButton ${
+          isSportChecked ? "sport-culture-clicked" : ""
         }`}
         onClick={() => handleClickSport()}
       >

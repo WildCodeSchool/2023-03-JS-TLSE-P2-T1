@@ -19,35 +19,47 @@ function Footer() {
         </button>
         {/* contain of Modal card */}
         {isModalOpen && (
-          <button className="modalContainer" type="button" onClick={closeModal}>
-            <div className="modalContent">
-              <h2>Qui Sommes-Nous</h2>
+          <button
+            className="modalAboutContainer"
+            type="button"
+            onClick={closeModal}
+          >
+            <div className="modalAboutContent">
+              <h2>Qui sommes-nous ?</h2>
               <p>
-                Bienvenue sur myTouloulist ! Nous sommes Gaspard Caillaud, Nolan
-                de Puydt et Jean-Nicaise Konan, trois étudiants en développement
-                web à Toulouse. <br />
-                <br />
-                Ce site a été créé dans le cadre de notre projet d'études, et
-                nous sommes ravis de pouvoir le partager avec vous. Notre site a
-                été conçu dans un but non-commercial et nous sommes fiers de
-                pouvoir offrir ce service gratuitement à la communauté
-                toulousaine. Nous avons utilisé des données disponibles sur le
-                site de Toulouse Métropole pour fournir des informations
-                pratiques sur notre belle ville. <br />
-                <br />
-                Si vous avez des questions sur ce projet, ou si vous avez des
+                Bienvenue sur myTouloulist ! Nous sommes{" "}
+                <a href="https://www.linkedin.com/in/gaspardcaillaud/">
+                  Gaspard Caillaud
+                </a>
+                ,{" "}
+                <a href="https://www.linkedin.com/in/nolandepuydt/">
+                  Nolan de Puydt
+                </a>{" "}
+                et{" "}
+                <a href="https://github.com/jeannicaise">Jean-Nicaise Konan</a>{" "}
+                , trois étudiants en développement web à Toulouse.{" "}
+              </p>
+              <br />
+              <p>
+                Ce site a été créé dans le cadre de notre projet d'études et
+                nous sommes ravis de pouvoir le partager avec vous et d'offrir
+                ce service à la communauté toulousaine. 🚀🚀🚀{" "}
+              </p>
+              <br />
+              <p>
+                💡Si vous avez des questions sur ce projet, ou si vous avez des
                 idées de fonctionnalités que vous aimeriez voir implémentées,
                 n'hésitez pas à nous contacter. Nous sommes toujours ouverts aux
                 commentaires et suggestions et sommes ravis de pouvoir
-                travailler à l’amélioration de notre site. <br />
-                <br />
+                travailler à l’amélioration de notre site.💡{" "}
+              </p>
+              <br />
+
+              <p>
                 Enfin, nous aimerions remercier Toulouse Métropole pour la
-                qualité et la disponibilité de ses données. Nous avons été en
-                mesure de créer un site qui offre une expérience utilisateur
-                unique grâce à leur précieuse contribution.
+                qualité et la disponibilité de ses données. Nous vous invitons à
+                visiter leur site Web 🌐:
                 <br />
-                <br /> Si vous cherchez des données fiables sur Toulouse et sa
-                région, nous vous invitons à visiter leur site Web 🌐:
                 <a
                   href="https://data.toulouse-metropole.fr/pages/accueil/"
                   target="_blank"
@@ -58,12 +70,14 @@ function Footer() {
                   linked site from knowing the exact URL of the referring page. */}
                   https://data.toulouse-metropole.fr/pages/accueil/
                 </a>
-                <br />
-                <br />
+              </p>
+              <br />
+              <p>
                 Nous espérons que vous apprécierez notre site et que vous
                 prendre autant de plaisir à naviguer dessus que nous à le créer.
-                Merci de votre visite !
               </p>
+              <br />
+              <p>Merci de votre visite ! 🙏</p>
             </div>
           </button>
         )}
