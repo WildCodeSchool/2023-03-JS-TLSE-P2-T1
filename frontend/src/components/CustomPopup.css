@@ -1,6 +1,7 @@
 .namePopup {
   text-align: center;
   font-size: 1rem;
+  margin-bottom: 0.4rem;
 }
 
 .shortDescPopup {
@@ -11,10 +12,12 @@
 .schedulesPopup {
   font-weight: bold;
   font-size: 0.95rem;
+  text-align: center;
 }
 
 .longDescPopup {
   font-size: 0.9rem;
+  text-align: center;
 }
 
 .annexPopup {
@@ -22,8 +25,35 @@
   font-weight: bold;
 }
 
-.tagPopup {
-  padding: 0.3rem;
-  border-radius: 5rem;
-  background-color: #151d48;
+.popup {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.tagsPopup {
+  gap: 8px;
+  margin: 4px auto;
+}
+
+.leaflet-popup-content p {
+  margin: 8px auto;
+}
+
+@media (min-width: 768px) {
+  .namePopup {
+    font-size: 1.4rem;
+  }
+  .shortDescPopup {
+    font-size: 1rem;
+  }
+  .schedulesPopup {
+    font-size: 1rem;
+  }
+  .longDescPopup {
+    font-size: 1rem;
+  }
+  .annexPopup {
+    font-size: 1rem;
+  }
 }
