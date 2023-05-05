@@ -71,11 +71,7 @@ function Card({
         {/* contain of Modal card */}
         {isModalCardOpen && (
           <div>
-            <button
-              className="modalCardContainer"
-              type="button"
-              onClick={closeModalCard}
-            >
+            <button className="modalCardContainer" type="button">
               <div className="modalCardContent">
                 <div className="crossContainer">
                   <button type="button" onClick={closeModalCard}>
@@ -99,7 +95,7 @@ function Card({
                 {longDescription ? <p>{longDescription}</p> : null}
                 {phone ? <p>☎️:{phone}</p> : null}
                 {email ? <p>📧{email}</p> : null}
-                {address ? <p>{address.toLowerCase()}</p> : null}
+                {address.length !== 0 ? <p>📍{address.toLowerCase()}</p> : null}
                 {access ? <p>Accès 🚇: {access}</p> : null}
               </div>
             </button>
