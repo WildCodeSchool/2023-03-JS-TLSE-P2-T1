@@ -33,6 +33,8 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin-bottom: 8px;
+  margin-top: 0;
 }
 
 /* set p display to have 3 lines maximum*/
@@ -67,8 +69,8 @@
 .tagCards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 16px;
+  margin-top: 8px;
 }
 .tagCard,
 .natureCard {
@@ -93,6 +95,15 @@
   justify-content: center;
 }
 
+.crossContainer button:hover {
+  cursor: pointer;
+}
+
+/*modal card content title display on multiple lines*/
+.modalCardContent h3 {
+  -webkit-line-clamp: initial;
+}
+
 /* style of button 'en savoir plus' */
 .knowMore {
   background: #151d48;
@@ -102,7 +113,6 @@
   padding: 8px;
   font-size: 0.5rem;
   color: white;
- 
 }
 .knowMore:hover {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
@@ -145,7 +155,7 @@
   border-radius: 0.5rem;
   z-index: 15;
   width: 80%;
-  height: 70%;
+  max-height: 80%;
   overflow-y: auto;
 }
 
@@ -244,6 +254,7 @@
 
   .tagCards {
     margin: 0;
+    margin-bottom: 16px;
   }
 
   .modalCardContainer .tagCard {

@@ -183,7 +183,7 @@ function App() {
             isPlace: true,
             id: el.recordid,
             coordinates: el.fields.geo_point_2d,
-            address: `${el.fields.numero} ${
+            address: `${el.fields.numero ? el.fields.numero : ""} ${
               el.fields.lib_off
             }, ${el.fields.id_secteur_postal.toString()} ${el.fields.eq_ville}`,
             tags: ["Cinéma"],
