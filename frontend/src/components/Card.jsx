@@ -52,19 +52,22 @@ function Card({
       </div>
       <div className="descriptionContainer">
         <h3>{name}</h3>
+        <p className="tagCards">
+          {tags ? <span className="tagCard">{tags}</span> : null}
+          {nature ? <span className="natureCard">{nature}</span> : null}
+        </p>
         {shortDescription ? (
           <p className="shortDescriptionCard">{shortDescription}</p>
         ) : null}
         {address.length !== 0 ? (
           <p className="addressCard"> 📍{address.toLowerCase()}</p>
         ) : null}
-        <p className="tagCards">
-          {tags ? <span className="tagCard">{tags}</span> : null}
-          {nature ? <span className="natureCard">{nature}</span> : null}
-        </p>
-        <button type="button" className="knowMore" onClick={openModalCard}>
-          En savoir plus{" "}
-        </button>
+
+        <div className="button-container">
+          <button type="button" className="knowMore" onClick={openModalCard}>
+            En savoir plus{" "}
+          </button>
+        </div>
         {/* contain of Modal card */}
         {isModalCardOpen && (
           <div>
@@ -73,34 +76,33 @@ function Card({
               type="button"
               onClick={closeModalCard}
             >
-              <p>.</p>
+              <div className="modalCardContent">
+                <div className="crossContainer">
+                  <button type="button" onClick={closeModalCard}>
+                    <img
+                      src="/assets/close_icon.svg"
+                      alt="Croix de fermeture"
+                      className="closingCross"
+                    />
+                  </button>
+                </div>
+                <div className="imageContainerModal">
+                  <img src={imgSrc} alt={name} className="imgModal" />
+                </div>
+                <h3>{name}</h3>
+                <p className="tagCards">
+                  {tags ? <span className="tagCard">{tags}</span> : null}
+                  {nature ? <span className="natureCard">{nature}</span> : null}
+                </p>
+                {shortDescription ? <p>{shortDescription}</p> : null}
+                {schedules ? <p>{schedules}</p> : null}
+                {longDescription ? <p>{longDescription}</p> : null}
+                {phone ? <p>☎️:{phone}</p> : null}
+                {email ? <p>📧{email}</p> : null}
+                {address ? <p>{address.toLowerCase()}</p> : null}
+                {access ? <p>Accès 🚇: {access}</p> : null}
+              </div>
             </button>
-            <div className="modalCardContent">
-              <div className="crossContainer">
-                <button type="button" onClick={closeModalCard}>
-                  <img
-                    src="/assets/close_icon.svg"
-                    alt="Croix de fermeture"
-                    className="closingCross"
-                  />
-                </button>
-              </div>
-              <div className="imageContainerModal">
-                <img src={imgSrc} alt={name} className="imgModal" />
-              </div>
-              <h3>{name}</h3>
-              {shortDescription ? <p>{shortDescription}</p> : null}
-              {schedules ? <p>{schedules}</p> : null}
-              {longDescription ? <p>{longDescription}</p> : null}
-              {phone ? <p>☎️:{phone}</p> : null}
-              {email ? <p>📧{email}</p> : null}
-              {address ? <p>{address.toLowerCase()}</p> : null}
-              {access ? <p>Accès 🚇: {access}</p> : null}
-              <p className="tagCards">
-                {tags ? <span className="tagCard">{tags}</span> : null}
-                {nature ? <span className="natureCard">{nature}</span> : null}
-              </p>
-            </div>
           </div>
         )}
       </div>

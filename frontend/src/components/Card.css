@@ -28,7 +28,7 @@
 
 /* reduce h3 size */
 .descriptionContainer h3 {
-  font-size: 0.8rem;
+  font-size: 2rem;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -47,7 +47,6 @@
 /* image in card */
 .imgCard {
   border-radius: 5px 0 0 5px;
-  /* outline: 2px solid rgb(21, 255, 0); */
   position: relative;
   height: 100%;
   width: 100%;
@@ -58,21 +57,18 @@
 .imageContainer {
   max-width: 30vw;
   position: relative;
-  /* outline: 2px solid red; */
 }
 /* Container of description from card */
 .descriptionContainer {
   margin-left: 10px;
   width: 90%;
-  text-align: left;
-  /* overflow: hidden;
-  text-overflow: ellipsis; */
-  /* outline: 2px solid rgb(0, 81, 255); */
 }
 /* styling tag of card */
 .tagCards {
   display: flex;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
 }
 .tagCard,
 .natureCard {
@@ -90,6 +86,11 @@
   border: 1px solid #151d48;
   padding: 2px 4px;
   text-transform: capitalize;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
 }
 
 /* style of button 'en savoir plus' */
@@ -110,7 +111,6 @@
 
 /* style of card address */
 .addressCard {
-  /* outline: 2px solid rgb(0, 81, 255); */
   text-transform: capitalize;
   font-size: 0.9rem;
 }
@@ -130,10 +130,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.modalCardContainer p {
-  display: none;
 }
 
 /* content of modal */
@@ -187,8 +183,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* margin: 15px; */
-    /* padding: 1.5rem; */
   }
   /* Container of image's card */
   .imageContainer {
@@ -212,6 +206,17 @@
     cursor: pointer;
     transform: translateY(1px);
   }
+
+  .descriptionContainer h3 {
+    font-size: 1.1rem;
+    -webkit-line-clamp: initial;
+  }
+
+  .modalCardContainer h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+
   .descriptionContainer {
     width: 93%;
   }
@@ -222,9 +227,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding: 1rem;
+    padding: 32px;
     border-radius: 0.5rem;
     z-index: 15;
+    width: initial;
+    height: initial;
     max-width: 80vw;
     max-height: 80vw;
     overflow-y: auto;
@@ -232,5 +239,16 @@
 
   .modalContainer.crossContainer {
     display: initial;
+  }
+
+  .tagCards {
+    margin: 0;
+  }
+
+  .modalCardContainer .tagCard {
+    margin-bottom: 16px;
+  }
+  .modalCardContainer .natureCard {
+    margin-bottom: 16px;
   }
 }
