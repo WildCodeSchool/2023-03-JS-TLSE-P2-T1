@@ -54,6 +54,13 @@ function App() {
   // State that contains the selected date from the filters menu
   const [dateChosen, setDateChosen] = useState("");
 
+  // define behaviour of the toggle "map/list" button onclick
+  const [mapToggleChecked, setMapToggleChecked] = useState(false);
+
+  const handleMapToggle = () => {
+    setMapToggleChecked(!mapToggleChecked);
+  };
+
   // Defining number of events
   useEffect(() => {
     axios
@@ -297,7 +304,7 @@ function App() {
           <div
             className={`sorting-map-buttons ${
               isFiltersMenuVisible ? "hidden" : ""
-            }`}
+            } ${mapToggleChecked ? "toRight" : ""}`}
           >
             <SortingMenu
               finalResult={finalResult}
@@ -308,18 +315,23 @@ function App() {
               isMapActive={isMapActive}
             />
             <div className="containerMapSwitch">
-              <label className="labelMapSwitch">
+              <label className="toggle">
                 <input
                   type="checkbox"
-                  className="inputMapSwitch"
-                  onChange={() => setIsMapActive(!isMapActive)}
+                  onChange={() => {
+                    setIsMapActive(!isMapActive);
+                    handleMapToggle(!mapToggleChecked);
+                  }}
+                  checked={mapToggleChecked}
                 />
-                <span className="spanMapSwitch" />
+                <span className="slider round" />
               </label>
             </div>
           </div>
           <div
-            className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""}`}
+            className={`listContainer ${
+              isFiltersMenuVisible || mapToggleChecked ? "hidden" : ""
+            }`}
           >
             {isLoaded && !isMapActive
               ? finalResult.map((el) => (
