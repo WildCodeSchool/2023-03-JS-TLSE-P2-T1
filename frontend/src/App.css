@@ -16,7 +16,7 @@
 }
 
 main {
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -133,6 +133,15 @@ input:checked + .slider:after {
 
 .sorting-map-buttons.mapActive {
   justify-content: flex-end;
+}
+
+.toRight {
+  justify-content: flex-end;
+}
+
+/*error handling*/
+.noDisplayIfError.hidden {
+  display: none;
 }
 
 /*media queries over 768 px*/

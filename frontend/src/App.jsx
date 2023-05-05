@@ -9,6 +9,7 @@ import PrimaryCheckboxButton from "./components/PrimaryCheckboxButton";
 import Footer from "./components/Footer";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import SortingMenu from "./components/SortingMenu";
+import Error from "./components/Error";
 
 function App() {
   const [fetchedResult, setFetchedResult] = useState([]);
@@ -30,6 +31,9 @@ function App() {
 
   const [isFiltersMenuVisible, setIsFiltersMenuVisible] = useState(false);
 
+  // Error 429 related states
+  const [isError, setIsError] = useState(false);
+
   // Navbar Filters related states
   const [navbarDisplayedTags, setNavbarDisplayedTags] = useState([]);
   const [navbarSportCulture, setNavbarSportCulture] = useState("");
@@ -50,6 +54,13 @@ function App() {
   // State that contains the selected date from the filters menu
   const [dateChosen, setDateChosen] = useState("");
 
+  // define behaviour of the toggle "map/list" button onclick
+  const [mapToggleChecked, setMapToggleChecked] = useState(false);
+
+  const handleMapToggle = () => {
+    setMapToggleChecked(!mapToggleChecked);
+  };
+
   // Defining number of events
   useEffect(() => {
     axios
@@ -57,7 +68,9 @@ function App() {
         "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=agenda-des-manifestations-culturelles-so-toulouse&q=&rows=0&facet=date_debut&facet=date_fin&facet=categorie_de_la_manifestation&facet=theme_de_la_manifestation"
       )
       .then((res) => setEventsNbr(res.data.nhits))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        if (err.response.status === 429) setIsError(true);
+      });
   }, []);
 
   // Fetching the API with rows equal to number of events, putting result into a result object
@@ -109,7 +122,9 @@ function App() {
         "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=stades&q=&rows=0"
       )
       .then((res) => setStadiumsNbr(res.data.nhits))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        if (err.response.status === 429) setIsError(true);
+      });
   }, []);
 
   // Fetching the API with rows equal to number of stadiums, putting result into a result object
@@ -148,7 +163,9 @@ function App() {
         "https://data.toulouse-metropole.fr/api/records/1.0/search/?dataset=cinemas&q=&rows=0"
       )
       .then((res) => setCinemasNbr(res.data.nhits))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        if (err.response.status === 429) setIsError(true);
+      });
   }, []);
 
   // Fetching the API with rows equal to number of cinemas, putting result into a result object
@@ -235,13 +252,6 @@ function App() {
     }
   }, [fetchedResult]);
 
-  // define behaviour of the toggle "map/list" button onclick
-  const [mapToggleChecked, setMapToggleChecked] = useState(false);
-
-  const handleMapToggle = () => {
-    setMapToggleChecked(!mapToggleChecked);
-  };
-
   // list all unfiltered cards by map finalResul in a component Card
   return (
     <div className="App">
@@ -254,100 +264,104 @@ function App() {
         navbarSportCulture={navbarSportCulture}
         navbarDate={navbarDate}
       />
-      {isFiltersMenuVisible ? (
-        <FiltersMenu
-          fetchedResult={fetchedResult}
-          isLoaded={isLoaded}
-          setFinalResult={setFinalResult}
-          setIsFiltersMenuVisible={setIsFiltersMenuVisible}
-          setNavbarDisplayedTags={setNavbarDisplayedTags}
-          selectedFilterTags={selectedFilterTags}
-          setSelectedFilterTags={setSelectedFilterTags}
-          setNavbarSportCulture={setNavbarSportCulture}
-          setSelectedSorting={setSelectedSorting}
-          dateChosen={dateChosen}
-          setDateChosen={setDateChosen}
-          setNavbarDate={setNavbarDate}
-        />
-      ) : null}
-      {/* the beneath div corresponds to the header section */}
-      <header>
-        <PrimaryCheckboxButton
-          isFiltersMenuVisible={isFiltersMenuVisible}
-          setFinalResult={setFinalResult}
-          fetchedResult={fetchedResult}
-          setSelectedFilterTags={setSelectedFilterTags}
-          setNavbarDisplayedTags={setNavbarDisplayedTags}
-          sportButtonClicked={sportButtonClicked}
-          cultureButtonClicked={cultureButtonClicked}
-          setSportButtonClicked={setSportButtonClicked}
-          setCultureButtonClicked={setCultureButtonClicked}
-          setNavbarSportCulture={setNavbarSportCulture}
-          setNavbarDate={setNavbarDate}
-          setSelectedSorting={setSelectedSorting}
-        />
-      </header>
-      <main>
-        {/* create div with className sorting-map-buttons and className hidden if isFiltersMenuVisible is true */}
-        <div
-          className={`sorting-map-buttons ${
-            isFiltersMenuVisible ? "hidden" : ""
-          } ${isMapActive ? "mapActive" : ""}`}
-        >
-          <SortingMenu
-            finalResult={finalResult}
+      <div className={`noDisplayIfError} ${isError ? "hidden" : ""}`}>
+        {isFiltersMenuVisible ? (
+          <FiltersMenu
+            fetchedResult={fetchedResult}
+            isLoaded={isLoaded}
+            setFinalResult={setFinalResult}
+            setIsFiltersMenuVisible={setIsFiltersMenuVisible}
+            setNavbarDisplayedTags={setNavbarDisplayedTags}
+            selectedFilterTags={selectedFilterTags}
+            setSelectedFilterTags={setSelectedFilterTags}
+            setNavbarSportCulture={setNavbarSportCulture}
+            setSelectedSorting={setSelectedSorting}
+            dateChosen={dateChosen}
+            setDateChosen={setDateChosen}
+            setNavbarDate={setNavbarDate}
+          />
+        ) : null}
+        {/* the beneath div corresponds to the header section */}
+
+        <header>
+          <PrimaryCheckboxButton
+            isFiltersMenuVisible={isFiltersMenuVisible}
             setFinalResult={setFinalResult}
             fetchedResult={fetchedResult}
-            selectedSorting={selectedSorting}
+            setSelectedFilterTags={setSelectedFilterTags}
+            setNavbarDisplayedTags={setNavbarDisplayedTags}
+            sportButtonClicked={sportButtonClicked}
+            cultureButtonClicked={cultureButtonClicked}
+            setSportButtonClicked={setSportButtonClicked}
+            setCultureButtonClicked={setCultureButtonClicked}
+            setNavbarSportCulture={setNavbarSportCulture}
+            setNavbarDate={setNavbarDate}
             setSelectedSorting={setSelectedSorting}
-            isMapActive={isMapActive}
           />
-          <div className="containerMapSwitch">
-            <label className="toggle">
-              <input
-                type="checkbox"
-                onChange={() => {
-                  setIsMapActive(!isMapActive);
-                  handleMapToggle(!mapToggleChecked);
-                }}
-                checked={mapToggleChecked}
-              />
-              <span className="slider round" />
-            </label>
-          </div>
-        </div>
-        <div
-          className={`listContainer ${isFiltersMenuVisible ? "hidden" : ""} ${
-            isMapActive ? "hidden" : ""
-          }`}
-        >
-          {isLoaded && !isMapActive
-            ? finalResult.map((el) => (
-                <Card
-                  isFiltersMenuVisible={isFiltersMenuVisible}
-                  key={el.id}
-                  api={el.api}
-                  name={el.name}
-                  shortDescription={el.shortDescription}
-                  tags={el.tags}
-                  address={el.address}
-                  schedules={el.schedules}
-                  longDescription={el.longDescription}
-                  phone={el.phone}
-                  email={el.email}
-                  startingDate={el.startingDate}
-                  endingDate={el.endingDate}
-                  access={el.access}
-                  nature={el.nature}
+        </header>
+        <main>
+          {/* create div with className sorting-map-buttons and className hidden if isFiltersMenuVisible is true */}
+          <div
+            className={`sorting-map-buttons ${
+              isFiltersMenuVisible ? "hidden" : ""
+            } ${mapToggleChecked ? "toRight" : ""}`}
+          >
+            <SortingMenu
+              finalResult={finalResult}
+              setFinalResult={setFinalResult}
+              fetchedResult={fetchedResult}
+              selectedSorting={selectedSorting}
+              setSelectedSorting={setSelectedSorting}
+              isMapActive={isMapActive}
+            />
+            <div className="containerMapSwitch">
+              <label className="toggle">
+                <input
+                  type="checkbox"
+                  onChange={() => {
+                    setIsMapActive(!isMapActive);
+                    handleMapToggle(!mapToggleChecked);
+                  }}
+                  checked={mapToggleChecked}
                 />
-              ))
-            : null}
-        </div>
-        {isLoaded && isMapActive && !isFiltersMenuVisible ? (
-          <Map finalResult={finalResult} />
-        ) : null}
-      </main>
-      <ScrollToTopButton isFiltersMenuVisible={isFiltersMenuVisible} />
+                <span className="slider round" />
+              </label>
+            </div>
+          </div>
+          <div
+            className={`listContainer ${
+              isFiltersMenuVisible || mapToggleChecked ? "hidden" : ""
+            }`}
+          >
+            {isLoaded && !isMapActive
+              ? finalResult.map((el) => (
+                  <Card
+                    isFiltersMenuVisible={isFiltersMenuVisible}
+                    key={el.id}
+                    api={el.api}
+                    name={el.name}
+                    shortDescription={el.shortDescription}
+                    tags={el.tags}
+                    address={el.address}
+                    schedules={el.schedules}
+                    longDescription={el.longDescription}
+                    phone={el.phone}
+                    email={el.email}
+                    startingDate={el.startingDate}
+                    endingDate={el.endingDate}
+                    access={el.access}
+                    nature={el.nature}
+                  />
+                ))
+              : null}
+          </div>
+          {isLoaded && isMapActive && !isFiltersMenuVisible ? (
+            <Map finalResult={finalResult} />
+          ) : null}
+        </main>
+        <ScrollToTopButton isFiltersMenuVisible={isFiltersMenuVisible} />
+      </div>
+      <Error isError={isError} />
       <Footer />
     </div>
   );
