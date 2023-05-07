@@ -15,18 +15,15 @@ function TagsFilter({
   useEffect(() => {
     // if mainFilterResult changes, selectedFilterTags are unselected
     setSelectedFilterTags([]);
-    // create an array from all tags in mainFilterResult.tags array, no duplicates
-    const allTags = [];
-    mainFilterResult.forEach((el) => {
-      if (el.tags) {
-        el.tags.forEach((tag) => {
-          // exclude the undefined tag
-          if (!allTags.includes(tag) && tag) {
-            allTags.push(tag);
-          }
-        });
-      }
-    });
+    // create an array with no duplicates from all tags strings in mainFilterResult.tags arrays
+    const allTags = mainFilterResult
+      .map((item) => item.tags)
+      .flat()
+      .filter((item) => item !== undefined)
+      // remove empty space at beggining and end of each tag
+      .map((item) => item.trim())
+      .filter((item, index, array) => array.indexOf(item) === index);
+
     // all tags are sorted alphabetically
     setAllMainFilterTags(allTags.sort());
   }, [mainFilterResult]);
